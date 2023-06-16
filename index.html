@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./scripts/letter.js" defer></script>
+    <script src="./scripts/word_dictionary.js" defer></script>
+    <script src="./scripts/game_state.js" defer></script>
+    <script src="./scripts/view.js" defer></script>
+    <script src="./scripts/controller.js" defer></script>
+</head>
+<body>
+    <H1>Thermonuclear Hangman</H1>
+    <H2>Instructions</H2>
+    <p>After years of political turmoil, extreme social inequality, and general unrest, a <strong>bad actor</strong> has decided to end it all, for everyone, and triggered total nuclear annihilation.  We've brought you header
+    as the world's brightest mind to hack the nuclear codes and disarm the warheads.  You have six minutes, can
+    you do it?  The fate of humanity depends on your wit.  For each wrong guess the timer ticks down...</p>
+
+    <div><p id="pTimer"></p></div>
+    <div><p id="pWordDisplay"></p></div>
+    <input type="text" id="txtGuess">
+    <button id="btnGuess">Guess</button>
+    <div><p id="pGameState"></p></div>
+    <div><p id="pError"></p></div>
+    <button id="btnReset">Reset</button>
+
+
+    
+</body>
+</html>
