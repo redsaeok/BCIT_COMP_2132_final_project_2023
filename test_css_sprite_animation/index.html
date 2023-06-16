@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!--
+            I'm investigating this method because I'm seeing flicker; I'm hoping
+            this decreases the image load time and eliminates the flicker.  Also
+            I told Jeff I'd stick to just one sprite and I'm not ready to further
+            generalize a sprite library so I thought it would be informative to 
+            find a new/different way to do this.
+
+        Notes:
+
+            It looks like the evaluation of variables with CSS animations can 
+            cause unexpected slowdowns.  It may be better to hard code the values
+            directly into the classes.
+
+            On the plus side - like I thought, this gets ride of the flicker entirely and 
+            makes the animation much smoother.
+
+            Will have to try scaling this tomorrow.
+
+    -->
+
+        <!-- References 
+        Making CSS animations using a sprite sheet
+        https://blog.logrocket.com/making-css-animations-using-a-sprite-sheet/
+        Ideas:
+            Uses the a method of moving a viewport over the image;
+            Uses CSS keyframes to move the viewport;
+        Questions:
+            How do I learn more about Figma?
+            How do I scale the background image?
+            Seems to be missing code.
+            Couldn't get to work - may be my limited understanding of CSS animations generally.
+
+        How to Create a CSS Sprite Animation With steps()
+        https://blog.teamtreehouse.com/css-sprite-sheet-animations-steps
+        Ideas:
+            Expands on the above by showing how to use the CSS animation property;
+            Play scrolls the whole image; steps scrolls a portion of the image;      
+            [Steps should match the number of frames in the sprite sheet]
+            The infinite keyword keeps things going forever.       
+        Questions:
+
+    -->
+        <!--div class="monster"></div>
+        <div class="terminal"></div-->
+        <div class="world"></div>
+
+        <style>
+            :root {
+                --sprite-width: 190px;
+                --sprite-height: 240px;
+                --spritesheet-width: 1900px;
+                --spritesheet-height: 240px;
+                --spritesheet-src: url("monster.png");
+            }
+
+            body {
+                background-color: #24aecd;
+            }
+
+            .terminal {
+                /* Useful for validating the sprite sheet dimensions and layout */
+                width: 190px;
+                height: 240px;
+                margin: 2% auto;                
+                /* Useful for finding when it goes missing */
+                /* border: 5px solid grey;
+                border-radius: 10px; */
+                /* Using a variable here seems to force it to reload the image */
+                background: url("monster.png") left center;
+                animation: play2 0.8s steps(10) infinite;
+            }
+
+            .world {
+                width: 82px;
+                height: 82px;
+                background: url("world_sprite_sheet2.gif") left center;
+                animation: play3 1s steps(48) infinite;
+            }
+
+            @keyframes play3 {
+                100% {
+                    background-position: -3936px;
+                 }
+            }
+
+            @keyframes play2 {
+                100% {
+                    /* Why was this failing with -(1900)px? */
+                    /* background-position: calc( var(--spritesheet-width) * (-1)); */
+                    background-position: -1900px; 
+                    
+                }
+            }
+        </style>
+
+        <style>
+            body {
+                background: #24aecd;
+            }
+
+            .monster {
+                width: 190px;
+                height: 240px;
+                margin: 2% auto;
+                background: url("https://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/blog/monster.png")
+                    left center;
+                animation: play 0.8s steps(10) infinite;
+            }
+
+            @keyframes play {
+                100% {
+                    background-position: -1900px;
+                }
+            }
+        </style>
+    </body>
+</html>
