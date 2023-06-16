@@ -23,9 +23,16 @@
             On the plus side - like I thought, this gets ride of the flicker entirely and 
             makes the animation much smoother.
 
-            Will have to try scaling this tomorrow.
+            The only solution I could find for scaling involved using JavaScript to
+            calculate the scale factor and then applying it to the transform property.
+            I don't see a way to do this in CSS.
 
-    -->
+            Setting the transform-origin to top left is important to keep the world
+            from moving around as it scales.
+
+
+
+        -->
 
         <!-- References 
         Making CSS animations using a sprite sheet
@@ -51,76 +58,74 @@
     -->
         <!--div class="monster"></div>
         <div class="terminal"></div-->
-        <div class="world"></div>
+        <div id="container">
+            <div class="world" id="world"></div>
+        </div>
 
         <style>
             :root {
-                --sprite-width: 190px;
-                --sprite-height: 240px;
-                --spritesheet-width: 1900px;
-                --spritesheet-height: 240px;
-                --spritesheet-src: url("monster.png");
+                --sprite-width: 82px;
+                --sprite-height: 82px;
+                --spritesheet-width: 3936px;
+                --spritesheet-height: 82px;
+                --spritesheet-src: url("world_sprite_sheet2.gif");
+                --world_spritesheet-frames: 48;
             }
 
             body {
                 background-color: #24aecd;
             }
 
-            .terminal {
-                /* Useful for validating the sprite sheet dimensions and layout */
-                width: 190px;
-                height: 240px;
-                margin: 2% auto;                
-                /* Useful for finding when it goes missing */
-                /* border: 5px solid grey;
-                border-radius: 10px; */
-                /* Using a variable here seems to force it to reload the image */
-                background: url("monster.png") left center;
-                animation: play2 0.8s steps(10) infinite;
+            #container {
+                width: 20vh;
+                height: 20vh;
             }
 
             .world {
-                width: 82px;
-                height: 82px;
-                background: url("world_sprite_sheet2.gif") left center;
-                animation: play3 1s steps(48) infinite;
+                width: var(--sprite-height);
+                height: var(--sprite-width);
+                background: var(--spritesheet-src) left center;
+                animation: spin_world 1s steps(var(--world_spritesheet-frames)) infinite;    
+                transform-origin: top left;             
             }
 
-            @keyframes play3 {
+            @keyframes spin_world {
                 100% {
-                    background-position: -3936px;
+                    background-position: var(--spritesheet-width);
                  }
             }
 
-            @keyframes play2 {
-                100% {
-                    /* Why was this failing with -(1900)px? */
-                    /* background-position: calc( var(--spritesheet-width) * (-1)); */
-                    background-position: -1900px; 
-                    
-                }
-            }
         </style>
 
-        <style>
-            body {
-                background: #24aecd;
+        <script>
+            function worldResponsiveResize()
+            {
+                // I don't see a way to solve this in CSS
+                // So I'm copying what I did for the scientist
+                console.log("Resize World sprite now.")                 
+
+                const WORLD = document.getElementById("world");
+                const CONTAINER = document.getElementById("container");
+                
+                let transform = `scale(1)`;          
+                
+                const worldHeight = getComputedStyle(WORLD).height;
+                const containerHeight = getComputedStyle(CONTAINER).height;
+                const scale = parseFloat(containerHeight) / parseFloat(worldHeight);
+                
+                transform = `scale(${scale})`;
+                WORLD.style.transform=transform;
+
             }
 
-            .monster {
-                width: 190px;
-                height: 240px;
-                margin: 2% auto;
-                background: url("https://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/blog/monster.png")
-                    left center;
-                animation: play 0.8s steps(10) infinite;
-            }
+            // Set the initial size of the world sprite
+            // This is a hack to get the world sprite to scale
+            // to the size of the container.
+            worldResponsiveResize();
 
-            @keyframes play {
-                100% {
-                    background-position: -1900px;
-                }
-            }
-        </style>
+            // Add a listener to resize the world sprite
+            // when the window is resized
+            addEventListener("resize", worldResponsiveResize);
+        </script>
     </body>
 </html>
