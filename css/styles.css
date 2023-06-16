@@ -209,6 +209,11 @@ body {
     animation: blinker 1s linear infinite;
 }
 
+.hide_me {
+    display: none;
+    visibility: hidden;
+}
+
 #kb_container{
     visibility: hidden;
     display: none;    

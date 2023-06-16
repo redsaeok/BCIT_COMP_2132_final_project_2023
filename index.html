@@ -35,10 +35,13 @@
                     
                     Eliminated: <span id = "spEliminated"></span>
                 </p>
-            <input type="text" id="txtGuess">
-            <button id="btnGuess">Guess</button>
-            <div><p id="pGameState"></p></div>
-            
+            <div class="hide_me">
+                <!-- I don't really need this anymore, but it's useful as a data store and 
+                     could be useful for testing -->
+                <input type="text" id="txtGuess">
+                <button id="btnGuess">Guess</button>
+                <div><p id="pGameState"></p></div>
+                </div>
             <button id="btnReset">Reset</button>
         </div>
 
@@ -53,12 +56,13 @@
         <div id="sprite-scientist"></div>
 
 
+        <!-- I should consider creating a generic message box -->
         <div id="instructions">
             <div id="close_instructions" ><i id="btnCloseInstructions" class="fa-solid fa-rectangle-xmark hover"></i></div>
             
             <h1>Greetings Professer Falken.</h1>
 
-            <p>It's been a long time.  Would you like to play a game?</p>
+            <!--p>It's been a long time.  Would you like to play a game?</p-->
 
             <p>
                 The WOPR supercomputer has detected a nuclear missile launch.  It seems that the American and Russian nuclear 
@@ -70,6 +74,15 @@
                 Our codes designed to disarm the nuclear weapons have been jumbled up, making it challenging to decipher them.  
                 Can you assist us in solving this puzzle, prevent a catastrophic outcome, and save us all?
             </p>
+            <p>
+                To assist you in your efforts, we have provided you with a hint. Each incorrect guess
+                decreases the Defcon level.  Solve the guess on or before Defcon 1 to disarm the nuclear missiles.
+            </p>
+
+            <p>
+                On a computer, simply press a key on your keyboard to begin guessing.  On a mobile device, tap the letters of the on-screen keyboard.
+            </p>
+
 
         </div>
 
