@@ -64,12 +64,14 @@
 
         <style>
             :root {
-                --sprite-width: 82px;
-                --sprite-height: 82px;
-                --spritesheet-width: 3936px;
-                --spritesheet-height: 82px;
-                --spritesheet-src: url("world_sprite_sheet2.gif");
-                --world_spritesheet-frames: 48;
+                --world-sprite-width: 82px;
+                --world-sprite-height: 82px;
+                --world-spritesheet-width: 3936px;
+                --world-spritesheet-height: 82px;
+                --world-spritesheet-src: url("world_sprite_sheet2.gif");
+                --world-spritesheet-frames: 48;
+                --world-element: world;
+                --world-container: container;
             }
 
             body {
@@ -82,16 +84,16 @@
             }
 
             .world {
-                width: var(--sprite-height);
-                height: var(--sprite-width);
-                background: var(--spritesheet-src) left center;
-                animation: spin_world 1s steps(var(--world_spritesheet-frames)) infinite;    
+                width: var(--world-sprite-height);
+                height: var(--world-sprite-width);
+                background: var(--world-spritesheet-src) left center;
+                animation: spin_world 1s steps(var(--world-spritesheet-frames)) infinite;    
                 transform-origin: top left;             
             }
 
             @keyframes spin_world {
                 100% {
-                    background-position: var(--spritesheet-width);
+                    background-position: var(--world-spritesheet-width);
                  }
             }
 
@@ -102,10 +104,15 @@
             {
                 // I don't see a way to solve this in CSS
                 // So I'm copying what I did for the scientist
-                console.log("Resize World sprite now.")                 
+                console.log("Resize World sprite now.")
+                
+                const WORLD_ELEMENT_NAME = getComputedStyle(document.documentElement).getPropertyValue("--world-element");
+                const CONTAINER_ELEMENT_NAME = getComputedStyle(document.documentElement).getPropertyValue("--world-container");
 
-                const WORLD = document.getElementById("world");
-                const CONTAINER = document.getElementById("container");
+                const ROOT = document.documentElement;
+
+                const WORLD = document.getElementById(WORLD_ELEMENT_NAME);
+                const CONTAINER = document.getElementById(CONTAINER_ELEMENT_NAME);
                 
                 let transform = `scale(1)`;          
                 

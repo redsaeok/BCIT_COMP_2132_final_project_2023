@@ -9,6 +9,16 @@
 
     --defcon-color: blue;
     --inactive-key-color: grey;
+
+
+    --world-sprite-width: 82px;
+    --world-sprite-height: 82px;
+    --world-spritesheet-width: 3936px;
+    --world-spritesheet-height: 82px;
+    --world-spritesheet-src: url("../images/world_sprite_sheet2.gif");
+    --world-spritesheet-frames: 48;
+    --world-element: world;
+    --world-container: monitor-3;
 }
 
 body {
@@ -95,7 +105,7 @@ body {
 
 
 #monitor-3{
-    position: absolute;
+    position: absolute;                    
     width: 30%;
     height: 35%;
     right: 5px;
@@ -104,7 +114,24 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: 5px solid grey;
+    border: 5px solid grey;        
+}
+
+
+.world {
+    margin-left: 20%;
+    display: inline-block;
+    width: var(--world-sprite-height);
+    height: var(--world-sprite-width);
+    background: var(--world-spritesheet-src) left center;
+    animation: spin_world 8s steps(var(--world-spritesheet-frames)) infinite;    
+    transform-origin: top left;                
+}
+
+@keyframes spin_world {
+    100% {
+        background-position: var(--world-spritesheet-width);
+     }
 }
 
 

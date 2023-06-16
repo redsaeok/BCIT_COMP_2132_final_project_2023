@@ -55,7 +55,7 @@ function updateMonitor1Background()
     monitor1TimeoutHandler = setTimeout(updateMonitor1Background, MONITOR_1_UPDATE_INTERVAL_MS);
 }
 
-
+/*
 function updateMonitor3Background()
 { 
 
@@ -72,6 +72,7 @@ function updateMonitor3Background()
         monitor3AnimationHandler = requestAnimationFrame(updateMonitor3Background)
     }, MONITOR_3_UPDATE_INTERVAL_MS);
 }
+*/
 
 function updateTimer()
 {
@@ -149,7 +150,7 @@ function updateError(message)
     pError.innerHTML = message;
 }
 
-updateMonitor3Background();
+// updateMonitor3Background();
 
 function hideInstructions() {
     instructions.style.display = "none";
