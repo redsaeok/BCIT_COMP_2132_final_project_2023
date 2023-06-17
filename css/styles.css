@@ -39,6 +39,26 @@ body {
     background-repeat: no-repeat;
 }
 
+#defcon-level {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    transition: opacity 0.5s;
+    text-shadow: -4px -4px 0 rgba(25, 25, 25, 0.5),
+    4px -4px 0 rgba(25, 25, 25, 0.5), 
+    -4px 4px 0 rgba(25, 25, 25, 0.5),
+    4px 4px 0 rgba(25, 25, 25, 0.5);
+    
+}
+
 #dCodeWord {
     display: none; /* start hidden */
     position: absolute;
@@ -297,8 +317,16 @@ body {
         height: 90vh;
         background-image: url('../images/mission_control_background_mobile2.png');
         background-position: center;
-        overflow-x: hidden;
-        overflow-y: visible;
+        overflow: visible;
+    }
+
+    #defcon-level {
+        font-size: 90vh;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 10;
+        transition: opacity 1s;
+        opacity: 0;
     }
 
     #dCodeWord,

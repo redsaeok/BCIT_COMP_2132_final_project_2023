@@ -1289,7 +1289,495 @@ const JSON_WORD_LIST =
     {   
         "word": "BAGPIPES",
         "hint": "musical instrument"
-    }
+    },
+    {
+        "word": "SHIRT",
+        "hint": "clothing"
+    },
+    {
+        "word": "PANTS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SHORTS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SKIRT",
+        "hint": "clothing"
+    },
+    {
+        "word": "DRESS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SWEATER",
+        "hint": "clothing"
+    },
+    {
+        "word": "JACKET",
+        "hint": "clothing"
+    },
+    {
+        "word": "COAT",
+        "hint": "clothing"
+    },
+    {
+        "word": "SUIT",
+        "hint": "clothing"
+    },
+    {
+        "word": "TIE",
+        "hint": "clothing"
+    },
+    {
+        "word": "SOCKS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SHOES",
+        "hint": "clothing"
+    },
+    {
+        "word": "SNEAKERS",
+        "hint": "clothing"
+    },
+    {
+        "word": "BOOTS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SANDALS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SLIPPERS",
+        "hint": "clothing"
+    },
+    {
+        "word": "GLOVES",
+        "hint": "clothing"
+    },
+    {
+        "word": "MITTENS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SCARF",
+        "hint": "clothing"
+    },
+    {
+        "word": "HAT",
+        "hint": "clothing"
+    },
+    {
+        "word": "CAP",
+        "hint": "clothing"
+    },
+    {
+        "word": "BERET",
+        "hint": "clothing"
+    },
+    {
+        "word": "BONNET",
+        "hint": "clothing"
+    },
+    {
+        "word": "BLOUSE",
+        "hint": "clothing"
+    },
+    {
+        "word": "BRA",
+        "hint": "clothing"
+    },
+    {
+        "word": "BRIEFS",
+        "hint": "clothing"
+    },
+    {
+        "word": "BOXERS",
+        "hint": "clothing"
+    },
+    {
+        "word": "BATHING SUIT",
+        "hint": "clothing"
+    },
+    {
+        "word": "BATHROBE",
+        "hint": "clothing"
+    },
+    {
+        "word": "NIGHTGOWN",
+        "hint": "clothing"
+    },
+    {
+        "word": "PAJAMAS",
+        "hint": "clothing"
+    },
+    {
+        "word": "RAINCOAT",
+        "hint": "clothing"
+    },
+    {
+        "word": "TUXEDO",
+        "hint": "clothing"
+    },
+    {
+        "word": "VEST",
+        "hint": "clothing"
+    },
+    {
+        "word": "DRESS",
+        "hint": "clothing"
+    },
+    {
+        "word": "SWEATSHIRT",
+        "hint": "clothing"
+    },
+    {
+        "word": "TURTLENECK",
+        "hint": "clothing"
+    },
+    {
+        "word": "RED",
+        "hint": "color"
+    },
+    {
+        "word": "ORANGE",
+        "hint": "color"
+    },
+    {
+        "word": "YELLOW",
+        "hint": "color"
+    },
+    {
+        "word": "GREEN",
+        "hint": "color"
+    },
+    {
+        "word": "BLUE",
+        "hint": "color"
+    },
+    {
+        "word": "PURPLE",
+        "hint": "color"
+    },
+    {
+        "word": "PINK",
+        "hint": "color"
+    },
+    {
+        "word": "BROWN",
+        "hint": "color"
+    },
+    {
+        "word": "BLACK",
+        "hint": "color"
+    },
+    {
+        "word": "WHITE",
+        "hint": "color"
+    },
+    {
+        "word": "GRAY",
+        "hint": "color"
+    },
+    {
+        "word": "BEIGE",
+        "hint": "color"
+    },
+    {
+        "word": "TAN",
+        "hint": "color"
+    },
+    {
+        "word": "MAGENTA",
+        "hint": "color"
+    },
+    {
+        "word": "TURQUOISE",
+        "hint": "color"
+    },
+    {
+        "word": "MAROON",
+        "hint": "color"
+    },
+    {
+        "word": "NAVY",
+        "hint": "color"
+    },
+    {
+        "word": "LAVENDER",
+        "hint": "color"
+    },
+    {
+        "word": "VIOLET",
+        "hint": "color"
+    },
+    {
+        "word": "INDIGO",
+        "hint": "color"
+    },
+    {
+        "word": "GOLD",
+        "hint": "color"
+    },
+    {
+        "word": "SILVER",
+        "hint": "color"
+    },
+    {
+        "word": "BRONZE",
+        "hint": "color"
+    },
+    {
+        "word": "COPPER",
+        "hint": "color"
+    },
+    {
+        "word": "MINT",
+        "hint": "color"
+    },
+    {
+        "word": "OLIVE",
+        "hint": "color"
+    },
+    {
+        "word": "PLUM",
+        "hint": "color"
+    },
+    {
+        "word": "SALMON",
+        "hint": "color"
+    },
+    {
+        "word": "TEAL",
+        "hint": "color"
+    },
+    {
+        "word": "TOMATO",
+        "hint": "color"
+    },
+    {
+        "word": "TURQUOISE",
+        "hint": "color"
+    },
+    {
+        "word": "CHAIR",
+        "hint": "furniture"
+    },
+    {
+        "word": "TABLE",
+        "hint": "furniture"
+    },
+    {
+        "word": "DESK",
+        "hint": "furniture"
+    },
+    {
+        "word": "BED",
+        "hint": "furniture"
+    },
+    {
+        "word": "DRESSER",
+        "hint": "furniture"
+    },
+    {
+        "word": "COUCH",
+        "hint": "furniture"
+    },
+    {
+        "word": "SOFA",
+        "hint": "furniture"
+    },
+    {
+        "word": "LOVESEAT",
+        "hint": "furniture"
+    },
+    {
+        "word": "OTTOMAN",
+        "hint": "furniture"
+    },
+    {
+        "word": "RECLINER",
+        "hint": "furniture"
+    },
+    {
+        "word": "ROCKER",
+        "hint": "furniture"
+    },
+    {
+        "word": "BENCH",
+        "hint": "furniture"
+    },
+    {
+        "word": "STOOL",
+        "hint": "furniture"
+    },
+    {
+        "word": "CHAISE",
+        "hint": "furniture"
+    },
+    {
+        "word": "FUTON",
+        "hint": "furniture"
+    },
+    {
+        "word": "HUTCH",
+        "hint": "furniture"
+    },
+    {
+        "word": "CABINET",
+        "hint": "furniture"
+    },
+    {
+        "word": "BOOKCASE",
+        "hint": "furniture"
+    },
+    {
+        "word": "WARDROBE",
+        "hint": "furniture"
+    },
+    {
+        "word": "ARMOIRE",
+        "hint": "furniture"
+    },
+    {
+        "word": "NIGHTSTAND",
+        "hint": "furniture"
+    },
+    {
+        "word": "ENTERPRISE",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "VOYAGER",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "DEFIANT",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "DISCOVERY",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "PHASERS",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TRANSPORTER",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "WARP",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "SHIELDS",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TRICORDER",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "COMMUNICATOR",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "PHOTON",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TORPEDO",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "BORG",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "KLINGON",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "ROMULAN",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "CARDASSIAN",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "FERENGI",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "VULCAN",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "ANDORIAN",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "BETAZOID",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TRILL",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TERRAN",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "TRIBBLE",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "KIRK",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "SPOCK",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "MCCOY",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "SCOTTY",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "SULU",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "UHURA",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "CHEKOV",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "PICARD",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "RIKER",
+        "hint": "Star Trek"
+    },
+    {
+        "word": "DATA",
+        "hint": "Star Trek"
+    }    
 
 ]`;
 

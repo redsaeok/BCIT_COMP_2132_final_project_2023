@@ -24,13 +24,19 @@ function guessLetter()
 {
     let error = "";
     let letter = txtGuess.value.toUpperCase();
+    let isGoodGuess = null;
 
     try {
-        gameState.guessLetter(letter);
+        isGoodGuess = gameState.guessLetter(letter);
     } catch (e) {
         error = e;
     }
 
+    if( false == isGoodGuess ){
+        flashDefconLevel(MAX_NUMBER_OF_BAD_GUESSES-gameState.numberOfBadGuesses);
+    }
+
+    
     updateVirtualKB();
     updateWordDisplay();
     updateTimer();

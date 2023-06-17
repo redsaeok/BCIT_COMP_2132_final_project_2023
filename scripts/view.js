@@ -202,6 +202,47 @@ function updateVirtualKB()
     })
 }
 
+
+
+function flashDefconLevel(defconLevel) 
+{
+    if ( defconLevel < 1 || defconLevel > 5 )
+    {
+        return;
+    }
+
+    function removeDefconLevel() {
+        const DEFCON_LEVEL = document.getElementById("defcon-level");
+        DEFCON_LEVEL.classList.toggle("hide_me")
+    }
+    
+    function hideDefconLevel() {
+        const DEFCON_LEVEL = document.getElementById("defcon-level");
+        DEFCON_LEVEL.style.opacity=0
+    
+        setTimeout(removeDefconLevel, 500);
+    }
+    
+    function showDefconLevel(defconLevel) {
+        const DEFCON_LEVEL = document.getElementById("defcon-level");
+        const DEFCON_LEVEL_TEXT = document.getElementById("defcon-level-text");
+    
+        DEFCON_LEVEL_TEXT.style.color = DEFCON_COLOR[defconLevel];
+
+        DEFCON_LEVEL_TEXT.innerHTML = defconLevel;
+    
+        DEFCON_LEVEL.classList.toggle("hide_me");
+        DEFCON_LEVEL.style.display="flex";    
+        DEFCON_LEVEL.style.opacity=1; 
+    
+        setTimeout(hideDefconLevel, 500);
+    }
+    
+
+
+    showDefconLevel(defconLevel);
+}
+
 CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
 CLOSE_LOSING.addEventListener("click", hideLoseDialog);
 CLOSE_WINNING.addEventListener("click", hideWinDialog);
