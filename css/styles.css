@@ -139,6 +139,7 @@ body {
 
 
 .world {
+    visibility: hidden;
     margin-left: 20%;
     display: inline-block;
     width: var(--world-sprite-height);
