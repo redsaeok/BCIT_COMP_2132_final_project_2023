@@ -1887,5 +1887,689 @@
     {
         "word": "WEIGHTLIFTING",
         "hint": "exercise"
+    },
+    {
+        "word": "MICROSCOPE",
+        "hint": "science"
+    },
+    {
+        "word": "TELESCOPE",
+        "hint": "science"
+    },
+    {
+        "word": "BIOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "CHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "PHYSICS",
+        "hint": "science"
+    },
+    {
+        "word": "ASTRONOMY",
+        "hint": "science"
+    },
+    {
+        "word": "GEOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "ECOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "GENETICS",
+        "hint": "science"
+    },
+    {
+        "word": "BOTANY",
+        "hint": "science"
+    },
+    {
+        "word": "ZOOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "ANATOMY",
+        "hint": "science"
+    },
+    {
+        "word": "BIOCHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "BIOENGINEERING",
+        "hint": "science"
+    },
+    {
+        "word": "BIOINFORMATICS",
+        "hint": "science"
+    },
+    {
+        "word": "BIOPHYSICS",
+        "hint": "science"
+    },
+    {
+        "word": "BIOTECHNOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "CHEMICALPHYSICS",
+        "hint": "science"
+    },
+    {
+        "word": "COSMOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "CRYSTALLOGRAPHY",
+        "hint": "science"
+    },
+    {
+        "word": "ELECTROCHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "ELECTRONICS",
+        "hint": "science"
+    },
+    {
+        "word": "FLUIDDYNAMICS",
+        "hint": "science"
+    },
+    {
+        "word": "GEOCHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "GEOPHYSICS",
+        "hint": "science"
+    },
+    {
+        "word": "HYDROLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "MATERIALS",
+        "hint": "science"
+    },
+    {
+        "word": "MATHEMATICS",
+        "hint": "science"
+    },
+    {
+        "word": "MECHANICS",
+        "hint": "science"
+    },
+    {
+        "word": "METEOROLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "MICROBIOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "MINERALOGY",
+        "hint": "science"
+    },
+    {
+        "word": "MOLECULARBIOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "NEUROSCIENCE",
+        "hint": "science"
+    },
+    {
+        "word": "NUCLEARPHYSICS",
+        "hint": "science"
+    },
+    {
+        "word": "OPTICS",
+        "hint": "science"
+    },
+    {
+        "word": "ORGANICCHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "PALEONTOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "PHYSICALCHEMISTRY",
+        "hint": "science"
+    },
+    {
+        "word": "PLANETOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "PSYCHOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "SEISMOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "STATISTICS",
+        "hint": "science"
+    },
+    {
+        "word": "THERMODYNAMICS",
+        "hint": "science"
+    },
+    {
+        "word": "VOLCANOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "ZOOLOGY",
+        "hint": "science"
+    },
+    {
+        "word": "BIOLOGIST",
+        "hint": "science"
+    },
+    {
+        "word": "CHEMIST",
+        "hint": "science"
+    },
+    {
+        "word": "CALCULUS",
+        "hint": "math"
+    },
+    {
+        "word": "GEOMETRY",
+        "hint": "math"
+    },
+    {
+        "word": "ALGEBRA",
+        "hint": "math"
+    },
+    {
+        "word": "TRIGONOMETRY",
+        "hint": "math"
+    },
+    {
+        "word": "STATISTICS",
+        "hint": "math"
+    },
+    {
+        "word": "ARITHMETIC",
+        "hint": "math"
+    },
+    {
+        "word": "CALCULATOR",
+        "hint": "math"
+    },
+    {
+        "word": "DIVISION",
+        "hint": "math"
+    },
+    {
+        "word": "MULTIPLICATION",
+        "hint": "math"
+    },
+    {
+        "word": "SUBTRACTION",
+        "hint": "math"
+    },
+    {
+        "word": "ADDITION",
+        "hint": "math"
+    },
+    {
+        "word": "DECIMAL",
+        "hint": "math"
+    },
+    {
+        "word": "FRACTION",
+        "hint": "math"
+    },
+    {
+        "word": "PERCENT",
+        "hint": "math"
+    },
+    {
+        "word": "EQUATION",
+        "hint": "math"
+    },
+    {
+        "word": "GEOMETRIC",
+        "hint": "math"
+    },
+    {
+        "word": "ALGEBRAIC",
+        "hint": "math"
+    },
+    {
+        "word": "TRIGONOMETRIC",
+        "hint": "math"
+    },
+    {
+        "word": "STATISTICAL",
+        "hint": "math"
+    },
+    {
+        "word": "ARITHMETICAL",
+        "hint": "math"
+    },
+    {
+        "word": "CALCULATING",
+        "hint": "math"
+    },
+    {
+        "word": "DIVIDING",
+        "hint": "math"
+    },
+    {
+        "word": "MULTIPLYING",
+        "hint": "math"
+    },
+    {
+        "word": "SUBTRACTING",
+        "hint": "math"
+    },
+    {
+        "word": "ADDING",
+        "hint": "math"
+    },
+    {
+        "word": "DECIMALS",
+        "hint": "math"
+    },
+    {
+        "word": "FRACTIONS",
+        "hint": "math"
+    },
+    {
+        "word": "PERCENTAGE",
+        "hint": "math"
+    },
+    {
+        "word": "EQUATIONS",
+        "hint": "math"
+    },
+    {
+        "word": "GEOMETRIES",
+        "hint": "math"
+    },
+    {
+        "word": "ALGEBRAS",
+        "hint": "math"
+    },
+    {
+        "word": "STATISTICS",
+        "hint": "math"
+    },
+    {
+        "word": "CALCULATORS",
+        "hint": "math"
+    },
+    {
+        "word": "DECIMALS",
+        "hint": "math"
+    },
+    {
+        "word": "FRACTIONS",
+        "hint": "math"
+    },
+    {
+        "word": "PERCENTAGES",
+        "hint": "math"
+    },
+    {
+        "word": "EQUATIONS",
+        "hint": "math"
+    },
+    {
+        "word": "BOOK",
+        "hint": "school"
+    },
+    {
+        "word": "PENCIL",
+        "hint": "school"
+    },
+    {
+        "word": "PEN",
+        "hint": "school"
+    },
+    {
+        "word": "PAPER",
+        "hint": "school"
+    },
+    {
+        "word": "NOTEBOOK",
+        "hint": "school"
+    },
+    {
+        "word": "TEXTBOOK",
+        "hint": "school"
+    },
+    {
+        "word": "ERASER",
+        "hint": "school"
+    },
+    {
+        "word": "RULER",
+        "hint": "school"
+    },
+    {
+        "word": "BACKPACK",
+        "hint": "school"
+    },
+    {
+        "word": "BINDER",
+        "hint": "school"
+    },
+    {
+        "word": "CRAYON",
+        "hint": "school"
+    },
+    {
+        "word": "MARKER",
+        "hint": "school"
+    },
+    {
+        "word": "SCISSORS",
+        "hint": "school"
+    },
+    {
+        "word": "GLUE",
+        "hint": "school"
+    },
+    {
+        "word": "STAPLER",
+        "hint": "school"
+    },
+    {
+        "word": "STAPLES",
+        "hint": "school"
+    },
+    {
+        "word": "HIGHLIGHTER",
+        "hint": "school"
+    },
+    {
+        "word": "PENCILCASE",
+        "hint": "school"
+    },
+    {
+        "word": "PENCILSHARPENER",
+        "hint": "school"
+    },
+    {
+        "word": "PENHOLDER",
+        "hint": "school"
+    },
+    {
+        "word": "PAPERCLIP",
+        "hint": "school"
+    },
+    {
+        "word": "NOTEBOOK",
+        "hint": "school"
+    },
+    {
+        "word": "TEXTBOOK",
+        "hint": "school"
+    },
+    {
+        "word": "ERASERS",
+        "hint": "school"
+    },
+    {
+        "word": "RULERS",
+        "hint": "school"
+    },
+    {
+        "word": "BACKPACKS",
+        "hint": "school"
+    },
+    {
+        "word": "BINDER",
+        "hint": "school"
+    },
+    {
+        "word": "CRAYONS",
+        "hint": "school"
+    },
+    {
+        "word": "SANDCASTLE",
+        "hint": "beach"
+    },
+    {
+        "word": "SUNSCREEN",
+        "hint": "beach"
+    },
+    {
+        "word": "SUNGLASSES",
+        "hint": "beach"
+    },
+    {
+        "word": "BEACHBALL",
+        "hint": "beach"
+    },
+    {
+        "word": "TOWEL",
+        "hint": "beach"
+    },
+    {
+        "word": "UMBRELLA",
+        "hint": "beach"
+    },
+    {
+        "word": "SHOVEL",
+        "hint": "beach"
+    },
+    {
+        "word": "PAIL",
+        "hint": "beach"
+    },
+    {
+        "word": "SUN",
+        "hint": "beach"
+    },
+    {
+        "word": "OCEAN",
+        "hint": "beach"
+    },
+    {
+        "word": "WAVES",
+        "hint": "beach"
+    },
+    {
+        "word": "SAND",
+        "hint": "beach"
+    },
+    {
+        "word": "SHELLS",
+        "hint": "beach"
+    },
+    {
+        "word": "SUNBATHING",
+        "hint": "beach"
+    },
+    {
+        "word": "SUNBATHING",
+        "hint": "beach"
+    },
+    {
+        "word": "SUNBURN",
+        "hint": "beach"
+    },
+    {
+        "word": "SKYDIVING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "SNOWBOARDING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "SURFING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "SKATEBOARDING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "ROCKCLIMBING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "BUNGEEJUMPING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "PARASAILING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "PARAGLIDING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "RAFTING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "KAYAKING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "CANOEING",
+        "hint": "extreme sports"
+    },
+    {
+        "word": "MUSIC",
+        "hint": "hobbies"
+    },
+    {
+        "word": "READING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "WRITING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "PAINTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "DRAWING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "DANCING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "SINGING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "ACTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "COOKING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "BAKING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "SEWING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "KNITTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "CROCHETING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "CROSSSTITCHING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "CROSSWORDPUZZLES",
+        "hint": "hobbies"
+    },
+    {
+        "word": "JIGSAWPUZZLES",
+        "hint": "hobbies"
+    },
+    {
+        "word": "GARDENING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "PHOTOGRAPHY",
+        "hint": "hobbies"
+    },
+    {
+        "word": "COLLECTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "TRAVELING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "HIKING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "CAMPING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "FISHING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "HUNTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "BIRDWATCHING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "GOLFING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "BOWLING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "SKATING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "SKIING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "RAFTING",
+        "hint": "hobbies"
+    },
+    {
+        "word": "CROSSSTITCHING",
+        "hint": "hobbies"
     }
 ]

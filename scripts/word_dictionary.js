@@ -13,6 +13,9 @@
 const WORD_API_ENDPOINT = "https://www.wordgamedb.com/api/v1/words";
 const WORD_DATA_FILE = "../data/word_list.json";
 
+
+
+// This is the default word list.  It is used if the external data is not available.
 const JSON_WORD_LIST = 
 `[
     {
@@ -274,7 +277,11 @@ const JSON_WORD_LIST =
 ]`;
 
 
-
+/*
+*   This class represents a word in the game.  It contains the word itself and a hint.
+*   We could add some additional attributs like difficulty level, number of syllabels,
+*   category, etc.
+*/
 class Word{
     constructor( newWord, newHint ){
         // should we do some validation on the word?
@@ -288,6 +295,37 @@ class Word{
         // we could also have a difficulty level
     }
 
+    /*
+    *   Checks if the word is valid.  A valid word is one that only contains letters.
+    *   This is useful for checking if the word is valid before adding it to the dictionary,
+    *   because of the various ways to add words to the dictionary.  We cannot know for sure
+    *   that the API will only return words that are valid.
+    * 
+    *   @return true if the word is valid, false otherwise
+    */
+    isValidWord() {
+    
+        let isValid = true;
+        let letter = 'a';
+
+        if( this.word in Object.keys(WORD_DICTIONARY) ){
+            isValid = false;
+            return isValid;
+        }
+
+        for( let i = 0; i < this.word.length; i++ )
+        {
+            letter = this.word[i];
+            if( !( letter in ALPHABET.letterDictionary) ) 
+            {
+                isValid = false;
+                return isValid;
+            }
+        }
+
+        return isValid;
+    }
+
     getWord() {
         return this.word;
     }
@@ -299,8 +337,14 @@ class Word{
     isLetterInWord( letter ) {
         return this.word.includes(letter);
     }
+    
 }
 
+
+/* 
+*   This class represents the dictionary of words that we will use in the game.
+*   It contains a list of words and their hints.
+*/
 class WordDictionary{
     constructor(){
         this.wordDictionary = {};
@@ -311,7 +355,12 @@ class WordDictionary{
     }
 
     addWord( word, hint ) {
-        this.wordDictionary[word] = new Word(word, hint);
+        let newWord = new Word( word, hint );
+
+        if( newWord.isValidWord() )
+        {
+            this.wordDictionary[newWord.getWord()] = newWord;
+        }
     }
 
     getWord() {
@@ -377,21 +426,29 @@ class WordDictionary{
     }
 }
 
+// Instantiate and load the dictionary
 const WORD_DICTIONARY = new WordDictionary();
 
 // start with a guaranteed win so we have some words in our dictionary no matter what
 WORD_DICTIONARY.loadDictionary();
 
 // we'll try loading some words from two different sources
+// the data file should be pretty safe since we control it
 try {
     WORD_DICTIONARY.loadDictionaryFromFile();
 } catch (error) {
     console.log(error);
 }
 
-
+// the API will be less safe, as the server may go down, or it may
+// return unexpected results
 try {
     WORD_DICTIONARY.loadDictionaryFromAPI();
 } catch (error) {
     console.log(error);
 }
+
+// What I'd really like to do is try to tie this into the OpenAI learning 
+// models and have them generate words for us.  That would be cool.
+// It's also how I generated the word list both here and in the data file.
+// No, I didn't type out all those words.  I'm not that crazy.  I'm crazy, but not that crazy.
