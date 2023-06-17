@@ -129,3 +129,6 @@ window.onkeyup = function (e) {
     txtGuess.value=String.fromCharCode(e.keyCode);
     guessLetter();
 };
+
+
+

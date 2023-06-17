@@ -1,1785 +1,278 @@
+/*
+    Author: John Glenn
+    Date: June 16, 2023
+
+    This is the word dictionary for the Hangman game. It contains a list of words and hints. 
+    It is a part of our data model for the game.  It contains a basic word list that is 
+    always available, references a more extensive list in an external data file, and 
+    finally, it can fetch even more words from an API endpoint.
+
+    Additional words should be added to the external data file.
+*/
+
+const WORD_API_ENDPOINT = "https://www.wordgamedb.com/api/v1/words";
+const WORD_DATA_FILE = "../data/word_list.json";
 
 const JSON_WORD_LIST = 
 `[
     {
-        "word" : "BANANA",
-        "hint" : "A yellow fruit"
+        "word" : "ENGLISH",
+        "hint" : "The language you are using right now"
     },
     {
-        "word" : "APPLE",
-        "hint" : "A red fruit"
+        "word" : "JAVASCRIPT",
+        "hint" : "The language you are learning right now"
     },
     {
-        "word" : "ORANGE",
-        "hint" : "A round fruit"
+        "word" : "COMPUTER",
+        "hint" : "The machine you are using right now"
     },
     {
-        "word" : "PEAR",
-        "hint" : "A green fruit"
+        "word" : "KEYBOARD",
+        "hint" : "The thing you are typing on right now"
     },
     {
-        "word" : "GRAPE",
-        "hint" : "A purple fruit"
+        "word" : "MOUSE",
+        "hint" : "The thing you are clicking on right now"
     },
     {
-        "word" : "STRAWBERRY",
-        "hint" : "A red fruit"
+        "word" : "MONITOR",
+        "hint" : "The thing you are looking at right now"
     },
     {
-        "word" : "BLUEBERRY",
-        "hint" : "A blue fruit"
+        "word" : "DEVELOPER",
+        "hint" : "The thing you are becoming right now"
     },
     {
-        "word" : "RASPBERRY",
-        "hint" : "A red fruit"
+        "word" : "PROGRAMMER",
+        "hint" : "The thing you are becoming right now"
     },
     {
-        "word" : "MANGO",
-        "hint" : "A yellow fruit"
+        "word" : "CODER",
+        "hint" : "The thing you are becoming right now"
     },
     {
-        "word" : "PINEAPPLE",
-        "hint" : "A yellow fruit"
+        "word" : "MANDARIN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "WATERMELON",
-        "hint" : "A green fruit"
+        "word" : "SPANISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "KIWI",
-        "hint" : "A green fruit"
+        "word" : "FRENCH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "PEACH",
-        "hint" : "A pink fruit"
+        "word" : "GERMAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "PLUM",
-        "hint" : "A purple fruit"
+        "word" : "ITALIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "CHERRY",
-        "hint" : "A red fruit"
+        "word" : "PORTUGUESE",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "LEMON",
-        "hint" : "A yellow fruit"
+        "word" : "RUSSIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "LIME",
-        "hint" : "A green fruit"
+        "word" : "JAPANESE",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "COCONUT",
-        "hint" : "A brown fruit"
+        "word" : "KOREAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "POMEGRANATE",
-        "hint" : "A red fruit"
+        "word" : "ARABIC",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "APRICOT",
-        "hint" : "An orange fruit"
+        "word" : "HINDI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "NECTARINE",
-        "hint" : "A yellow fruit"
+        "word" : "BENGALI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "FIG",
-        "hint" : "A purple fruit"
+        "word" : "PUNJABI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "CANTALOUPE",
-        "hint" : "A green fruit"
+        "word" : "TELUGU",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "HONEYDEW",
-        "hint" : "A green fruit"
+        "word" : "MARATHI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "TANGERINE",
-        "hint" : "An orange fruit"
+        "word" : "TAMIL",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "APRICOT",
-        "hint" : "An orange fruit"
+        "word" : "URDU",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "JACKFRUIT",
-        "hint" : "A yellow fruit"
+        "word" : "TURKISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "GUAVA",
-        "hint" : "A green fruit"
+        "word" : "VIETNAMESE",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "PAPAYA",
-        "hint" : "An orange fruit"
+        "word" : "JAVANESE",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "STARFRUIT",
-        "hint" : "A yellow fruit"
+        "word" : "THAI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "PERSIMMON",
-        "hint" : "An orange fruit"
+        "word" : "GUJARATI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "LYCHEE",
-        "hint" : "A red fruit"
+        "word" : "POLISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "PASSIONFRUIT",
-        "hint" : "A purple fruit"
+        "word" : "UKRAINIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "DRAGONFRUIT",
-        "hint" : "A pink fruit"
+        "word" : "INDONESIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "DOG",
-        "hint" : "A pet"
+        "word" : "DUTCH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "CAT",
-        "hint" : "A pet"
+        "word" : "KURDISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "FISH",
-        "hint" : "A pet"
+        "word" : "SWEDISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "BIRD",
-        "hint" : "A pet"
+        "word" : "ROMANIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "HAMSTER",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "RABBIT",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "TURTLE",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "SNAKE",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "LIZARD",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "FROG",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "SALAMANDER",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "TOAD",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "GERBIL",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "GUINEA PIG",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "HEDGEHOG",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "CHINCHILLA",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "TARANTULA",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "SCORPION",
-        "hint" : "A pet"
-    },
-    {
-        "word" : "BEAR",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "TIGER",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "LION",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "ELEPHANT",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "MONKEY",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "GORILLA",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "HIPPOPOTAMUS",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "RHINOCEROS",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "GIRAFFE",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "ZEBRA",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "KANGAROO",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "KOALA",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "PANDA",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "WOLF",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "FOX",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "COYOTE",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "JAGUAR",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "CHEETAH",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "LEOPARD",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "PANTHER",
-        "hint" : "A wild animal"
-    },
-    {   
-        "word" : "CROCODILE",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "ALLIGATOR",
-        "hint" : "A wild animal"
-    },
-    {
-        "word" : "CHINA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "JAPAN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "KOREA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "VIETNAM",
-        "hint" : "A country"
-    },
-    {
-        "word" : "THAILAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "CAMBODIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "LAOS",
-        "hint" : "A country"
-    },
-    {
-        "word" : "MYANMAR",
-        "hint" : "A country"
-    },
-    {
-        "word" : "MALAYSIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "INDONESIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "PHILIPPINES",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SINGAPORE",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BRUNEI",
-        "hint" : "A country"
-    },
-    {
-        "word" : "INDIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "PAKISTAN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BANGLADESH",
-        "hint" : "A country"
-    },
-    {
-        "word" : "NEPAL",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BHUTAN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "CANADA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "MEXICO",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BRAZIL",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ARGENTINA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "CHILE",
-        "hint" : "A country"
-    },
-    {
-        "word" : "PERU",
-        "hint" : "A country"
-    },
-    {
-        "word" : "COLOMBIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "VENEZUELA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ECUADOR",
-        "hint" : "A country"
-    },
-    {
-        "word" : "URUGUAY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "PARAGUAY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BOLIVIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "CUBA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "HAITI",
-        "hint" : "A country"
-    },
-    {
-        "word" : "DOMINICAN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "JAMAICA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BAHAMAS",
-        "hint" : "A country"
-    },
-    {
-        "word" : "FRANCE",
-        "hint" : "A country"
-    },
-    {
-        "word" : "GERMANY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ITALY",
-        "hint" : "A country"
-    },
-    {   
-        "word" : "SPAIN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "PORTUGAL",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SWITZERLAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "AUSTRIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BELGIUM",
-        "hint" : "A country"
-    },
-    {
-        "word" : "NETHERLANDS",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SWEDEN",
-        "hint" : "A country"
-    },
-    {
-        "word" : "NORWAY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "DENMARK",
-        "hint" : "A country"
-    },
-    {
-        "word" : "FINLAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ICELAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "GREECE",
-        "hint" : "A country"
-    },
-    {
-        "word" : "TURKEY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "RUSSIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "POLAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "UKRAINE",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ROMANIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BULGARIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "HUNGARY",
-        "hint" : "A country"
-    },
-    {
-        "word" : "CROATIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SERBIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "BOSNIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SLOVENIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SLOVAKIA",
-        "hint" : "A country"
+        "word" : "GREEK",
+        "hint" : "A spoken language"
     },
     {
         "word" : "CZECH",
-        "hint" : "A country"
+        "hint" : "A spoken language"
     },
     {
-        "word" : "ESTONIA",
-        "hint" : "A country"
+        "word" : "HUNGARIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "LATVIA",
-        "hint" : "A country"
+        "word" : "BELARUSIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "LITHUANIA",
-        "hint" : "A country"
+        "word" : "HEBREW",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "MOLDOVA",
-        "hint" : "A country"
+        "word" : "BULGARIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "BELARUS",
-        "hint" : "A country"
+        "word" : "SERBIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "ARMENIA",
-        "hint" : "A country"
+        "word" : "AZERBAIJANI",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "AZERBAIJAN",
-        "hint" : "A country"
+        "word" : "PORTUGUESE",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "GEORGIA",
-        "hint" : "A country"
+        "word" : "PERSIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "KAZAKHSTAN",
-        "hint" : "A country"
+        "word" : "ALBANIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "KYRGYZSTAN",
-        "hint" : "A country"
+        "word" : "NORWEGIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "TAJIKISTAN",
-        "hint" : "A country"
+        "word" : "ESTONIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "TURKMENISTAN",
-        "hint" : "A country"
+        "word" : "LITHUANIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "UZBEKISTAN",
-        "hint" : "A country"
+        "word" : "LATVIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "NIGER",
-        "hint" : "A country"
+        "word" : "SLOVAK",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "CHAD",
-        "hint" : "A country"
+        "word" : "SLOVENIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "SUDAN",
-        "hint" : "A country"
+        "word" : "CROATIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "MALI",
-        "hint" : "A country"
+        "word" : "FINNISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "MAURITANIA",
-        "hint" : "A country"
+        "word" : "DANISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "NIGERIA",
-        "hint" : "A country"
+        "word" : "ICELANDIC",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "SENEGAL",
-        "hint" : "A country"
+        "word" : "GEORGIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "GAMBIA",
-        "hint" : "A country"
+        "word" : "BOSNIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "GUINEA",
-        "hint" : "A country"
+        "word" : "ARMENIAN",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "IRAN",
-        "hint" : "A country"
+        "word" : "LUXEMBOURGISH",
+        "hint" : "A spoken language"
     },
     {
-        "word" : "IRAQ",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SYRIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "LEBANON",
-        "hint" : "A country"
-    },
-    {
-        "word" : "EGYPT",
-        "hint" : "A country"
-    },
-    {
-        "word" : "LIBYA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ALGERIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "MOROCCO",
-        "hint" : "A country"
-    },
-    {
-        "word" : "TUNISIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "AUSTRALIA",
-        "hint" : "A country"
-    },
-    {
-        "word" : "ENGLAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "SCOTLAND",
-        "hint" : "A country"
-    },
-    {
-        "word" : "WALES",
-        "hint" : "A country"
-    },
-    {
-        "word" : "IRELAND",
-        "hint" : "A country"
-    },
-    {  
-        "word" : "SPOON",
-        "hint" : "A utensil"
-    },
-    {
-        "word" : "FORK",
-        "hint" : "A utensil"
-    },
-    {
-        "word" : "KNIFE",
-        "hint" : "A utensil"
-    },
-    {
-        "word" : "BOWL",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "PLATE",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "CUP",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "GLASS",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "PAN",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "POT",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "LADLE",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "SPATULA",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "TONGS",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "WHISK",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "PEELER",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "GRATER",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "COLANDER",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "SIEVE",
-        "hint" : "Cookware"
-    },
-    {
-        "word" : "SALMON",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "TROUT",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "TUNA",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "SARDINE",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "COD",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "HADDOCK",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "HERRING",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "MACKEREL",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "ANCHOVY",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "SWORDFISH",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "MARLIN",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "SHARK",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "DOLPHIN",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "TUNA",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "GOLDFISH",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "CARP",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "CATFISH",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "BASS",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "PERCH",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "PIKE",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "BETA",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "GUPPY",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "TETRA",
-        "hint" : "A fish"
-    },
-    {
-        "word" : "PLECO",
-        "hint" : "A fish"
-    },
-    {
-        "word": "HEMLOCK",
-        "hint": "A plant"
-    },
-    {
-        "word": "NIGHTSHADE",
-        "hint": "A plant"
-    },
-    {
-        "word": "BELLADONNA",
-        "hint": "A plant"
-    },
-    {
-        "word": "FOXGLOVE",
-        "hint": "A plant"
-    },
-    {
-        "word": "LILY",
-        "hint": "A plant"
-    },
-    {
-        "word": "ROSE",
-        "hint": "A plant"
-    },
-    {
-        "word": "DAISY",
-        "hint": "A plant"
-    },
-    {
-        "word": "TULIP",
-        "hint": "A plant"
-    },
-    {
-        "word": "DAFFODIL",
-        "hint": "A plant"
-    },
-    {
-        "word": "LAVENDER",
-        "hint": "A plant"
-    },
-    {
-        "word": "SUNFLOWER",
-        "hint": "A plant"
-    },
-    {
-        "word": "MARIGOLD",
-        "hint": "A plant"
-    },
-    {
-        "word": "CARNATION",
-        "hint": "A plant"
-    },
-    {
-        "word": "ORCHID",
-        "hint": "A plant"
-    },
-    {
-        "word": "LILAC",
-        "hint": "A plant"
-    },
-    {
-        "word": "MAGNOLIA",
-        "hint": "A plant"
-    },
-    {
-        "word": "HIBISCUS",
-        "hint": "A plant"
-    },
-    {
-        "word": "BEGONIA",
-        "hint": "A plant"
-    },
-    {
-        "word": "PEONY",
-        "hint": "A plant"
-    },
-    {
-        "word": "CROCUS",
-        "hint": "A plant"
-    },
-    {
-        "word": "HYACINTH",
-        "hint": "A plant"
-    },
-    {
-        "word": "IRIS",
-        "hint": "A plant"
-    },
-    {
-        "word": "CACTUS",
-        "hint": "A plant"
-    },
-    {
-        "word": "BAMBOO",
-        "hint": "A plant"
-    },
-    {
-        "word": "BONSAI",
-        "hint": "A plant"
-    },
-
-    {
-        "word": "BASIL",
-        "hint": "A plant"
-    },
-    {
-        "word": "OREGANO",
-        "hint": "A plant"
-    },
-    {
-        "word": "THYME",
-        "hint": "A plant"
-    },
-    {
-        "word": "ROSEMARY",
-        "hint": "A plant"
-    },
-    {
-        "word": "SAGE",
-        "hint": "A plant"
-    },
-    {
-        "word": "MINT",
-        "hint": "A plant"
-    },
-    {
-        "word": "PARSLEY",
-        "hint": "A plant"
-    },
-    {
-        "word": "CHIVES",
-        "hint": "A plant"
-    },
-    {
-        "word": "DILL",
-        "hint": "A plant"
-    },
-    {
-        "word": "CILANTRO",
-        "hint": "A plant"
-    },
-    {
-        "word": "CLOVER",
-        "hint": "A plant"
-    },
-    {
-        "word": "THISTLE",
-        "hint": "A plant"
-    },
-    {
-        "word": "NETTLE",
-        "hint": "A plant"
-    },
-    {
-        "word": "MULBERRY",
-        "hint": "A plant"
-    },
-    {
-        "word": "ELDERBERRY",
-        "hint": "A plant"
-    },
-    {
-        "word": "HOLLY",
-        "hint": "A plant"
-    },
-    {
-        "word": "IVY",
-        "hint": "A plant"
-    },
-    {
-        "word": "MISTLETOE",
-        "hint": "A plant"
-    },
-    {
-        "word": "POINSETTIA",
-        "hint": "A plant"
-    },
-    {
-        "word": "PINE",
-        "hint": "A plant"
-    },
-    {
-        "word": "SPRUCE",
-        "hint": "A plant"
-    },
-    {
-        "word": "FIR",
-        "hint": "A plant"
-    },
-    {
-        "word": "CEDAR",
-        "hint": "A plant"
-    },
-    {
-        "word": "CYPRESS",
-        "hint": "A plant"
-    },
-    {
-        "word": "JUNIPER",
-        "hint": "A plant"
-    },
-    {
-        "word": "WILLOW",
-        "hint": "A plant"
-    },
-    {
-        "word": "MAPLE",
-        "hint": "A plant"
-    },
-    {
-        "word": "OAK",
-        "hint": "A plant"
-    },
-    {
-        "word": "BIRCH",
-        "hint": "A plant"
-    },
-    {
-        "word": "ASH",
-        "hint": "A plant"
-    },
-    {
-        "word": "ALDER",
-        "hint": "A plant"
-    },
-    {
-        "word": "ASPEN",
-        "hint": "A plant"
-    },
-    {
-        "word": "ELM",
-        "hint": "A plant"
-    },
-    {
-        "word": "HICKORY",
-        "hint": "A plant"
-    },
-    {
-        "word": "WALNUT",
-        "hint": "A plant"
-    },
-    {
-        "word": "CHESTNUT",
-        "hint": "A plant"
-    },
-    {
-        "word": "ACORN",
-        "hint": "A plant"
-    },
-    {
-        "word": "BEECH",
-        "hint": "A plant"
-    },
-    {
-        "word": "SILVER",
-        "hint": "metal"
-    },
-    {
-        "word": "GOLD",
-        "hint": "metal"
-    },
-    {
-        "word": "IRON",
-        "hint": "metal"
-    },
-    {
-        "word": "STEEL",
-        "hint": "metal"
-    },
-    {
-        "word": "TIN",
-        "hint": "metal"
-    },
-    {
-        "word": "COPPER",
-        "hint": "metal"
-    },
-    {
-        "word": "BRONZE",
-        "hint": "metal"
-    },
-    {
-        "word": "BRASS",
-        "hint": "metal"
-    },
-    {
-        "word": "ALUMINUM",
-        "hint": "metal"
-    },
-    {
-        "word": "NICKEL",
-        "hint": "metal"
-    },
-    {
-        "word": "LEAD",
-        "hint": "metal"
-    },
-    {
-        "word": "MERCURY",
-        "hint": "metal"
-    },
-    {
-        "word": "PLATINUM",
-        "hint": "metal"
-    },
-    {
-        "word": "TITANIUM",
-        "hint": "metal"
-    },
-    {
-        "word": "ZINC",
-        "hint": "metal"
-    },
-    {
-        "word": "MAGNESIUM",
-        "hint": "metal"
-    },
-    {
-        "word": "SILICON",
-        "hint": "metal"
-    },
-    {
-        "word": "TUNGSTEN",
-        "hint": "metal"
-    },
-    {
-        "word": "COBALT",
-        "hint": "metal"
-    },
-    {
-        "word": "CHROMIUM",
-        "hint": "metal"
-    },
-    {   
-        "word": "PIANO",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "GUITAR",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "BASS",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "DRUM",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "VIOLIN",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "CELLO",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "FLUTE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "TRUMPET",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "TROMBONE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "TUBA",
-        "hint": "musical instrument"
-    },  
-    {   
-        "word": "HARP",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "ORGAN",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "BANJO",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "UKULELE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "MANDOLIN",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "SAXOPHONE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "CLARINET",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "PICCOLO",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "BAGPIPE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "HARMONICA",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "RECORDER",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "BASSOON",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "OBOE",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "CORNET",
-        "hint": "musical instrument"
-    },
-    {   
-        "word": "BAGPIPES",
-        "hint": "musical instrument"
-    },
-    {
-        "word": "SHIRT",
-        "hint": "clothing"
-    },
-    {
-        "word": "PANTS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SHORTS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SKIRT",
-        "hint": "clothing"
-    },
-    {
-        "word": "DRESS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SWEATER",
-        "hint": "clothing"
-    },
-    {
-        "word": "JACKET",
-        "hint": "clothing"
-    },
-    {
-        "word": "COAT",
-        "hint": "clothing"
-    },
-    {
-        "word": "SUIT",
-        "hint": "clothing"
-    },
-    {
-        "word": "TIE",
-        "hint": "clothing"
-    },
-    {
-        "word": "SOCKS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SHOES",
-        "hint": "clothing"
-    },
-    {
-        "word": "SNEAKERS",
-        "hint": "clothing"
-    },
-    {
-        "word": "BOOTS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SANDALS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SLIPPERS",
-        "hint": "clothing"
-    },
-    {
-        "word": "GLOVES",
-        "hint": "clothing"
-    },
-    {
-        "word": "MITTENS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SCARF",
-        "hint": "clothing"
-    },
-    {
-        "word": "HAT",
-        "hint": "clothing"
-    },
-    {
-        "word": "CAP",
-        "hint": "clothing"
-    },
-    {
-        "word": "BERET",
-        "hint": "clothing"
-    },
-    {
-        "word": "BONNET",
-        "hint": "clothing"
-    },
-    {
-        "word": "BLOUSE",
-        "hint": "clothing"
-    },
-    {
-        "word": "BRA",
-        "hint": "clothing"
-    },
-    {
-        "word": "BRIEFS",
-        "hint": "clothing"
-    },
-    {
-        "word": "BOXERS",
-        "hint": "clothing"
-    },
-    {
-        "word": "BATHING SUIT",
-        "hint": "clothing"
-    },
-    {
-        "word": "BATHROBE",
-        "hint": "clothing"
-    },
-    {
-        "word": "NIGHTGOWN",
-        "hint": "clothing"
-    },
-    {
-        "word": "PAJAMAS",
-        "hint": "clothing"
-    },
-    {
-        "word": "RAINCOAT",
-        "hint": "clothing"
-    },
-    {
-        "word": "TUXEDO",
-        "hint": "clothing"
-    },
-    {
-        "word": "VEST",
-        "hint": "clothing"
-    },
-    {
-        "word": "DRESS",
-        "hint": "clothing"
-    },
-    {
-        "word": "SWEATSHIRT",
-        "hint": "clothing"
-    },
-    {
-        "word": "TURTLENECK",
-        "hint": "clothing"
-    },
-    {
-        "word": "RED",
-        "hint": "color"
-    },
-    {
-        "word": "ORANGE",
-        "hint": "color"
-    },
-    {
-        "word": "YELLOW",
-        "hint": "color"
-    },
-    {
-        "word": "GREEN",
-        "hint": "color"
-    },
-    {
-        "word": "BLUE",
-        "hint": "color"
-    },
-    {
-        "word": "PURPLE",
-        "hint": "color"
-    },
-    {
-        "word": "PINK",
-        "hint": "color"
-    },
-    {
-        "word": "BROWN",
-        "hint": "color"
-    },
-    {
-        "word": "BLACK",
-        "hint": "color"
-    },
-    {
-        "word": "WHITE",
-        "hint": "color"
-    },
-    {
-        "word": "GRAY",
-        "hint": "color"
-    },
-    {
-        "word": "BEIGE",
-        "hint": "color"
-    },
-    {
-        "word": "TAN",
-        "hint": "color"
-    },
-    {
-        "word": "MAGENTA",
-        "hint": "color"
-    },
-    {
-        "word": "TURQUOISE",
-        "hint": "color"
-    },
-    {
-        "word": "MAROON",
-        "hint": "color"
-    },
-    {
-        "word": "NAVY",
-        "hint": "color"
-    },
-    {
-        "word": "LAVENDER",
-        "hint": "color"
-    },
-    {
-        "word": "VIOLET",
-        "hint": "color"
-    },
-    {
-        "word": "INDIGO",
-        "hint": "color"
-    },
-    {
-        "word": "GOLD",
-        "hint": "color"
-    },
-    {
-        "word": "SILVER",
-        "hint": "color"
-    },
-    {
-        "word": "BRONZE",
-        "hint": "color"
-    },
-    {
-        "word": "COPPER",
-        "hint": "color"
-    },
-    {
-        "word": "MINT",
-        "hint": "color"
-    },
-    {
-        "word": "OLIVE",
-        "hint": "color"
-    },
-    {
-        "word": "PLUM",
-        "hint": "color"
-    },
-    {
-        "word": "SALMON",
-        "hint": "color"
-    },
-    {
-        "word": "TEAL",
-        "hint": "color"
-    },
-    {
-        "word": "TOMATO",
-        "hint": "color"
-    },
-    {
-        "word": "TURQUOISE",
-        "hint": "color"
-    },
-    {
-        "word": "CHAIR",
-        "hint": "furniture"
-    },
-    {
-        "word": "TABLE",
-        "hint": "furniture"
-    },
-    {
-        "word": "DESK",
-        "hint": "furniture"
-    },
-    {
-        "word": "BED",
-        "hint": "furniture"
-    },
-    {
-        "word": "DRESSER",
-        "hint": "furniture"
-    },
-    {
-        "word": "COUCH",
-        "hint": "furniture"
-    },
-    {
-        "word": "SOFA",
-        "hint": "furniture"
-    },
-    {
-        "word": "LOVESEAT",
-        "hint": "furniture"
-    },
-    {
-        "word": "OTTOMAN",
-        "hint": "furniture"
-    },
-    {
-        "word": "RECLINER",
-        "hint": "furniture"
-    },
-    {
-        "word": "ROCKER",
-        "hint": "furniture"
-    },
-    {
-        "word": "BENCH",
-        "hint": "furniture"
-    },
-    {
-        "word": "STOOL",
-        "hint": "furniture"
-    },
-    {
-        "word": "CHAISE",
-        "hint": "furniture"
-    },
-    {
-        "word": "FUTON",
-        "hint": "furniture"
-    },
-    {
-        "word": "HUTCH",
-        "hint": "furniture"
-    },
-    {
-        "word": "CABINET",
-        "hint": "furniture"
-    },
-    {
-        "word": "BOOKCASE",
-        "hint": "furniture"
-    },
-    {
-        "word": "WARDROBE",
-        "hint": "furniture"
-    },
-    {
-        "word": "ARMOIRE",
-        "hint": "furniture"
-    },
-    {
-        "word": "NIGHTSTAND",
-        "hint": "furniture"
-    },
-    {
-        "word": "ENTERPRISE",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "VOYAGER",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "DEFIANT",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "DISCOVERY",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "PHASERS",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TRANSPORTER",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "WARP",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "SHIELDS",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TRICORDER",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "COMMUNICATOR",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "PHOTON",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TORPEDO",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "BORG",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "KLINGON",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "ROMULAN",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "CARDASSIAN",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "FERENGI",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "VULCAN",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "ANDORIAN",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "BETAZOID",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TRILL",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TERRAN",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "TRIBBLE",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "KIRK",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "SPOCK",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "MCCOY",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "SCOTTY",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "SULU",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "UHURA",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "CHEKOV",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "PICARD",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "RIKER",
-        "hint": "Star Trek"
-    },
-    {
-        "word": "DATA",
-        "hint": "Star Trek"
-    }    
-
+        "word" : "MALTESE",
+        "hint" : "A spoken language"
+    }
 ]`;
+
 
 
 class Word{
@@ -1830,6 +323,48 @@ class WordDictionary{
         return this.wordDictionary[keys[randomIndex]];
     }
 
+    loadDictionaryFromAPI() {
+        
+        fetch(WORD_API_ENDPOINT)
+            .then(function(response){
+                if(!response.ok){
+                    throw Error("Response was not OK!");
+                }
+                return response.json();
+            })
+            .then(function(data){
+                console.log(data);
+                
+                for( let i = 0; i < data.length; i++ ){
+                    WORD_DICTIONARY.addWord( data[i].word.toUpperCase(), data[i].category );
+                }
+
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+    }
+
+    loadDictionaryFromFile() {
+        fetch(WORD_DATA_FILE)
+            .then(function(response){
+                if(!response.ok){
+                    throw Error("Response was not OK!");
+                }
+                return response.json();
+            })
+            .then(function(data){
+                console.log(data);
+                
+                for( let i = 0; i < data.length; i++ ){
+                    WORD_DICTIONARY.addWord( data[i].word.toUpperCase(), data[i].hint );
+                };
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+    }
+
     loadDictionary() {
         const WORD_LIST_OBJECT = JSON.parse(JSON_WORD_LIST); 
 
@@ -1843,4 +378,20 @@ class WordDictionary{
 }
 
 const WORD_DICTIONARY = new WordDictionary();
+
+// start with a guaranteed win so we have some words in our dictionary no matter what
 WORD_DICTIONARY.loadDictionary();
+
+// we'll try loading some words from two different sources
+try {
+    WORD_DICTIONARY.loadDictionaryFromFile();
+} catch (error) {
+    console.log(error);
+}
+
+
+try {
+    WORD_DICTIONARY.loadDictionaryFromAPI();
+} catch (error) {
+    console.log(error);
+}
