@@ -20,10 +20,11 @@ function worldResponsiveResize()
     // So I'm copying what I did for the scientist
     console.log("Resize World sprite now.")
     
-    const WORLD_ELEMENT_NAME = getComputedStyle(document.documentElement).getPropertyValue("--world-element");
-    const CONTAINER_ELEMENT_NAME = getComputedStyle(document.documentElement).getPropertyValue("--world-container");
-
     const ROOT = document.documentElement;
+    const WORLD_ELEMENT_NAME = getComputedStyle(ROOT).getPropertyValue("--world-element");
+    const CONTAINER_ELEMENT_NAME = getComputedStyle(ROOT).getPropertyValue("--world-container");
+
+    
 
     const WORLD = document.getElementById(WORLD_ELEMENT_NAME);
     const CONTAINER = document.getElementById(CONTAINER_ELEMENT_NAME);
@@ -32,7 +33,7 @@ function worldResponsiveResize()
     
     const worldHeight = getComputedStyle(WORLD).height;
     const containerHeight = getComputedStyle(CONTAINER).height;
-    const scale = parseFloat(containerHeight) / parseFloat(worldHeight);
+    const scale = 0.9 * parseFloat(containerHeight) / parseFloat(worldHeight);
     
     transform = `scale(${scale})`;
     WORLD.style.transform=transform;
