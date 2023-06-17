@@ -2571,5 +2571,253 @@
     {
         "word": "CROSSSTITCHING",
         "hint": "hobbies"
+    },
+    {
+        "word": "LIMIT",
+        "hint": "calculus"
+    },
+    {
+        "word": "DERIVATIVE",
+        "hint": "calculus"
+    },
+    {
+        "word": "INTEGRAL",
+        "hint": "calculus"
+    },
+    {
+        "word": "FUNCTION",
+        "hint": "calculus"
+    },
+    {
+        "word": "TANGENT",
+        "hint": "calculus"
+    },
+    {
+        "word": "SLOPE",
+        "hint": "calculus"
+    },
+    {
+        "word": "INTERCEPT",
+        "hint": "calculus"
+    },
+    {
+        "word": "CURVE",
+        "hint": "calculus"
+    },
+    {
+        "word": "LINE",
+        "hint": "calculus"
+    },
+    {
+        "word": "POINT",
+        "hint": "calculus"
+    },
+    {
+        "word": "VECTOR",
+        "hint": "calculus"
+    },
+    {
+        "word": "SCALAR",
+        "hint": "calculus"
+    },
+    {
+        "word": "MATRIX",
+        "hint": "calculus"
+    },
+    {
+        "word": "EIGENVALUE",
+        "hint": "calculus"
+    },
+    {
+        "word": "EIGENVECTOR",
+        "hint": "calculus"
+    },
+    {
+        "word": "DETERMINANT",
+        "hint": "calculus"
+    },
+    {
+        "word": "COSINE",
+        "hint": "calculus"
+    },
+    {
+        "word": "ARRAY",
+        "hint": "javascript"
+    },
+    {
+        "word": "OBJECT",
+        "hint": "javascript"
+    },
+    {
+        "word": "FUNCTION",
+        "hint": "javascript"
+    },
+    {
+        "word": "VARIABLE",
+        "hint": "javascript"
+    },
+    {
+        "word": "STRING",
+        "hint": "javascript"
+    },
+    {
+        "word": "NUMBER",
+        "hint": "javascript"
+    },
+    {
+        "word": "GITHUB",
+        "hint": "version control"
+    },
+    {
+        "word": "GIT",
+        "hint": "version control"
+    },
+    {
+        "word": "REPOSITORY",
+        "hint": "version control"
+    },
+    {
+        "word": "COMMIT",
+        "hint": "version control"
+    },
+    {
+        "word": "PUSH",
+        "hint": "version control"
+    },
+    {
+        "word": "PULL",
+        "hint": "version control"
+    },
+    {
+        "word": "BRANCH",
+        "hint": "version control"
+    },
+    {
+        "word": "MERGE",
+        "hint": "version control"
+    },
+    {
+        "word": "FORK",
+        "hint": "version control"
+    },
+    {
+        "word": "CLONE",
+        "hint": "version control"
+    },
+    {
+        "word": "PULLREQUEST",
+        "hint": "version control"
+    },
+    {
+        "word": "ISSUE",
+        "hint": "version control"
+    },
+    {
+        "word": "BUG",
+        "hint": "version control"
+    },
+    {
+        "word": "FEATURE",
+        "hint": "version control"
+    },
+    {
+        "word": "MASTER",
+        "hint": "version control"
+    },
+    {
+        "word": "ORIGIN",
+        "hint": "version control"
+    },
+    {
+        "word": "REMOTE",
+        "hint": "version control"
+    },
+    {
+        "word": "LOCAL",
+        "hint": "version control"
+    },
+    {
+        "word": "STASH",
+        "hint": "version control"
+    },
+    {
+        "word": "STAGING",
+        "hint": "version control"
+    },
+    {
+        "word": "DIFF",
+        "hint": "version control"
+    },
+    {
+        "word": "MERGETOOL",
+        "hint": "version control"
+    },
+    {
+        "word": "REBASE",
+        "hint": "version control"
+    },
+    {
+        "word": "SQUASH",
+        "hint": "version control"
+    },
+    {
+        "word": "TAG",
+        "hint": "version control"
+    },
+    {
+        "word": "RELEASE",
+        "hint": "version control"
+    },
+    {
+        "word": "CONFLICT",
+        "hint": "version control"
+    },
+    {
+        "word": "FETCH",
+        "hint": "retrieve remote data in javascript"
+    },
+    {
+        "word": "JSON",
+        "hint": "Javascript object notation"
+    },
+    {
+        "word": "AJAX",
+        "hint": "Asynchronous Javascript and XML"
+    },
+    {
+        "word": "JQUERY",
+        "hint": "Javascript library"
+    },
+    {
+        "word": "DOM",
+        "hint": "Document Object Model"
+    },
+    {
+        "word": "NODE",
+        "hint": "Javascript runtime"
+    },
+    {
+        "word": "NPM",
+        "hint": "Node package manager"
+    },
+    {
+        "word": "YARN",
+        "hint": "Node package manager"
+    },
+    {
+        "word": "REACT",
+        "hint": "Javascript library"
+    },
+    {
+        "word": "VUE",
+        "hint": "Javascript library"
+    },
+    {
+        "word": "ANGULAR",
+        "hint": "Javascript library"
+    },
+    {
+        "word": "TYPESCRIPT",
+        "hint": "Javascript superset"
     }
 ]

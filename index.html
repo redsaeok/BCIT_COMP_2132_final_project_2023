@@ -35,23 +35,27 @@
         <div id="monitor-2">
             <div>
                 <p>
-                    Press any key...<br>
-                    Eliminated: <span id = "spEliminated"></span>
+                    Use keyboard to guess.<br>
+                    Guesses: <span id = "spEliminated"></span>
                 </p>
+                <button id="btnReset">Reset <i class="fa fa-refresh" aria-hidden="true" ></i> </button>
             <div class="hide_me">
                 <!-- I don't really need this anymore, but it's useful as a data store and 
                      could be useful for testing -->
                 <input type="text" id="txtGuess">
                 <button id="btnGuess">Guess</button>
                 <div><p id="pGameState"></p></div>
-                </div>
-            <button id="btnReset">Reset</button>
+            </div>
+            
+            
         </div>
 
         </div>
         <div id="monitor-3"><div class="world" id="world"></div></div>
 
-        <div id="dCodeWord"><div id="dHint">Hint: <span id="spHint"></span></div><p id="pWordDisplay"></p></div>
+        <div id="dCodeWord">            
+            <div id="dHint">Hint: <span id="spHint"></span></div><p id="pWordDisplay"></p>            
+        </div>
 
         <!--div id="scientist"></div-->
 
@@ -121,6 +125,12 @@
             </p>
 
         </div>        
+
+        <div id="dMobileResetFlex">
+            <div>
+                <button id="btnMobileReset">Reset <i class="fa fa-refresh" aria-hidden="true" ></i> </button>
+            </div>
+        </div>
 
         <div id="kb_container">
             <div class="kb_row">

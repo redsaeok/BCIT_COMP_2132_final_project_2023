@@ -1,11 +1,15 @@
-root = document.documentElement;
-pTimer = document.getElementById("pTimer");
-pWordDisplay = document.getElementById("pWordDisplay");
-pGameState = document.getElementById("pGameState");
-pError = document.getElementById("pError");
-txtGuess = document.getElementById("txtGuess");
-btnGuess = document.getElementById("btnGuess");
-btnReset = document.getElementById("btnReset");
+const root = document.documentElement;
+const pTimer = document.getElementById("pTimer");
+const pWordDisplay = document.getElementById("pWordDisplay");
+const pGameState = document.getElementById("pGameState");
+const pError = document.getElementById("pError");
+const txtGuess = document.getElementById("txtGuess");
+const btnGuess = document.getElementById("btnGuess");
+const btnReset = document.getElementById("btnReset");
+const btnMobileReset = document.getElementById("btnMobileReset");
+const KB_LETTERS = "QWERTYUIOPASDFGHJKLZXCVBNM";
+const kbContainer = document.getElementById("kb_container");
+
 
 function start()
 {
@@ -91,11 +95,10 @@ updateTimer();
 
 btnGuess.addEventListener("click", guessLetter);
 btnReset.addEventListener("click", reset);
+btnMobileReset.addEventListener("click", reset);
 
 
 
-const KB_LETTERS = "QWERTYUIOPASDFGHJKLZXCVBNM";
-const kbContainer = document.getElementById("kb_container");
 
 function submitVirtualKBPress()
 {

@@ -76,6 +76,8 @@ body {
     font-family: 'Monaco', 'Lucinda Console', 'Courier New', Courier, 'MS Courier New', monospace;
 }
 
+
+
 #dCodeWord #dHint {
     padding-left: 0.25rem;
     padding-top: 0.25rem;
@@ -124,6 +126,16 @@ body {
 }
 
 
+#btnReset {
+    position: absolute;
+    background-color: red;
+    right: 0%;
+    top: 0%;
+}
+
+
+
+
 #monitor-3{
     position: absolute;                    
     width: 30%;
@@ -139,7 +151,6 @@ body {
 
 
 .world {
-    visibility: hidden;
     margin-left: 20%;
     display: inline-block;
     width: var(--world-sprite-height);
@@ -263,12 +274,16 @@ body {
 }
 
 #kb_container{
+    padding-top: 5vh;
     visibility: hidden;
     display: none;    
 }
 
 .kb_row {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .kb_key {
@@ -276,9 +291,9 @@ body {
     width: 8vw;
     height: 8vw;
     display: inline-block;
-    border: 2px solid red;
+    border: 2px solid black;
     border-radius: 10px;
-    background-color: white;
+    background-color: goldenrod;
 }
 
 .key_face {
@@ -296,7 +311,7 @@ body {
 
 .key_letter {                  
     display: inline-block;   
-    color: red;  
+    color: black;  
     /*background-color: blue;*/
 }
 
@@ -338,11 +353,28 @@ body {
         display: block;
     }
 
-    #dCodeWord {
+    #dCodeWord {        
         width: 90%;
         top: 0%;
         left: 5%;
     }
+
+    #dMobileResetFlex{
+        position: relative;
+        left: 5%;
+        width: 90%;
+        display: flex;
+        justify-content: right;
+
+    }
+
+    #btnMobileReset {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        position: relative;  
+        right: 1rem;      
+    }
+    
 
     #monitor-1 {
         background-size: 0px 0px;
@@ -405,6 +437,11 @@ body {
 
 
 @media screen and (min-width: 900px) {
+
+    #dMobileResetFlex {
+        visibility: hidden;
+        display: none;
+    }
 
     #dCodeWord {
         width: 60%;
