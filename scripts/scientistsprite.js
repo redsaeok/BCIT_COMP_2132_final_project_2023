@@ -261,6 +261,7 @@ function animateSprite(animation)
     }
 
     if( animation == "SHOW_INSTRUCTIONS" ){
+        hideSpinner();
         showInstructions();
         return;
     } 

@@ -38,7 +38,7 @@ DEFCON_COLOR = {
     "0": "white"
 }
 
-function resetMontior1Background()
+function resetMonitor1Background()
 {
     monitor1ImageIndex = 1;
     VW_MONITOR_1.style.backgroundImage = `url("images/mon1-${monitor1ImageIndex}.png")`;
@@ -70,7 +70,9 @@ function updateMonitor3Background()
 }
 */
 
-function updateTimer()
+
+
+function updateDefconLevel()
 {
     let defconLevel = (MAX_NUMBER_OF_BAD_GUESSES - gameState.numberOfBadGuesses);
 
