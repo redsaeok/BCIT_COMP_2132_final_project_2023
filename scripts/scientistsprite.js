@@ -332,9 +332,8 @@ function animateSprite(animation) {
 
     /* Handle special command instructions */
     /* These should be set by the controller */
-    if (animation == "SHOW_INSTRUCTIONS") {
-        hideSpinner();
-        showInstructions();
+    if (animation == "SHOW_INSTRUCTIONS") {        
+        OVERRIDE_COMMANDS.SHOW_INSTRUCTIONS();
         return;
     }
 

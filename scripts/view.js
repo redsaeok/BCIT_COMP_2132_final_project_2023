@@ -149,6 +149,7 @@ function hideInstructions() {
 
 function showInstructions() {
     console.log("Show Instructions");
+    hideSpinner();
     instructions.style.display = "inline-block";
     instructions.style.visibility = "visible";
     instructions.style.opacity = 0.95;
