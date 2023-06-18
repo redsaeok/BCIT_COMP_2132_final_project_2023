@@ -46,6 +46,21 @@ const INTRO_TEXT = `
 
     `;
 
+const HOW_TO_PLAY = `
+    <h1>How to Play</h1>
+
+    <p>
+        To start playing, press any key on your keyboard.  If it
+        is correct, one of the scrambled letters will be revealed
+        in the code.  If it is incorrect, the Defcon level will
+        decrease by one.  If the Defcon level reaches 1, the
+        nuclear missiles will launch, and the game will be over.
+
+        Hint: You can see the number of letters in the word by
+        counting the number of scrambled letters in the code.        
+    </p>`;
+
+
 const WIN_TEXT = `
     <h1>You Win!</h1>
 
