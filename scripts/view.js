@@ -14,7 +14,7 @@ const SP_ELIMINATED = document.getElementById("spEliminated");
 
 let onGenericDialogClose = null;
 
-const SHOW_HELP_TIMEOUT_MS = 5000;
+const SHOW_HELP_TIMEOUT_MS = 10000;
 
 /* The dialog text should be externalized so that it can be localized, and changed outside of the code. */
 /* I could move this to another JSON data file to keep it inline with the course material. */
@@ -80,6 +80,8 @@ const WIN_TEXT = `
 
 const LOSE_TEXT = `
     <h1>All is Lost!</h1>
+
+    <p>The word was: ##CODE_WORD##</p>
 
     <p>
         Your valiant efforts did not result in a successful outcome.
@@ -217,7 +219,9 @@ function showWinDialog() {
 
 function showLoseDialog() {
     console.log("Show Lose Dialog");
-    showGenericDialog(LOSE_TEXT);
+    let loseText = LOSE_TEXT;
+    loseText = loseText.replace("##CODE_WORD##", gameState.wordToGuess);
+    showGenericDialog(loseText);
 }
 
 

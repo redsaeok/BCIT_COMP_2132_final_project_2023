@@ -355,6 +355,8 @@ body {
     visibility: hidden;
     display: none;    
     font-family: 'Poppins', 'Amazon Ember Light', 'Bookerly', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
 }
 
 .kb_row {
