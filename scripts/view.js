@@ -12,6 +12,8 @@ const CLOSE_GENERIC_DIALOG_BOTTOM = document.getElementById("btnClose-generic-in
 const SP_HINT = document.getElementById("spHint");
 const SP_ELIMINATED = document.getElementById("spEliminated");
 
+let onGenericDialogClose = null;
+
 
 /* The dialog text should be externalized so that it can be localized, and changed outside of the code. */
 /* I could move this to another JSON data file to keep it inline with the course material. */
@@ -137,10 +139,12 @@ function updateError(message)
 */
 
 function hideInstructions() {
+    /*
     instructions.style.display = "none";
     instructions.style.visibility = "hidden";
     instructions.style.opacity = 0;
     instructions.style.zIndex = -1;
+    */
     animateWordDisplay();
     add_to_animation_queue("TURN_FRONT_TO_LEFT");
     add_to_animation_queue("WALK_LEFT");
@@ -150,10 +154,15 @@ function hideInstructions() {
 function showInstructions() {
     console.log("Show Instructions");
     hideSpinner();
+    onGenericDialogClose = hideInstructions;
+    showGenericDialog(INTRO_TEXT);
+
+    /*
     instructions.style.display = "inline-block";
     instructions.style.visibility = "visible";
     instructions.style.opacity = 0.95;
     instructions.style.zIndex = 5;
+    */
 }
 
 
@@ -162,6 +171,16 @@ function hideGenericDialog() {
     GENERIC_DIALOG.style.visibility = "hidden";
     GENERIC_DIALOG.style.opacity = 0;
     GENERIC_DIALOG.style.zIndex = -1;
+
+    /*
+    *   See if we queued up any additional actions for when
+    *   the dialog is closed.  If there is a callback function, 
+    *   call it.
+    */
+    if( null != onGenericDialogClose ) {
+        onGenericDialogClose();
+        onGenericDialogClose = null;
+    }
 }
 
 
@@ -259,9 +278,9 @@ function flashDefconLevel(defconLevel)
 // many of your generation with technology).
 
 
-CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
 
 /*
+CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
 CLOSE_LOSING.addEventListener("click", hideLoseDialog);
 CLOSE_WINNING.addEventListener("click", hideWinDialog);
 */ 
