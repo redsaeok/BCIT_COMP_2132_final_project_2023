@@ -289,6 +289,7 @@ body {
 }
 
 
+#generic-dialog,
 #win-dialog,
 #lose-dialog,
 #instructions {
@@ -311,6 +312,7 @@ body {
     transition: all 1s ease-in-out;
 }
 
+#close-generic-dialog,
 #close_losing,
 #close_winning,
 #close_instructions {
@@ -440,6 +442,7 @@ body {
         width: 90%;
         top: 0%;
         left: 5%;
+        font-size: 1.6rem;
     }
 
     #dMobileResetFlex{
@@ -490,6 +493,7 @@ body {
         visibility: hidden;
     }
 
+    #generic-dialog,
     #win-dialog,
     #lose-dialog,
     #instructions {
@@ -504,7 +508,7 @@ body {
         z-index: -1;
         /* opacity: 0.95; */
         opacity: 0.0;
-        transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;        
     }
 
     #kb_container{
@@ -536,4 +540,13 @@ body {
     }
     
 
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 1.25rem
+    }
 }

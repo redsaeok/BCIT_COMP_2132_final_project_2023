@@ -4,8 +4,42 @@ const CLOSE_LOSING = document.getElementById("close_losing");
 const WIN_DIALOG = document.getElementById("win-dialog");
 const LOSE_DIALOG = document.getElementById("lose-dialog");
 
+const GENERIC_DIALOG = document.getElementById("generic-dialog");
+const GENERIC_DIALOG_CONTENT = document.getElementById("generic-dialog-content");
+const CLOSE_GENERIC_DIALOG_TOP = document.getElementById("close-generic-dialog");
+const CLOSE_GENERIC_DIALOG_BOTTOM = document.getElementById("btnClose-generic-instructions-bottom");
+
 const SP_HINT = document.getElementById("spHint");
 const SP_ELIMINATED = document.getElementById("spEliminated");
+
+const INTRO_TEXT = `
+
+<h1>Greetings Professer Falken.</h1>
+
+<!--p>It's been a long time.  Would you like to play a game?</p-->
+
+<p>
+Our WOPR supercomputer has detected a nuclear missile
+launch. The American and Russian nuclear systems have been
+tampered with, setting off a series of events that could
+lead to complete devastation by thermonuclear war.
+</p>
+
+<p>
+The codes to disarm the nuclear weapons have been jumbled
+up, making it challenging to decipher them. Can you assist
+us with unscrambling them, prevent catastrophe, and save us
+all?
+</p>
+<p>
+To assist with your efforts, we have provided a hint. Each
+incorrect guess decreases the Defcon level. Solve the puzzle
+on or before Defcon 1 to disarm the nuclear missiles.
+</p>
+
+<p>Close this window, then press a key to begin guessing.</p>
+
+`;
 
 
 /* 
@@ -94,6 +128,22 @@ function hideLoseDialog() {
     LOSE_DIALOG.style.opacity = 0;
     LOSE_DIALOG.style.zIndex = -1;
 }
+
+function hideGenericDialog() {
+    GENERIC_DIALOG.style.display = "none";
+    GENERIC_DIALOG.style.visibility = "hidden";
+    GENERIC_DIALOG.style.opacity = 0;
+    GENERIC_DIALOG.style.zIndex = -1;
+}
+
+function showGenericDialog(content) {
+    GENERIC_DIALOG_CONTENT.innerHTML = content;
+    GENERIC_DIALOG.style.display = "inline-block";
+    GENERIC_DIALOG.style.visibility = "visible";
+    GENERIC_DIALOG.style.opacity = 0.95;
+    GENERIC_DIALOG.style.zIndex = 5;
+}
+
 
 function showWinDialog() {
     console.log("Show Instructions");
@@ -189,4 +239,5 @@ CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
 CLOSE_LOSING.addEventListener("click", hideLoseDialog);
 CLOSE_WINNING.addEventListener("click", hideWinDialog);
 
-
+CLOSE_GENERIC_DIALOG_BOTTOM.addEventListener("click", hideGenericDialog);
+CLOSE_GENERIC_DIALOG_TOP.addEventListener("click", hideGenericDialog);
