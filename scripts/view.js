@@ -12,34 +12,66 @@ const CLOSE_GENERIC_DIALOG_BOTTOM = document.getElementById("btnClose-generic-in
 const SP_HINT = document.getElementById("spHint");
 const SP_ELIMINATED = document.getElementById("spEliminated");
 
+
+/* The dialog text should be externalized so that it can be localized, and changed outside of the code. */
+/* I could move this to another JSON data file to keep it inline with the course material. */
+
 const INTRO_TEXT = `
+    <h1>Greetings Professer Falken.</h1>
 
-<h1>Greetings Professer Falken.</h1>
+    <!--p>It's been a long time.  Would you like to play a game?</p-->
 
-<!--p>It's been a long time.  Would you like to play a game?</p-->
+    <p>
+    Our WOPR supercomputer has detected a nuclear missile
+    launch. The American and Russian nuclear systems have been
+    tampered with, setting off a series of events that could
+    lead to complete devastation by thermonuclear war.
+    </p>
 
-<p>
-Our WOPR supercomputer has detected a nuclear missile
-launch. The American and Russian nuclear systems have been
-tampered with, setting off a series of events that could
-lead to complete devastation by thermonuclear war.
-</p>
+    <p>
+    The codes to disarm the nuclear weapons have been jumbled
+    up, making it challenging to decipher them. Can you assist
+    us with unscrambling them, prevent catastrophe, and save us
+    all?
+    </p>
+    <p>
+    To assist with your efforts, we have provided a hint. Each
+    incorrect guess decreases the Defcon level. Solve the puzzle
+    on or before Defcon 1 to disarm the nuclear missiles.
+    </p>
 
-<p>
-The codes to disarm the nuclear weapons have been jumbled
-up, making it challenging to decipher them. Can you assist
-us with unscrambling them, prevent catastrophe, and save us
-all?
-</p>
-<p>
-To assist with your efforts, we have provided a hint. Each
-incorrect guess decreases the Defcon level. Solve the puzzle
-on or before Defcon 1 to disarm the nuclear missiles.
-</p>
+    <p>Close this window, then press a key to begin guessing.</p>
 
-<p>Close this window, then press a key to begin guessing.</p>
+    `;
 
-`;
+const WIN_TEXT = `
+    <h1>You Win!</h1>
+
+    <p>
+        Congratulations on your outstanding achievement! You have
+        successfully completed the game with remarkable skill and
+        determination. Your perseverance and strategic thinking
+        have paid off, leading you to triumph over the challenges
+        presented to you. Your remarkable performance is truly
+        commendable, and you should take pride in your
+        accomplishment. Well done!
+    </p>`;
+
+const LOSE_TEXT = `
+    <h1>All is Lost!</h1>
+
+    <p>
+        Your valiant efforts did not result in a successful outcome.
+        Despite your best intentions and considerable effort, the
+        challenges provided to be too formidable. It is important to
+        remember that failure is an opportunity for growth and
+        learning. By participating in this game, you have showcased
+        your willingness to take on challenges and demonstrated
+        resilience in the face of adversity. We encourage you to
+        continue your pursuit of excellence and wish you the best in
+        future endeavors.
+    </p>
+    `;
 
 
 /* 
@@ -115,6 +147,7 @@ function hideInstructions() {
     add_to_animation_queue("PACE")
 }
 
+/*
 function hideWinDialog() {
     WIN_DIALOG.style.display = "none";
     WIN_DIALOG.style.visibility = "hidden";
@@ -128,6 +161,8 @@ function hideLoseDialog() {
     LOSE_DIALOG.style.opacity = 0;
     LOSE_DIALOG.style.zIndex = -1;
 }
+*/
+
 
 function hideGenericDialog() {
     GENERIC_DIALOG.style.display = "none";
@@ -135,6 +170,7 @@ function hideGenericDialog() {
     GENERIC_DIALOG.style.opacity = 0;
     GENERIC_DIALOG.style.zIndex = -1;
 }
+
 
 function showGenericDialog(content) {
     GENERIC_DIALOG_CONTENT.innerHTML = content;
@@ -146,19 +182,27 @@ function showGenericDialog(content) {
 
 
 function showWinDialog() {
-    console.log("Show Instructions");
+    console.log("Show Win Dialog");
+    showGenericDialog(WIN_TEXT);
+
+    /*
     WIN_DIALOG.style.display = "inline-block";
     WIN_DIALOG.style.visibility = "visible";
     WIN_DIALOG.style.opacity = 0.95;
     WIN_DIALOG.style.zIndex = 5;
+    */
 }
 
 function showLoseDialog() {
-    console.log("Show Instructions");
+    console.log("Show Lose Dialog");
+    showGenericDialog(LOSE_TEXT);
+
+    /*
     LOSE_DIALOG.style.display = "inline-block";
     LOSE_DIALOG.style.visibility = "visible";
     LOSE_DIALOG.style.opacity = 0.95;
     LOSE_DIALOG.style.zIndex = 5;
+    */
 }
 
 
@@ -235,9 +279,13 @@ function flashDefconLevel(defconLevel)
 // for my older testers (respectfully Larry you still do better than 
 // many of your generation with technology).
 
+
 CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
+
+/*
 CLOSE_LOSING.addEventListener("click", hideLoseDialog);
 CLOSE_WINNING.addEventListener("click", hideWinDialog);
+*/ 
 
 CLOSE_GENERIC_DIALOG_BOTTOM.addEventListener("click", hideGenericDialog);
 CLOSE_GENERIC_DIALOG_TOP.addEventListener("click", hideGenericDialog);
