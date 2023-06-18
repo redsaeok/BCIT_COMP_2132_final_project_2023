@@ -1,6 +1,5 @@
 const root = document.documentElement;
 const pTimer = document.getElementById("pTimer");
-const pWordDisplay = document.getElementById("pWordDisplay");
 const pGameState = document.getElementById("pGameState");
 const pError = document.getElementById("pError");
 const txtGuess = document.getElementById("txtGuess");
@@ -24,11 +23,22 @@ function start()
 }
 
 
+/*
+*   Guess one letter of the code word.
+*
+*   This function is called when the user clicks the Guess button,
+*   or presses a key on the virtual keyboard, or presses a key on the
+*   physical keyboard.
+*/
 function guessLetter()
 {
     let error = "";
     let letter = txtGuess.value.toUpperCase();
     let isGoodGuess = null;
+
+    if( MAX_NUMBER_OF_BAD_GUESSES == gameState.numberOfBadGuesses ){
+        return;
+    }
 
     try {
         isGoodGuess = gameState.guessLetter(letter);
@@ -43,6 +53,7 @@ function guessLetter()
     
     updateVirtualKB();
     updateWordDisplay();
+    updateEliminated();
     updateTimer();
     updateState();
     updateError(error);
@@ -78,6 +89,7 @@ function reset()
     gameState.reset();
     start();
     updateWordDisplay();
+    updateEliminated();
     updateTimer();
     //updateState();
     updateError("");
@@ -91,6 +103,7 @@ function reset()
 
 start();
 updateWordDisplay();
+updateEliminated();
 updateTimer();
 
 btnGuess.addEventListener("click", guessLetter);

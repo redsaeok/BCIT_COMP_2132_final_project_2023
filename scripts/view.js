@@ -27,10 +27,6 @@ let monitor1TimeoutHandler = null;
 let monitor3TimeoutHandler = null;
 let monitor3AnimationHanlder = null;
 
-const CODE_WORD_ANIMATION_UPDATE_INTERVALL_MS = 100;
-let codeWordAnimationHanlder = null;
-let codeWordTimeoutHanlder = null;
-
 
 DEFCON_COLOR = {
     "6": "blue", 
@@ -100,44 +96,13 @@ function updateTimer()
     
 }
 
-function deanimateWordDisplay()
+
+function updateEliminated()
 {
-    cancelAnimationFrame(codeWordAnimationHanlder);
-    clearTimeout(codeWordTimeoutHandler);
-    CODE_WORD.style.display = "none";
-}
-
-function animateWordDisplay()
-{
-    const REPLACEMENT_LIST = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*)[]-+;:?<>'
-    letterArray = gameState.knownLetters.split("");
-
-    for( let i = 0; i < letterArray.length; i++ )
-    {
-        if( "_" == letterArray[i] )
-        {
-            letterArray[i] = REPLACEMENT_LIST.charAt(Math.random() * REPLACEMENT_LIST.length);
-        }
-    }
-
-    pWordDisplay.innerHTML = letterArray.join(" ");
-
-    
-    codeWordTimeoutHandler = setTimeout(function(){
-        codeWordAnimationHandler = requestAnimationFrame( animateWordDisplay );}, CODE_WORD_ANIMATION_UPDATE_INTERVALL_MS );
-
-    if( getComputedStyle(CODE_WORD).display=="none" )
-    {
-        CODE_WORD.style.display = "block";
-    }
-}
-
-function updateWordDisplay()
-{
-    pWordDisplay.innerHTML = gameState.knownLetters.split("").join(" ");
     SP_ELIMINATED.innerHTML = "" + gameState.selectedLetters.join(" ");
     SP_HINT.innerHTML = "" + gameState.hint;
 }
+
 
 function updateState()
 {
