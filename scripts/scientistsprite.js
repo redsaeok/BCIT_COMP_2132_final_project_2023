@@ -1,19 +1,51 @@
+/*
+    John Glenn
+    June 17, 2023
 
+    This is part of the view.  It is responsible for updating the scientist sprite.
 
-/* While I haven't done a lot of searching about spries in JavaScript, I haven't seen a decent way to represent
-   the animations.  This is my original attempt.  For this project I want to use a singular sprite, but ideally
-   we're working towards somethign that is reusable and general.  */
+    The scientist sprite is a single image, with a series of animations.  The animations
+    are controlled by Javascript which changes the background position of the image, or
+    exposes a controlled view to the underlying image.
 
+    This is still very rough as most of the ideas are my own - though in fairness I did
+    read a book or two on games and sprites about 20 years ago, and did a bit of searching
+    on how to implement them in JavaScript.
 
-const OVERRIDE_COMMANDS = 
-{
-    "SHOW_INSTRUCTIONS": showInstructions
-}
+    If I were going to do this again, I would probably create a more general object, and
+    keep the focus on initialization, queueing actions, and tieing animated queues back 
+    to stored functions from the controller.  There would be a lot less exposed code.
+*/
 
+/* This was meant to hold a dictionary of commands that could be preset, and then 
+   called from the controller.  For example here we're presetting the command to
+   show the mobile instructions.  I'd rather this were done by the controller so 
+   that the sprite didn't have to explicitly know anything about the rest of the 
+   view.
+*/
 
-const SCIENTIST_ELEMENT = document.getElementById("sprite-scientist")
-const JSON_SPRITE_SCIENTIST = 
-`{
+const OVERRIDE_COMMANDS = {
+    SHOW_INSTRUCTIONS: showInstructions,
+};
+
+const SCIENTIST_ELEMENT = document.getElementById("sprite-scientist");
+
+/* The meat and potatoes of how my sprite works.  This includes the metadata
+   properties to handle addressing it by name, a link to the DOM, a link to
+   the container for it in the DOM, a queue of animations to execute, scaling,
+   positioning, animation state, timer references, size, sprite sheet
+   details, timing, and a dictionary of animation sequences on the sprite
+   sheet.
+
+   I love the idea of storing these in JSON, and also the idea of a generic
+   object that can be sued for multiple sprites.  
+   
+   I'm not even going to attempt to get to my ideal next steps in this project.
+   This is a huge step up from animating a sprite that had no controls or 
+   movement from a week ago, and it has it's own set of outstanding
+   challenges.
+*/
+const JSON_SPRITE_SCIENTIST = `{
         "name" : "SCIENTIST",
         "description" : "walk left, turn front and back, transform to walk right",
         "element": "store reference to element here",      
@@ -209,7 +241,22 @@ const JSON_SPRITE_SCIENTIST =
 }
 `;
 
-const SCIENTIST = JSON.parse(JSON_SPRITE_SCIENTIST); 
+// Store the JSON in an object
+// This makes me happy
+const SCIENTIST = JSON.parse(JSON_SPRITE_SCIENTIST);
+
+/* 
+    The scientist has the responsibility of showing the user the instructions
+    for the game.
+
+    I don't like that this is here.  I should instead set a pointer to
+    a function form the view.js file, where this function originally resided.
+    There's no good reason to keep this here.
+
+    It's not a huge priority for me, and I'm probably not going to fix it,
+    but it's worth noting, uggo, and worth fixing if/when I create a generic
+    sprite object.
+*/
 
 function showInstructions() {
     console.log("Show Instructions");
@@ -219,75 +266,108 @@ function showInstructions() {
     instructions.style.zIndex = 5;
 }
 
-function initializeSprite() 
-{
+/*
+    Setup the sprite object.
+    This should be part of a sprite constructor.
+    This should be parameterized, and not hard coded.
+    I'll do this when I create a generic sprite object.
+*/
+function initializeSprite() {
     SCIENTIST["element"] = SCIENTIST_ELEMENT;
-    SCIENTIST["container"] = document.getElementById('mission-control-center');
+    SCIENTIST["container"] = document.getElementById("mission-control-center");
 
-
-    /* This needs to be cleaned up.  I'm still not clear on how to best manage position and movment such that it
-    changes as the viewport size changes.  There's probably some better method, or at least focusing on the origin
-    of the sprite.  Right now I'm using the top left of the container, but really I want the feet to stay on the ground,
-    and our sprite is moving from the bottom right of the container.  It'd be awesome if there was  good way to 
-    generalie this.  Scaling spritesheets is a PITA.  This would probably be easier with individual images, or using 
-    a canvas to handle the caching and abstracting scaling further */
+    /* This needs to be cleaned up.  I'm still not clear on how to best 
+    manage position and movement such that it changes as the viewport size 
+    changes.  There's probably some better method, or at least focusing on the 
+    origin of the sprite.  Right now I'm using the top left of the container, 
+    but really I want the feet to stay on the ground, and our sprite is moving 
+    from the bottom right of the container.  It'd be awesome if there was  
+    good way to generalize this.  Scaling sprite sheets is a PITA.  This would 
+    probably be easier with individual images, or using a canvas to handle the 
+    caching and abstracting scaling further */
 
     SCIENTIST_ELEMENT.style.width = `${SCIENTIST["width"]}px`;
     SCIENTIST_ELEMENT.style.height = `${SCIENTIST["height"]}px`;
-    SCIENTIST.element.style.transformOrigin="top left";
+    SCIENTIST.element.style.transformOrigin = "top left";
     SCIENTIST_ELEMENT.style.top = SCIENTIST["top"];
     //SCIENTIST_ELEMENT.style.right = SCIENTIST["right"];
     //SCIENTIST_ELEMENT.style.bottom = SCIENTIST["bottom"];
-    SCIENTIST_ELEMENT.style.left = SCIENTIST["left"];    
-    
+    SCIENTIST_ELEMENT.style.left = SCIENTIST["left"];
 
     SCIENTIST_ELEMENT.style.backgroundImage = `url('${SCIENTIST["file"]}')`;
     SCIENTIST_ELEMENT.style.backgroundImage = SCIENTIST["file"];
-    SCIENTIST_ELEMENT.style.backgroundPositionX = `-${SCIENTIST["start_frame_column"] * SCIENTIST["width"]}px`;
-    SCIENTIST_ELEMENT.style.backgroundPositionY = `-${SCIENTIST["start_frame_row"] * SCIENTIST["height"]}px`;
+    SCIENTIST_ELEMENT.style.backgroundPositionX = `-${
+        SCIENTIST["start_frame_column"] * SCIENTIST["width"]
+    }px`;
+    SCIENTIST_ELEMENT.style.backgroundPositionY = `-${
+        SCIENTIST["start_frame_row"] * SCIENTIST["height"]
+    }px`;
 
     responsiveResize();
     addEventListener("resize", responsiveResize);
 }
 
-function animateSprite(animation)
-{
+/*
+    Don't call this directly.  I built it as I was creating this, and I use it,
+    but queuing animations is much better than calling this directly.
+
+    On the plus side, it does allow us to call individual animations.
+
+    This uses a timer to execute the animation.
+*/
+function animateSprite(animation) {
     /* Responsive sizing works, until I animate the sprite.  I suspect it has to do with the fact that 
-    I'm calculating the position in pixels here, where upto here I have been using percentages */
+    I'm calculating the position in pixels here, where upto here I have been using percentages.
 
+    Responsiveness was fixed, and I did have to have animations use relative
+    dimensions.  Leaving this here as a reminder.
+    */
 
-    if( SCIENTIST.is_animating_now ){
+    // don't animate if we're already animating
+    if (SCIENTIST.is_animating_now) {
         return false;
     }
 
-    if( animation == "SHOW_INSTRUCTIONS" ){
+    /* Handle special command instructions */
+    /* These should be set by the controller */
+    if (animation == "SHOW_INSTRUCTIONS") {
         hideSpinner();
         showInstructions();
         return;
-    } 
+    }
 
-    if( animation == "PACE"){
+    if (animation == "PACE") {
         pace();
         return;
     }
 
-
-    if( !( animation in SCIENTIST.animations )){
+    /* Validate that the animation we're calling actually exists */
+    if (!(animation in SCIENTIST.animations)) {
         return false;
     }
 
     /* Called by the code following this */
-    function _animateSprite(){
+    function _animateSprite() {
         /* nested because I want this controlled by the containing function */
-        /* It would probably be better to use CSS transforms to do this */     
-        
+        /* It would probably be better to use CSS transforms to do this */
+
         /* duplicated this here in case the viewport changes while animating */
         /* might still expect some strange results */
-        SCIENTIST.current_dx = SCIENTIST.animations[SCIENTIST.current_animation].dx_per_frame * SCIENTIST.scale;
-        SCIENTIST.current_dy = SCIENTIST.animations[SCIENTIST.current_animation].dy_per_frame * SCIENTIST.scale;
+        SCIENTIST.current_dx =
+            SCIENTIST.animations[SCIENTIST.current_animation].dx_per_frame *
+            SCIENTIST.scale;
+        SCIENTIST.current_dy =
+            SCIENTIST.animations[SCIENTIST.current_animation].dy_per_frame *
+            SCIENTIST.scale;
 
-        dxPct = SCIENTIST.current_dx / parseFloat(getComputedStyle(SCIENTIST.container).width) * 100.0;
-        dyPct = SCIENTIST.current_dy / parseFloat(getComputedStyle(SCIENTIST.container).height) * 100.0;
+        dxPct =
+            (SCIENTIST.current_dx /
+                parseFloat(getComputedStyle(SCIENTIST.container).width)) *
+            100.0;
+        dyPct =
+            (SCIENTIST.current_dy /
+                parseFloat(getComputedStyle(SCIENTIST.container).height)) *
+            100.0;
 
         /* Using getComputedStyle returned values in Pixels, which broke the responsive design.
            The element properties are already set as percentages by now so we can use those and
@@ -300,22 +380,26 @@ function animateSprite(animation)
         topPct += dyPct;
         leftPct += dxPct;
 
-        /* draw the frame */         
-        SCIENTIST.element.style.top = `${topPct}%`;    
-        SCIENTIST.element.style.left = `${leftPct}%`;   
-        SCIENTIST_ELEMENT.style.backgroundPositionX = `-${SCIENTIST["current_frame"] * SCIENTIST["width"]}px`;
-        SCIENTIST_ELEMENT.style.backgroundPositionY = `-${SCIENTIST["current_spritesheet_row"] * SCIENTIST["height"]}px`;
+        /* draw the frame */
+        SCIENTIST.element.style.top = `${topPct}%`;
+        SCIENTIST.element.style.left = `${leftPct}%`;
+        SCIENTIST_ELEMENT.style.backgroundPositionX = `-${
+            SCIENTIST["current_frame"] * SCIENTIST["width"]
+        }px`;
+        SCIENTIST_ELEMENT.style.backgroundPositionY = `-${
+            SCIENTIST["current_spritesheet_row"] * SCIENTIST["height"]
+        }px`;
 
-        if( SCIENTIST.current_frame == SCIENTIST.end_frame )
-        {
+        // No need to key up the next frame if we're on the last one
+        if (SCIENTIST.current_frame == SCIENTIST.end_frame) {
             SCIENTIST.is_animating_now = false;
             return;
-        } 
+        }
 
         /* key up the next frame */
         SCIENTIST.current_frame += SCIENTIST.step;
-        SCIENTIST.timeout_handler = setTimeout(function(){
-            SCIENTIST.animation_handler = requestAnimationFrame( _animateSprite );
+        SCIENTIST.timeout_handler = setTimeout(function () {
+            SCIENTIST.animation_handler = requestAnimationFrame(_animateSprite);
         }, SCIENTIST.FRAME_DURATION_INTERVAL_MS);
     }
 
@@ -331,37 +415,43 @@ function animateSprite(animation)
     SCIENTIST.end_frame = SCIENTIST.animations[animation].end_frame;
     SCIENTIST.step = SCIENTIST.animations[animation].step;
     SCIENTIST.current_spritesheet_row = SCIENTIST.animations[animation].row;
-    SCIENTIST.current_dx = SCIENTIST.animations[SCIENTIST.current_animation].dx_per_frame * SCIENTIST.scale;
-    SCIENTIST.current_dy = SCIENTIST.animations[SCIENTIST.current_animation].dy_per_frame * SCIENTIST.scale;
-    
-    SCIENTIST.animation_handler = requestAnimationFrame( _animateSprite, SCIENTIST.FRAME_DURATION_INTERVAL_MS );
-    
-    
+    SCIENTIST.current_dx =
+        SCIENTIST.animations[SCIENTIST.current_animation].dx_per_frame *
+        SCIENTIST.scale;
+    SCIENTIST.current_dy =
+        SCIENTIST.animations[SCIENTIST.current_animation].dy_per_frame *
+        SCIENTIST.scale;
+
+    /* Start the animation */
+    SCIENTIST.animation_handler = requestAnimationFrame(
+        _animateSprite,
+        SCIENTIST.FRAME_DURATION_INTERVAL_MS
+    );
 }
 
-
-
-function show()
-{
-    SCIENTIST.element.style.display = 'block';
+/* If the scientist is hidden, show him */
+function show() {
+    SCIENTIST.element.style.display = "block";
 }
 
-    
-function hide()
-{
+/* If the scientist is visible, hide him */
+function hide() {
     SCIENTIST.element.style.display = "none";
 }
 
-
-function responsiveResize()
-{
-    console.log("Resize sprite now.")
-    
+/* Resize the Scientist when the screen size changes 
+    This is a bit of a hack, but it works.
+    I was hoping to find another way to do this, but it
+    seems like it can only be done with JavaScript, as 
+    CSS scaling doe snot have an option to scale relative
+    to the container.
+*/
+function responsiveResize() {
+    console.log("Resize sprite now.");
 
     const viewportWidth = window.innerWidth;
     let transform = `scale(1)`;
 
-    
     // transform so the scale is relative in pixel sizes
     // default 80x170px
 
@@ -370,29 +460,46 @@ function responsiveResize()
 
     newHeight = 0.2 * window.innerWidth;
     SCIENTIST.scale = newHeight / SCIENTIST.height;
-    
-    transform = `scale(${SCIENTIST.scale})`;
-    SCIENTIST.element.style.transform=transform;
 
+    transform = `scale(${SCIENTIST.scale})`;
+    SCIENTIST.element.style.transform = transform;
 }
 
 // How do I keep the sprite at the right scale when the screen is resized?
 
+/* This is the main animation loop.  It checks to see what
+   animation commands have been queued and then executes them one
+   at a time. 
+
+   This is my most favorite bit of code in the whole project because it 
+   takes the complexity of animation and reduces it to a simple queue.
+
+   Once you call it for the first time you're golden, the sprite will
+   just keep on animating if there's something to do.
+
+   For example, I issue a pace command, which queues up a series of 
+   walks, and turns, and then another pace command, so the scientist
+   keeps moving forever until he is reset.
+*/
 function manage_animation_queue() {
-    if( ( !SCIENTIST.is_animating_now )  && 
-        ( 0 != SCIENTIST.animation_queue.length ) )
-    {
-        animation = SCIENTIST.animation_queue.shift()
-        animateSprite(animation)
+    if (!SCIENTIST.is_animating_now && 0 != SCIENTIST.animation_queue.length) {
+        animation = SCIENTIST.animation_queue.shift();
+        animateSprite(animation);
     }
 
     SCIENTIST.timeout_handler = setTimeout(manage_animation_queue, 100);
 }
 
+
+/* Add an animation to the queue */
 function add_to_animation_queue(animation) {
-    SCIENTIST.animation_queue.push(animation)
+    SCIENTIST.animation_queue.push(animation);
 }
 
+/* The pace command queues up a series, of 
+   turns and walks, and then another pace command.
+   It keeps the scientist constantly moving.
+*/
 function pace() {
     add_to_animation_queue("TURN_LEFT_TO_BACK");
     add_to_animation_queue("TURN_BACK_TO_RIGHT");

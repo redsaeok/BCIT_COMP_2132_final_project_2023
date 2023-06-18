@@ -1,5 +1,641 @@
 [
     {
+        "word" : "HATCHBACK",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "SEDAN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "COUPE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "CONVERTIBLE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "SPORTS",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "STATION WAGON",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "MINIVAN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "PICKUP",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "SUV",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "LIMOUSINE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "HUMMER",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "BUGATTI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "FERRARI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "LAMBORGHINI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "MASERATI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "PORSCHE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "ASTON MARTIN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "ROLLS ROYCE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "BENTLEY",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "MAYBACH",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "CADILLAC",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "LINCOLN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "CHEVROLET",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "FORD",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "DODGE",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "JEEP",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "TOYOTA",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "HONDA",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "NISSAN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "HYUNDAI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "KIA",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "VOLKSWAGEN",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "BMW",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "MERCEDES BENZ",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "AUDI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "LEXUS",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "INFINITI",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "ACURA",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "SUBARU",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "MAZDA",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "VOLVO",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "SAAB",
+        "hint" : "Type of car"
+    },
+    {
+        "word" : "JAGUAR",
+        "hint" : "Type of car"
+    },
+    {   
+        "word" : "DOCTOR",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "TEACHER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "LAWYER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "POLICE",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "FIREMAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PILOT",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "NURSE",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "DENTIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ENGINEER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "SCIENTIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ACCOUNTANT",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "MECHANIC",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "CHEF",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ARTIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ACTOR",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "SINGER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "DANCER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "WRITER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "BANKER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "BUTCHER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "CASHIER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "CLOWN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "COACH",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "COUNSELOR",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "DIPLOMAT",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ELECTRICIAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "FARMER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "FLORIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "JUDGE",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "LIBRARIAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "MUSICIAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "OPTICIAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PHARMACIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PHOTOGRAPHER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PILOT",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PLUMBER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "PSYCHOLOGIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "RECEPTIONIST",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "REPORTER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "SALESPERSON",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "SECRETARY",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "SOLDIER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "TAILOR",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "VETERINARIAN",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "WAITER",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "WAITRESS",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ZOOKEEPER",
+        "hint" : "CAREER"
+    },
+    {   
+        "word" : "MECHANIC",
+        "hint" : "CAREER"
+    },
+    {
+        "word" : "ONCOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "PEDIATRICS",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "DERMATOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "NEUROLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "OPHTHALMOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "PATHOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "RADIOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "UROLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "ANESTHESIOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "CARDIOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "ENDOCRINOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "GASTROENTEROLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "HEMATOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "NEPHROLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "ONCOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "PULMONOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "RHEUMATOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "TOXICOLOGY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "VETERINARY",
+        "hint" : "Field of medicine"
+    },
+    {
+        "word" : "BIOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "CHEMISTRY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "PHYSICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ASTRONOMY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "GEOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "METEOROLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "PSYCHOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "SOCIOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ANTHROPOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ARCHAEOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ECONOMICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "HISTORY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "LINGUISTICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "POLITICAL",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "SCIENCE",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ZOOLOGY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "BOTANY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "GENETICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "MATHEMATICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "PHILOSOPHY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "STATISTICS",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "ANATOMY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "BIOCHEMISTRY",
+        "hint" : "Field of science"
+    },
+    {
+        "word" : "DOLLAR",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "EURO",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "YEN",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "POUND",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "FRANC",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "PESO",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RUPEE",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "LIRA",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "REAL",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RUBLE",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "YUAN",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "DINAR",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "KRONA",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "PULA",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "SHILLING",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "BAHT",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "FORINT",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "KRONER",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "LEU",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "LIRA",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "PESO",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RAND",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RIAL",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RUBLE",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "RUPEE",
+        "hint" : "Currency"
+    },
+    {
+        "word" : "YUAN",
+        "hint" : "Currency"
+    },
+    {
         "word" : "BANANA",
         "hint" : "A yellow fruit"
     },

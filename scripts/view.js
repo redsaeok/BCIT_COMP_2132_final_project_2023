@@ -1,103 +1,23 @@
 const CLOSE_INSTRUCTIONS = document.getElementById("close_instructions");
 const CLOSE_WINNING = document.getElementById("close_winning");
 const CLOSE_LOSING = document.getElementById("close_losing");
-const CODE_WORD = document.getElementById("dCodeWord");
 const WIN_DIALOG = document.getElementById("win-dialog");
 const LOSE_DIALOG = document.getElementById("lose-dialog");
-
-const VW_MONITOR_1 = document.getElementById("monitor-1");
-const MONITOR_1_IMAGE_COUNT = 16;
-const MONITOR_1_BACKGROUND_PREFIX = "../";
-
-const VW_MONITOR_3 = document.getElementById("monitor-3");
-const MONITOR_3_PHASE_1_ROWS = 4;
-const MONITOR_3_PHASE_1_COLUMNS = 12;
-let monitor3Phase = 1;
-let monitor3Row = 0;
-let monitor3Column = 0;
 
 const SP_HINT = document.getElementById("spHint");
 const SP_ELIMINATED = document.getElementById("spEliminated");
 
-// Update Monitor 1 Every 1.5 seconds
-const MONITOR_1_UPDATE_INTERVAL_MS = 1500;
-const MONITOR_3_UPDATE_INTERVAL_MS = 200;
-let monitor1ImageIndex = 1;
-let monitor1TimeoutHandler = null;
-let monitor3TimeoutHandler = null;
-let monitor3AnimationHanlder = null;
 
-
-DEFCON_COLOR = {
-    "6": "blue", 
-    "5": "blue",
-    "4": "green",
-    "3": "yellow",
-    "2": "red",
-    "1": "white",
-    "0": "white"
-}
-
-function resetMonitor1Background()
-{
-    monitor1ImageIndex = 1;
-    VW_MONITOR_1.style.backgroundImage = `url("images/mon1-${monitor1ImageIndex}.png")`;
-}
-
-function updateMonitor1Background()
-{
-    monitor1ImageIndex = Math.max( 1, ( monitor1ImageIndex + 1 ) % MONITOR_1_IMAGE_COUNT );
-    VW_MONITOR_1.style.backgroundImage = `url("images/mon1-${monitor1ImageIndex}.png")`;
-    monitor1TimeoutHandler = setTimeout(updateMonitor1Background, MONITOR_1_UPDATE_INTERVAL_MS);
-}
-
-/*
-function updateMonitor3Background()
-{ 
-
-    VW_MONITOR_3.style.backgroundImage = `url("images/slice_${monitor3Row}_${monitor3Column}.gif")`;
-    
-    monitor3Column = ( monitor3Column + 1 );
-    if( MONITOR_3_PHASE_1_COLUMNS == monitor3Column )
-    {
-        monitor3Column = 0;
-        monitor3Row = ( monitor3Row + 1 ) % MONITOR_3_PHASE_1_ROWS;
-    }    
-
-    monitor3TimeoutHandler = setTimeout(function() {
-        monitor3AnimationHandler = requestAnimationFrame(updateMonitor3Background)
-    }, MONITOR_3_UPDATE_INTERVAL_MS);
-}
+/* 
+*   Monitor 2.
+*   This is the monitor that shows the guess text box (when troubleshooting),
+*   the guess button, and the letters that have been eliminated.
+*
+*   The guess button is disabled when the game is over.
+*
+*   It is essential for the desktop view, where the virtual keyboard is not
+*   visible, so that users know which letters have been eliminated.
 */
-
-
-
-function updateDefconLevel()
-{
-    let defconLevel = (MAX_NUMBER_OF_BAD_GUESSES - gameState.numberOfBadGuesses);
-
-    if( null == monitor1TimeoutHandler && 1 == gameState.numberOfBadGuesses){
-        monitor1TimeoutHandler = setTimeout(updateMonitor1Background, MONITOR_1_UPDATE_INTERVAL_MS);
-    }
-
-    // Never let the defcon level get below 1;
-    if( defconLevel < 1 )
-    {
-        defconLevel =1;
-    }
-
-    pTimer.innerHTML = "";
-    if( gameState.numberOfBadGuesses == 0 )
-    {
-        return;
-    } 
-    
-    pTimer.innerHTML = "" + (MAX_NUMBER_OF_BAD_GUESSES - gameState.numberOfBadGuesses);
-    root.style.setProperty("--defcon-color", DEFCON_COLOR[defconLevel]);
-    console.log(`Setting defcon ${defconLevel} color ${DEFCON_COLOR[defconLevel]}` );
-    
-}
-
 
 function updateEliminated()
 {
@@ -106,18 +26,49 @@ function updateEliminated()
 }
 
 
+/*
+*   Shows whether game is starting, in progress, won, or list.
+*   Was used for initial testing, might still be useful for debugging later.
+*   The field is currently hidden by default.
+*/
 function updateState()
 {
     return;
     pGameState.innerHTML = gameState.state;
 }
 
+/*
+*   Shows the user any errors that are thrown during the game.
+*
+*   On the plus side, there are no serious errors, and ones that were
+*   first possible, are no longer possible.  Most of these had to do
+*   with giving the guess bad input, like multiple letters, a lowercase
+*   letter, punctuation, etc.  After input was limited to the keyboard
+*   or virtual keyboard they were no longer possible.  It still shows
+*   when you try the same letter twice, but that's also covered by 
+*   the virtual keyboard which greys out previously tried letters, or
+*   the second monitor on the desktop view which shows the eliminated
+*   letters.
+*/
 function updateError(message)
 {
     pError.innerHTML = message;
 }
 
-// updateMonitor3Background();
+
+
+/*
+*   User Dialogs
+*
+*   These are the dialogs that pop up when the game is started, won, 
+*   or lost.  They are hidden by default, and shown when the game is
+*   started, won, or lost.  
+*
+*   In theory they could just be a single dialog, that would reduce
+*   our CSS/HTML a bit, but increase JavaScript.  If I need to add
+*   another dialog (probably not at this point), I'll probably
+*   switch it.
+*/
 
 function hideInstructions() {
     instructions.style.display = "none";
@@ -161,6 +112,18 @@ function showLoseDialog() {
 }
 
 
+
+/*
+*   Virtual Keyboard
+*
+*   This is the virtual keyboard that is shown on mobile devices.
+*   It is hidden by default, and shown when the screen size is reduced.
+*
+*   This function is called after every guess to indicate which
+*   letters have been selected.
+*/
+
+
 function updateVirtualKB()
 {
     gameState.selectedLetters.forEach(letter => {
@@ -169,6 +132,14 @@ function updateVirtualKB()
     })
 }
 
+
+/*
+*   Full Screen Defcon Level 
+*
+*   This Defcon level appears after a bad guess, and flashes up accross
+*   the entire screen.  It was added because the header on monitor 1
+*   was too small to be noticed, and not visible at all in the mobile view.
+*/
 
 
 function flashDefconLevel(defconLevel) 
@@ -205,10 +176,14 @@ function flashDefconLevel(defconLevel)
         setTimeout(hideDefconLevel, 500);
     }
     
-
-
     showDefconLevel(defconLevel);
 }
+
+// Event listeners for the user dialogs to hide the dialog when closed.
+// Should also consider adding a close button at the bottom, my younger
+// testers had no problem x'ing out the window, but it was confusing
+// for my older testers (respectfully Larry you still do better than 
+// many of your generation with technology).
 
 CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
 CLOSE_LOSING.addEventListener("click", hideLoseDialog);

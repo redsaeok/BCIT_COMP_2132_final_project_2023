@@ -1,198 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>Thermonuclear Hangman</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" href="css/spinner.css">
-    <script src="https://kit.fontawesome.com/3622acbac1.js" crossorigin="anonymous"></script>
-    <script src="./scripts/letter.js" defer></script>
-    <script src="./scripts/word_dictionary.js" defer></script>
-    <script src="./scripts/game_state.js" defer></script>    
-    <script src="./scripts/scientistsprite.js" defer></script>
-    <script src="./scripts/vw_spinner.js" defer></script>
-    <script src="./scripts/vw_world.js" defer></script>
-    <script src="./scripts/vw_codeword.js" defer></script>
-    <script src="./scripts/view.js" defer></script>
-    <script src="./scripts/controller.js" defer></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Thermonuclear Hangman</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" href="css/spinner.css" />
+        <script
+            src="https://kit.fontawesome.com/3622acbac1.js"
+            crossorigin="anonymous"
+        ></script>
 
+        <!-- The Model -->
+        <script src="./scripts/letter.js" defer></script>
+        <script src="./scripts/word_dictionary.js" defer></script>
+        <script src="./scripts/game_state.js" defer></script>
 
-    <div id="spinner-container">
-        <div class="loadingio-spinner-double-ring-7lnqpat77k8">
-            <div class="ldio-zsbx54d9tfp">
-                <div></div>
-                <div></div>
-                <div>
+        <!-- The View -->
+        <script src="./scripts/vw_defcon_color.js" defer></script>
+        <script src="./scripts/vw_monitor1.js" defer></script>
+        <script src="./scripts/vw_monitor3.js" defer></script>
+        <script src="./scripts/scientistsprite.js" defer></script>
+        <script src="./scripts/vw_spinner.js" defer></script>
+        <script src="./scripts/vw_world.js" defer></script>
+        <script src="./scripts/vw_codeword.js" defer></script>
+        <script src="./scripts/view.js" defer></script>
+
+        <!-- The Controller -->
+        <script src="./scripts/controller.js" defer></script>
+    </head>
+    <body>
+        <!-- Useful to show the mobile users when the scientist is animating on the desktop -->
+        <div id="spinner-container">
+            <div class="loadingio-spinner-double-ring-7lnqpat77k8">
+                <div class="ldio-zsbx54d9tfp">
                     <div></div>
-                </div>
-                <div>
+                    <div></div>
+                    <div>
                         <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
                 </div>
-            </div></div>
+            </div>
         </div>
-    </div>
 
+        <!-- The main game window -->
+        <div id="mission-control-center">
+            <!-- This is flashed up on the screen after wrong guesses 
+                It is essential for mobile users, and is more noticeable
+                than the header on the first monitor for desktop users  -->
+            <div id="defcon-level" class="hide_me">
+                <div id="defcon-level-text">1</div>
+            </div>
 
-    <div id="mission-control-center">
-        
-        <div id="defcon-level" class="hide_me">
-            <div id="defcon-level-text">1</div>
-        </div>  
+            <!-- might use a flex to lay these out too-->
+            <!-- Monitors are only visible for Desktop Users (screen width > 900)-->
+            <!-- Monitor 1 shows the defcon level -->
+            <div id="monitor-1">
+                <h4 id="h3-defcon-level">
+                    DEFCON LEVEL <span id="pTimer" class=""></span>
+                </h4>
+                <!--div id="dTimer"><span id="pTimer"></span></div-->
+            </div>
 
-        <!-- might use a flex to lay these out too-->
-        <div id="monitor-1">
-            <h4 id="h3-defcon-level">DEFCON LEVEL <span id="pTimer" class=""></span></h4>
-            <!--div id="dTimer"><span id="pTimer"></span></div-->
-        </div>
-            
-        <div id="monitor-2">
-            <div>
-                <p>
-                    Use keyboard to guess.<br>
-                    Guesses: <span id = "spEliminated"></span>
-                </p>
-                <button id="btnReset">Reset <i class="fa fa-refresh" aria-hidden="true" ></i> </button>
-            <div class="hide_me">
-                <!-- I don't really need this anymore, but it's useful as a data store and 
+            <!-- Monitor 2 shows the game state 
+                Including controls for guessing letters, which letters have been
+                selected, and the number of guesses remaining.  Originally, 
+                everything was done here, but it's too small for that -->
+            <div id="monitor-2">
+                <div>
+                    <p>
+                        Use keyboard to guess.<br />
+                        Guesses: <span id="spEliminated"></span>
+                    </p>
+                    <button id="btnReset">
+                        Reset <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+                    <div class="hide_me">
+                        <!-- I don't really need this anymore, but it's useful as a data store and 
                      could be useful for testing -->
-                <input type="text" id="txtGuess">
-                <button id="btnGuess">Guess</button>
-                <div><p id="pGameState"></p></div>
+                        <input type="text" id="txtGuess" />
+                        <button id="btnGuess">Guess</button>
+                        <div><p id="pGameState"></p></div>
+                    </div>
+                </div>
             </div>
-            
-            
-        </div>
 
-        </div>
-        <div id="monitor-3"><div class="world" id="world"></div></div>
+            <!-- Monitor 3 shows the world map -->
+            <div id="monitor-3"><div class="world" id="world"></div></div>
 
-        <div id="dCodeWord">            
-            <div id="dHint">Hint: <span id="spHint"></span></div><p id="pWordDisplay"></p>            
-        </div>
-
-        <!--div id="scientist"></div-->
+            <!-- The code word has the focus of the display and show the 
+                word we're trying to guess. -->
+            <div id="dCodeWord">
+                <div id="dHint">Hint: <span id="spHint"></span></div>
+                <p id="pWordDisplay"></p>
+            </div>
 
 
-        <div id="sprite-scientist"></div>
+            <!-- The scientist is animated on the desktop, and is hidden on mobile -->
+            <!-- This was a little extra challenge I was trying to figure out to make 
+                some Javascript games -->
+            <div id="sprite-scientist"></div>
 
+            <!-- I should consider creating a generic message box -->
+            <div id="instructions">
+                <div id="close_instructions">
+                    <i
+                        id="btnCloseInstructions"
+                        class="fa-solid fa-rectangle-xmark hover"
+                    ></i>
+                </div>
 
-        <!-- I should consider creating a generic message box -->
-        <div id="instructions">
-            <div id="close_instructions" ><i id="btnCloseInstructions" class="fa-solid fa-rectangle-xmark hover"></i></div>
-            
-            <h1>Greetings Professer Falken.</h1>
+                <h1>Greetings Professer Falken.</h1>
 
-            <!--p>It's been a long time.  Would you like to play a game?</p-->
+                <!--p>It's been a long time.  Would you like to play a game?</p-->
 
-            <p>
-                Our WOPR supercomputer has detected a nuclear missile launch.  The American and Russian nuclear 
-                systems have been tampered with, setting off a series of events that could lead to complete devastation by
-                thermolnuclear war.
-            </p>
+                <p>
+                    Our WOPR supercomputer has detected a nuclear missile
+                    launch. The American and Russian nuclear systems have been
+                    tampered with, setting off a series of events that could
+                    lead to complete devastation by thermonuclear war.
+                </p>
 
-            <p>
-                The codes to disarm the nuclear weapons have been jumbled up, making it challenging to decipher them.  
-                Can you assist us in descrambling them, prevent catastrophe, and save us all?
-            </p>
-            <p>
-                To assist with your efforts, we have provided a hint. Each incorrect guess
-                decreases the Defcon level.  Solve the puzzle on or before Defcon 1 to disarm the nuclear missiles.
-            </p>
+                <p>
+                    The codes to disarm the nuclear weapons have been jumbled
+                    up, making it challenging to decipher them. Can you assist
+                    us with unscrambling them, prevent catastrophe, and save us
+                    all?
+                </p>
+                <p>
+                    To assist with your efforts, we have provided a hint. Each
+                    incorrect guess decreases the Defcon level. Solve the puzzle
+                    on or before Defcon 1 to disarm the nuclear missiles.
+                </p>
 
-            <p>
-                Close this window, then press a key to begin guessing. 
-            </p>
+                <p>Close this window, then press a key to begin guessing.</p>
+            </div>
 
+            <div id="win-dialog">
+                <div id="close_winning">
+                    <i
+                        id="btnCloseWinning"
+                        class="fa-solid fa-rectangle-xmark hover"
+                    ></i>
+                </div>
 
-        </div>
+                <h1>You Win!</h1>
 
+                <p>
+                    Congratulations on your outstanding achievement! You have
+                    successfully completed the game with remarkable skill and
+                    determination. Your perseverance and strategic thinking
+                    have paid off, leading you to triumph over the challenges
+                    presented to you. Your remarkable performance is truly
+                    commendable, and you should take pride in your
+                    accomplishment. Well done!
+                </p>
+            </div>
 
-        <div id="win-dialog">
-            <div id="close_winning" ><i id="btnCloseWinning" class="fa-solid fa-rectangle-xmark hover"></i></div>
-            
-            <h1>You Win!</h1>
+            <div id="lose-dialog">
+                <div id="close_losing">
+                    <i
+                        id="btnCloseLosing"
+                        class="fa-solid fa-rectangle-xmark hover"
+                    ></i>
+                </div>
 
-            <p>
-                Congratulations on your outstanding achievement!  You have sccessfully comleted the 
-                game with remarkable skill and determination.  Your perserverance and strategic thinking
-                have paid off, leading you to triumph over the challenges presented to you.  Your remarkable
-                performance is truly commendable, and you should take pride in your accomplishment. Well
-                done!
-            </p>
+                <h1>All is Lost!</h1>
 
-        </div>
-        
-        
-        <div id="lose-dialog">
-            <div id="close_losing" ><i id="btnCloseLosing" class="fa-solid fa-rectangle-xmark hover"></i></div>
-            
-            <h1>All is Lost!</h1>
+                <p>
+                    Your valiant efforts did not result in a successful outcome.
+                    Despite your best intentions and considerable effort, the
+                    challenges provided to be too formidable. It is important to
+                    remember that failure is an opportunity for growth and
+                    learning. By participating in this game, you have showcased
+                    your willingness to take on challenges and demonstrated
+                    resilience in the face of adversity. We encourage you to
+                    continue your pursuit of excellence and wish you the best in
+                    future endeavors.
+                </p>
+            </div>
 
-            <p>
-                Your valiant efforts did not result in a successful outcome.  Despite your best 
-                intentions and considerable effort, the challenges provied to be too
-                formidable. It is important to remember that failure is an opportunity for growth and
-                learning. By participating in this game, you have shwocased your willingness to take on
-                challenges and demonstrated resillence in the face of adversity. We encourage you
-                to continue your pursuit of excellence and wish you the best in future endeavors.
-            </p>
+            <!-- The reset button for mobile.  Monitor 2 is hidden so we're
+            adding another one here-->
+            <div id="dMobileResetFlex">
+                <div>
+                    <button id="btnMobileReset">
+                        Reset <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
 
-        </div>        
+            <!-- The virtual keyboard is only visible for mobile users (screen width < 900)-->
+            <!-- This code was generated using JavaScript, then pasted here as static HTML -->
+            <div id="kb_container">
+                <div class="kb_row">
+                    <div id="key_Q" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">Q</div>
+                        </div>
+                    </div>
+                    <div id="key_W" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">W</div>
+                        </div>
+                    </div>
+                    <div id="key_E" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">E</div>
+                        </div>
+                    </div>
+                    <div id="key_R" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">R</div>
+                        </div>
+                    </div>
+                    <div id="key_T" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">T</div>
+                        </div>
+                    </div>
+                    <div id="key_Y" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">Y</div>
+                        </div>
+                    </div>
+                    <div id="key_U" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">U</div>
+                        </div>
+                    </div>
+                    <div id="key_I" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">I</div>
+                        </div>
+                    </div>
+                    <div id="key_O" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">O</div>
+                        </div>
+                    </div>
+                    <div id="key_P" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">P</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kb_row">
+                    <div id="key_A" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">A</div>
+                        </div>
+                    </div>
+                    <div id="key_S" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">S</div>
+                        </div>
+                    </div>
+                    <div id="key_D" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">D</div>
+                        </div>
+                    </div>
+                    <div id="key_F" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">F</div>
+                        </div>
+                    </div>
+                    <div id="key_G" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">G</div>
+                        </div>
+                    </div>
+                    <div id="key_H" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">H</div>
+                        </div>
+                    </div>
+                    <div id="key_J" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">J</div>
+                        </div>
+                    </div>
+                    <div id="key_K" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">K</div>
+                        </div>
+                    </div>
+                    <div id="key_L" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">L</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kb_row">
+                    <div id="key_Z" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">Z</div>
+                        </div>
+                    </div>
+                    <div id="key_X" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">X</div>
+                        </div>
+                    </div>
+                    <div id="key_C" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">C</div>
+                        </div>
+                    </div>
+                    <div id="key_V" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">V</div>
+                        </div>
+                    </div>
+                    <div id="key_B" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">B</div>
+                        </div>
+                    </div>
+                    <div id="key_N" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">N</div>
+                        </div>
+                    </div>
+                    <div id="key_M" class="kb_key">
+                        <div class="key_face">
+                            <div class="key_letter">M</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div id="dMobileResetFlex">
-            <div>
-                <button id="btnMobileReset">Reset <i class="fa fa-refresh" aria-hidden="true" ></i> </button>
+            <!-- Shows exception error messages thrown by the model.  Not really
+            needed any more, but it reminds me of the 90s, so I'm keeping it. -->
+            <div id="status-bar">
+                <div><span id="pError"></span></div>
             </div>
         </div>
-
-        <div id="kb_container">
-            <div class="kb_row">
-                <div id="key_Q" class="kb_key"><div class="key_face"><div class="key_letter">Q</div></div></div>
-                <div id="key_W" class="kb_key"><div class="key_face"><div class="key_letter">W</div></div></div>
-                <div id="key_E" class="kb_key"><div class="key_face"><div class="key_letter">E</div></div></div>
-                <div id="key_R" class="kb_key"><div class="key_face"><div class="key_letter">R</div></div></div>
-                <div id="key_T" class="kb_key"><div class="key_face"><div class="key_letter">T</div></div></div>
-                <div id="key_Y" class="kb_key"><div class="key_face"><div class="key_letter">Y</div></div></div>
-                <div id="key_U" class="kb_key"><div class="key_face"><div class="key_letter">U</div></div></div>
-                <div id="key_I" class="kb_key"><div class="key_face"><div class="key_letter">I</div></div></div>
-                <div id="key_O" class="kb_key"><div class="key_face"><div class="key_letter">O</div></div></div>
-                <div id="key_P" class="kb_key"><div class="key_face"><div class="key_letter">P</div></div></div>
-            </div>
-            <div class="kb_row">
-                <div id="key_A" class="kb_key"><div class="key_face"><div class="key_letter">A</div></div></div>
-                <div id="key_S" class="kb_key"><div class="key_face"><div class="key_letter">S</div></div></div>
-                <div id="key_D" class="kb_key"><div class="key_face"><div class="key_letter">D</div></div></div>
-                <div id="key_F" class="kb_key"><div class="key_face"><div class="key_letter">F</div></div></div>
-                <div id="key_G" class="kb_key"><div class="key_face"><div class="key_letter">G</div></div></div>
-                <div id="key_H" class="kb_key"><div class="key_face"><div class="key_letter">H</div></div></div>
-                <div id="key_J" class="kb_key"><div class="key_face"><div class="key_letter">J</div></div></div>
-                <div id="key_K" class="kb_key"><div class="key_face"><div class="key_letter">K</div></div></div>
-                <div id="key_L" class="kb_key"><div class="key_face"><div class="key_letter">L</div></div></div>
-            </div>
-            <div class="kb_row">
-                <div id="key_Z" class="kb_key"><div class="key_face"><div class="key_letter">Z</div></div></div>
-                <div id="key_X" class="kb_key"><div class="key_face"><div class="key_letter">X</div></div></div>
-                <div id="key_C" class="kb_key"><div class="key_face"><div class="key_letter">C</div></div></div>
-                <div id="key_V" class="kb_key"><div class="key_face"><div class="key_letter">V</div></div></div>
-                <div id="key_B" class="kb_key"><div class="key_face"><div class="key_letter">B</div></div></div>
-                <div id="key_N" class="kb_key"><div class="key_face"><div class="key_letter">N</div></div></div>
-                <div id="key_M" class="kb_key"><div class="key_face"><div class="key_letter">M</div></div></div>
-            </div>
-        </div>
-
-        <script>
-
-        </script>
-
-        <div id="status-bar"><div><span id="pError"></span></div></div>
-    </div>
-    
-</body>
+    </body>
 </html>

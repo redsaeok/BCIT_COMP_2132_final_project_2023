@@ -1,5 +1,4 @@
 const root = document.documentElement;
-const pTimer = document.getElementById("pTimer");
 const pGameState = document.getElementById("pGameState");
 const pError = document.getElementById("pError");
 const txtGuess = document.getElementById("txtGuess");
