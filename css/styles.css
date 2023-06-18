@@ -351,6 +351,8 @@ body {
 }
 
 #kb_container{
+    position: absolute;
+    bottom: 1rem;
     padding-top: 5vh;
     visibility: hidden;
     display: none;    
