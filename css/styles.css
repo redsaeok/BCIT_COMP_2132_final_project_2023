@@ -399,6 +399,11 @@ body {
     /*background-color: blue;*/
 }
 
+#how-to-type {
+    max-width: 15%;
+    border: 2px solid red;
+}
+
 
 @keyframes blinker {
     50% {

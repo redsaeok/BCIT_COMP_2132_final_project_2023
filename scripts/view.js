@@ -14,6 +14,7 @@ const SP_ELIMINATED = document.getElementById("spEliminated");
 
 let onGenericDialogClose = null;
 
+const SHOW_HELP_TIMEOUT_MS = 5000;
 
 /* The dialog text should be externalized so that it can be localized, and changed outside of the code. */
 /* I could move this to another JSON data file to keep it inline with the course material. */
@@ -55,9 +56,12 @@ const HOW_TO_PLAY = `
         in the code.  If it is incorrect, the Defcon level will
         decrease by one.  If the Defcon level reaches 1, the
         nuclear missiles will launch, and the game will be over.
-
+    </p>
+    <p>
         Hint: You can see the number of letters in the word by
-        counting the number of scrambled letters in the code.        
+        counting the number of scrambled letters in the code. 
+    </p> 
+        <img id="how-to-type" src="images/how_to_type.gif" alt="How to Type" />
     </p>`;
 
 
@@ -158,13 +162,24 @@ function hideInstructions() {
     add_to_animation_queue("TURN_FRONT_TO_LEFT");
     add_to_animation_queue("WALK_LEFT");
     add_to_animation_queue("PACE")
+    setTimeout(showHowToPlay, SHOW_HELP_TIMEOUT_MS);
 }
 
 function showInstructions() {
     console.log("Show Instructions");
     hideSpinner();
     onGenericDialogClose = hideInstructions;
-    showGenericDialog(INTRO_TEXT);
+    showGenericDialog(INTRO_TEXT);    
+}
+
+function showHowToPlay() {
+    // Only show the additional how to play instructions if a guess hasn't been made
+    if( 0 != gameState.selectedLetters.length ) {
+        return; 
+    }
+
+    console.log("Show How to Play");
+    showGenericDialog(HOW_TO_PLAY);
 }
 
 
