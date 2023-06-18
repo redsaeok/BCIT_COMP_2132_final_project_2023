@@ -139,12 +139,6 @@ function updateError(message)
 */
 
 function hideInstructions() {
-    /*
-    instructions.style.display = "none";
-    instructions.style.visibility = "hidden";
-    instructions.style.opacity = 0;
-    instructions.style.zIndex = -1;
-    */
     animateWordDisplay();
     add_to_animation_queue("TURN_FRONT_TO_LEFT");
     add_to_animation_queue("WALK_LEFT");
@@ -156,13 +150,6 @@ function showInstructions() {
     hideSpinner();
     onGenericDialogClose = hideInstructions;
     showGenericDialog(INTRO_TEXT);
-
-    /*
-    instructions.style.display = "inline-block";
-    instructions.style.visibility = "visible";
-    instructions.style.opacity = 0.95;
-    instructions.style.zIndex = 5;
-    */
 }
 
 
@@ -276,14 +263,6 @@ function flashDefconLevel(defconLevel)
 // testers had no problem x'ing out the window, but it was confusing
 // for my older testers (respectfully Larry you still do better than 
 // many of your generation with technology).
-
-
-
-/*
-CLOSE_INSTRUCTIONS.addEventListener("click", hideInstructions);
-CLOSE_LOSING.addEventListener("click", hideLoseDialog);
-CLOSE_WINNING.addEventListener("click", hideWinDialog);
-*/ 
 
 CLOSE_GENERIC_DIALOG_BOTTOM.addEventListener("click", hideGenericDialog);
 CLOSE_GENERIC_DIALOG_TOP.addEventListener("click", hideGenericDialog);
