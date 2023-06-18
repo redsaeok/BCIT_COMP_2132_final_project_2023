@@ -90,6 +90,7 @@ function reset()
 
     /* Reset the game state model */
     gameState.reset();
+    updateMobileMonitor();
     start();
 
 }
@@ -121,7 +122,7 @@ function guessLetter()
         flashDefconLevel(MAX_NUMBER_OF_BAD_GUESSES-gameState.numberOfBadGuesses);
     }
 
-    
+    updateMobileMonitor();
     updateVirtualKB();
     updateWordDisplay();
     updateEliminated();

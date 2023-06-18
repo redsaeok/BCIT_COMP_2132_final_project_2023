@@ -4,6 +4,8 @@ const CLOSE_LOSING = document.getElementById("close_losing");
 const WIN_DIALOG = document.getElementById("win-dialog");
 const LOSE_DIALOG = document.getElementById("lose-dialog");
 
+const MOBILE_MONITOR = document.getElementById("mobile-monitor");
+
 const GENERIC_DIALOG = document.getElementById("generic-dialog");
 const GENERIC_DIALOG_CONTENT = document.getElementById("generic-dialog-content");
 const CLOSE_GENERIC_DIALOG_TOP = document.getElementById("close-generic-dialog");
@@ -146,6 +148,13 @@ function updateError(message)
 
 
 
+function updateMobileMonitor()
+{
+    MOBILE_MONITOR.style.backgroundImage = `url("images/stage${gameState.numberOfBadGuesses}.gif")`;
+}
+
+
+
 /*
 *   User Dialogs
 *
@@ -223,6 +232,7 @@ function showLoseDialog() {
     loseText = loseText.replace("##CODE_WORD##", gameState.wordToGuess);
     showGenericDialog(loseText);
 }
+
 
 
 

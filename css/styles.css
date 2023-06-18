@@ -156,6 +156,11 @@ body {
     text-align: left;
 }
 
+#mobile-monitor {
+    display: none;
+    visibility: hidden;
+}
+
 #monitor-1{
     box-sizing: border-box;
     position: absolute;
@@ -428,6 +433,26 @@ body {
         background-position: center;
         overflow: visible;
     }
+
+    #mobile-monitor {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        visibility: visible;     
+        max-width: 360px;
+        max-height: 200px;   
+        width: 90vw;
+        height: calc( ( 360.0 / 200.0 ) * 90vw);
+        
+        left: calc(50vw - 180px);
+        border: 3px solid gray;
+        border-radius: 5px;
+        background-image: url('../images/stage0.gif');
+        background-repeat:no-repeat;
+        background-size:cover;
+        margin-bottom: 1rem;
+    }
+    
 
     #defcon-level {
         top: 0%;
