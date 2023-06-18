@@ -25,7 +25,7 @@
 */
 
 const OVERRIDE_COMMANDS = {
-    SHOW_INSTRUCTIONS: showInstructions,
+    SHOW_INSTRUCTIONS: null
 };
 
 const SCIENTIST_ELEMENT = document.getElementById("sprite-scientist");
@@ -256,7 +256,7 @@ const SCIENTIST = JSON.parse(JSON_SPRITE_SCIENTIST);
     It's not a huge priority for me, and I'm probably not going to fix it,
     but it's worth noting, uggo, and worth fixing if/when I create a generic
     sprite object.
-*/
+
 
 function showInstructions() {
     console.log("Show Instructions");
@@ -265,6 +265,8 @@ function showInstructions() {
     instructions.style.opacity = 0.95;
     instructions.style.zIndex = 5;
 }
+*/
+
 
 /*
     Setup the sprite object.

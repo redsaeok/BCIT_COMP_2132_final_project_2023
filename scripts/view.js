@@ -147,21 +147,13 @@ function hideInstructions() {
     add_to_animation_queue("PACE")
 }
 
-/*
-function hideWinDialog() {
-    WIN_DIALOG.style.display = "none";
-    WIN_DIALOG.style.visibility = "hidden";
-    WIN_DIALOG.style.opacity = 0;
-    WIN_DIALOG.style.zIndex = -1;
+function showInstructions() {
+    console.log("Show Instructions");
+    instructions.style.display = "inline-block";
+    instructions.style.visibility = "visible";
+    instructions.style.opacity = 0.95;
+    instructions.style.zIndex = 5;
 }
-
-function hideLoseDialog() {    
-    LOSE_DIALOG.style.display = "none";
-    LOSE_DIALOG.style.visibility = "hidden";
-    LOSE_DIALOG.style.opacity = 0;
-    LOSE_DIALOG.style.zIndex = -1;
-}
-*/
 
 
 function hideGenericDialog() {
@@ -184,25 +176,11 @@ function showGenericDialog(content) {
 function showWinDialog() {
     console.log("Show Win Dialog");
     showGenericDialog(WIN_TEXT);
-
-    /*
-    WIN_DIALOG.style.display = "inline-block";
-    WIN_DIALOG.style.visibility = "visible";
-    WIN_DIALOG.style.opacity = 0.95;
-    WIN_DIALOG.style.zIndex = 5;
-    */
 }
 
 function showLoseDialog() {
     console.log("Show Lose Dialog");
     showGenericDialog(LOSE_TEXT);
-
-    /*
-    LOSE_DIALOG.style.display = "inline-block";
-    LOSE_DIALOG.style.visibility = "visible";
-    LOSE_DIALOG.style.opacity = 0.95;
-    LOSE_DIALOG.style.zIndex = 5;
-    */
 }
 
 

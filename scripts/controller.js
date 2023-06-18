@@ -178,6 +178,10 @@ function submitVirtualKBPress()
 *   Bind functions to controls
 */
 
+// I should make this an attribute of the scientist
+// the name here is too generic
+OVERRIDE_COMMANDS.SHOW_INSTRUCTIONS = showInstructions;
+
 // No longer visible, useful for testing
 btnGuess.addEventListener("click", guessLetter);
 
