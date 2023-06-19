@@ -140,9 +140,11 @@ function guessLetter()
 
     if( gameState.isWon )
     {
+        (new Audio("audio/disarmed.mp3")).play();
         showWinDialog();
     } else if( gameState.isLost )
     {
+        (new Audio("audio/kaboom.wav")).play();
         showLoseDialog();
     } 
 

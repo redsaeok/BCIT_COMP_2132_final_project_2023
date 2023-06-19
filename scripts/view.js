@@ -328,3 +328,5 @@ document.body.addEventListener(
 var audiosWeWantToUnlock = [];
 audiosWeWantToUnlock.push(new Audio("audio/error.mp3"));
 audiosWeWantToUnlock.push(new Audio("audio/click.mp3"));
+audiosWeWantToUnlock.push(new Audio("audio/kaboom.wav"));
+audiosWeWantToUnlock.push(new Audio("audio/disarmed.mp3"));
