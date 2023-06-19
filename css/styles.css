@@ -128,6 +128,40 @@ header h1,
     text-align: center;
 }
 
+
+
+.div-warning-js {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.danger {
+    background-color: rgba(236, 77, 43, 0.2);
+    border: 2px solid #ef9400;
+    margin-top: 1em;
+    background-color: white;
+    color: black;
+}
+
+.danger .icon {
+    background-color: #ec4d2b;
+}
+
+.danger p,
+.danger h2 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.warning::before {
+    content: "⚠️ ";
+}
+
+
 #mission-control-center{
     position: relative;
     overflow: hidden;
@@ -391,9 +425,9 @@ header h1,
 }
 
 #kb_container{
-    position: absolute;
+    position: relative;
     bottom: 1rem;
-    padding-top: 5vh;
+    padding-top: 10vh;
     visibility: hidden;
     display: none;    
     font-family: 'Poppins', 'Amazon Ember Light', 'Bookerly', serif;
@@ -593,6 +627,7 @@ header h1,
         position: relative;  
         right: 1rem; 
         background-color: goldenrod;   
+        color: black;
         border-radius: 30px;  
     }
     
