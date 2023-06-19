@@ -63,7 +63,7 @@
 :root {
     --placeholder: #ccc;
 
-    --body-background-color: #f7ca17;
+    --body-background-color: goldenrod;
     --main-background-color: #f2eae6;
     --main-border-color: #301c22;
 
@@ -89,7 +89,7 @@
 body {
     position: relative;
     background-color: black;
-    color: green;
+    color: black;
     font-size: 0.8rem;
     font-family: 'Roboto', 'Bookerly', 'Amazon Ember Light', Arial, sans-serif;  
 }
@@ -645,9 +645,10 @@ header h1,
     }
 
     #kb_container{
-        display: block;
+        display: flex;
         visibility: visible;
-        
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
 }
