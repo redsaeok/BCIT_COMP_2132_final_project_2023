@@ -269,16 +269,16 @@ header h1,
 .world {
     margin-left: 20%;
     display: inline-block;
-    width: var(--world-sprite-height);
-    height: var(--world-sprite-width);
-    background: var(--world-spritesheet-src) left center;
-    animation: spin_world 8s steps(var(--world-spritesheet-frames)) infinite;    
+    width: 82px;
+    height: 82px;
+    background: url("../images/world_sprite_sheet2.gif") left center;
+    animation: spin_world 8s steps(48) infinite;    
     transform-origin: top left;                
 }
 
 @keyframes spin_world {
     100% {
-        background-position: var(--world-spritesheet-width);
+        background-position: 3936px;
      }
 }
 
@@ -591,7 +591,9 @@ header h1,
         margin-top: 2vh;
         margin-bottom: 2vh;
         position: relative;  
-        right: 1rem;      
+        right: 1rem; 
+        background-color: goldenrod;   
+        border-radius: 30px;  
     }
     
 
