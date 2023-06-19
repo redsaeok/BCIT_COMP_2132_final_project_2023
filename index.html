@@ -15,7 +15,9 @@
     <title>Thermonuclear Hangman</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" href="css/spinner.css" />
+
     <script src="https://kit.fontawesome.com/3622acbac1.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" defer></script>
 
     <!-- The Model -->
     <script src="./scripts/letter.js" defer></script>
@@ -364,6 +366,15 @@
         </div>
         <div>(c) 2023 John Glenn &nbsp;All Rights Reserved</div>
     </footer>
+
+    <audio id="sndClick" playsinline="" class="hide_me"">
+        <source src="audio/click.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="sndError" playsinline="" class="hide_me"">
+        <source src="audio/error.mp3" type="audio/mpeg">
+    </audio>
+
 </body>
 
 </html>

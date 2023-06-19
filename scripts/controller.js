@@ -120,6 +120,9 @@ function guessLetter()
 
     if( false == isGoodGuess ){
         flashDefconLevel(MAX_NUMBER_OF_BAD_GUESSES-gameState.numberOfBadGuesses);
+        (new Audio("audio/error.mp3")).play()
+    } else {
+        (new Audio("audio/click.mp3")).play()
     }
 
     updateMobileMonitor();
