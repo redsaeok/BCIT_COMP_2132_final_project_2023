@@ -108,6 +108,11 @@ function guessLetter()
     let letter = txtGuess.value.toUpperCase();
     let isGoodGuess = null;
 
+    if( null != helpDialogTimer ){
+        clearTimeout(helpDialogTimer);
+        helpDialogTimer = null;
+    }
+
     if( MAX_NUMBER_OF_BAD_GUESSES == gameState.numberOfBadGuesses ){
         return;
     }
