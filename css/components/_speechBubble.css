@@ -1,0 +1,26 @@
+
+
+/* The container must have relative positioning */
+.speech-bubble {
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+    width: 120px;
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+/* This has to be positioned relative to the tooltip */
+.speech_bubble::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: #192733;
+    padding: 6px;
+    z-index: 1;
+    top: 25%;
+    right: -4%;
+}

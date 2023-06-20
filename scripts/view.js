@@ -294,13 +294,19 @@ function flashDefconLevel(defconLevel) {
 CLOSE_GENERIC_DIALOG_BOTTOM.addEventListener("click", hideGenericDialog);
 CLOSE_GENERIC_DIALOG_TOP.addEventListener("click", hideGenericDialog);
 
+
+// Safari is sensitive to how and when audio is loaded and played.
+// Doing this during the first interaction seems to work.
+
 document.body.addEventListener(
     "touchstart",
     function () {
         if (audiosWeWantToUnlock) {
             for (let audio of audiosWeWantToUnlock) {
-                audio.play();
-                audio.pause();
+                audio.load();
+                //audio.pause();
+                //audio.play();
+                //audio.pause();
                 audio.currentTime = 0;
             }
             audiosWeWantToUnlock = null;
@@ -314,8 +320,9 @@ document.body.addEventListener(
     function () {
         if (audiosWeWantToUnlock) {
             for (let audio of audiosWeWantToUnlock) {
-                audio.play();
-                audio.pause();
+                audio.load();
+                //audio.play();
+                //audio.pause();
                 audio.currentTime = 0;
             }
             audiosWeWantToUnlock = null;
@@ -324,7 +331,7 @@ document.body.addEventListener(
     false
 );
 
-//where earlier you did:
+// Queue up the audio to be unlocked when the user interacts with the page.
 var audiosWeWantToUnlock = [];
 audiosWeWantToUnlock.push(new Audio("audio/error.mp3"));
 audiosWeWantToUnlock.push(new Audio("audio/click.mp3"));

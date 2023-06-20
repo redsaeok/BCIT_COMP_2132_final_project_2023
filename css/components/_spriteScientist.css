@@ -1,0 +1,13 @@
+#sprite-scientist {
+    position: absolute;
+    /* border: 2px solid red; */
+    display: block;
+    z-index: 3;
+}
+
+@media screen and (max-width: 900px) {
+    #sprite-scientist {
+        display: none;
+        visibility: hidden;
+    }
+}

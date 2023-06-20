@@ -1,0 +1,723 @@
+@import url("normalize.css");
+
+@import url('//db.onlinewebfonts.com/c/978fce27d0f89bb8e8ff779bd55d4944?family=Amazon+Ember+Light');
+@import url('https://fonts.cdnfonts.com/css/bookerly');
+
+@import url('https://fonts.googleapis.com/css2?family=Comme:wght@100;400&family=Roboto:wght@300&display=swap');
+
+/* devanagari */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2")
+        format("woff2");
+    unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC,
+        U+A830-A839, U+A8E0-A8FF;
+}
+/* latin-ext */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2")
+        format("woff2");
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+        U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2")
+        format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/fa-brands-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/fa-regular-400.woff2") format("woff2");
+}
+
+
+
+
+
+:root {
+    --placeholder: #ccc;
+
+    --body-background-color: goldenrod;
+    --main-background-color: #f2eae6;
+    --main-border-color: #301c22;
+
+    --header_background: url("../images/logo.svg");
+
+    --defcon-color: blue;
+    --inactive-key-color: grey;
+
+    /* fonts */
+    --heading-font-face:"leaguespartan-bold-webfont";
+    --block-text-font-face:"fira_sansregular";
+
+    --world-sprite-width: 82px;
+    --world-sprite-height: 82px;
+    --world-spritesheet-width: 3936px;
+    --world-spritesheet-height: 82px;
+    --world-spritesheet-src: url("../images/world_sprite_sheet2.gif");
+    --world-spritesheet-frames: 48;
+    --world-element: world;
+    --world-container: monitor-3;
+}
+
+body {
+    position: relative;
+    background-color: black;
+    color: black;
+    font-size: 0.8rem;
+    font-family: 'Roboto', 'Bookerly', 'Amazon Ember Light', Arial, sans-serif;  
+}
+
+#header {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000;
+    background-color: var(--body-background-color);
+}
+
+#header_titles {
+    padding-left: 1em;
+    position: absolute;
+    width: 100vw;
+    text-align: left;
+    z-index: 5;
+    font-weight: bold;
+    justify-content: center;
+    text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5),
+        1px -1px 0 rgba(255, 255, 255, 0.5), -1px 1px 0 rgba(255, 255, 255, 0.5),
+        1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+header h1,
+header h2,
+header h3,
+header h4 {
+    padding: 0;
+    margin: 0;
+}
+
+header h1,
+#header-h3{
+    text-align: center;
+}
+
+
+
+.div-warning-js {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.danger {
+    background-color: rgba(236, 77, 43, 0.2);
+    border: 2px solid #ef9400;
+    margin-top: 1em;
+    background-color: white;
+    color: black;
+}
+
+.danger .icon {
+    background-color: #ec4d2b;
+}
+
+.danger p,
+.danger h2 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.warning::before {
+    content: "⚠️ ";
+}
+
+
+#mission-control-center{
+    position: relative;
+    overflow: hidden;
+    left: 10vw;
+    width: 80vw;
+    height: 40vw;
+    background-color: #031534;
+    /* border: 2px solid red; */
+    background-image: url('../images/mission_control_background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#defcon-level {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    font-size: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    transition: opacity 0.5s;
+    text-shadow: -4px -4px 0 rgba(25, 25, 25, 0.5),
+    4px -4px 0 rgba(25, 25, 25, 0.5), 
+    -4px 4px 0 rgba(25, 25, 25, 0.5),
+    4px 4px 0 rgba(25, 25, 25, 0.5);
+    
+}
+
+#dCodeWord {
+    display: block; /* start hidden */
+    position: absolute;
+    width: 90%;
+    /* height: 2.5rem; */
+    border: 2px dashed red;
+    background-color: white;
+    border-radius: 10px;
+    top: 45%;
+    left: 5%;
+    z-index: 2;
+    opacity: 0.9;
+    text-align: center;
+    font-size: 2.5rem;
+    /* font-family: 'Monaco', 'Lucinda Console', 'Courier New', Courier, 'MS Courier New', monospace; */
+    font-family: monospace;
+
+}
+
+
+
+#dCodeWord #dHint {
+    padding-left: 0.25rem;
+    padding-top: 0.25rem;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#mobile-monitor {
+    display: none;
+    visibility: hidden;
+}
+
+#monitor-1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 32%;
+    height: 37%;
+    left: 5px;
+    top: 17%;
+    background-color: black;
+    border: 5px solid grey;
+    text-align: center;
+    background-image: url('../images/mon1-1.png');
+    background-size: contain;
+    text-shadow: -2px -2px 0 rgba(255, 255, 255, 0.5),
+    2px -2px 0 rgba(255, 255, 255, 0.5), 
+    -2px 2px 0 rgba(255, 255, 255, 0.5),
+    2px 2px 0 rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+}
+
+#monitor-1 h4{
+    font-size: 1.25rem;
+    background-color: goldenrod;
+}
+
+#monitor-1 #pTimer {
+    color: var(--defcon-color);
+    /* font-size: 5rem; */
+}
+
+
+#monitor-2{
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-left: 0.25rem;
+    position: absolute;
+    width: 33%;
+    height: 37%;
+    top: 17%;
+    left: 33.5%;
+    background-color: black;
+    border: 5px solid grey;
+    color: greenyellow;
+}
+
+
+#btnReset {
+    position: absolute;
+    background-color: red;
+    right: 0%;
+    top: 0%;
+}
+
+
+
+
+#monitor-3{
+    box-sizing: border-box;
+    position: absolute;                    
+    width: 32%;
+    height: 37%;
+    right: 5px;
+    top: 17%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 5px solid grey;        
+}
+
+
+.world {
+    margin-left: 20%;
+    display: inline-block;
+    width: 82px;
+    height: 82px;
+    background: url("../images/world_sprite_sheet2.gif") left center;
+    animation: spin_world 8s steps(48) infinite;    
+    transform-origin: top left;                
+}
+
+@keyframes spin_world {
+    100% {
+        background-position: 3936px;
+     }
+}
+
+
+#status-bar{
+    position: absolute;
+    height: 1.5rem;
+    left: 1%;
+    width: 98%;
+    bottom: 0;
+
+    color: red;
+}
+
+
+#sprite-scientist {
+    position: absolute;
+    /* border: 2px solid red; */
+    display: block;
+    z-index: 3;
+}
+
+
+
+/* The container must have relative positioning */
+.speech-bubble {
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+    width: 120px;
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+/* This has to be positioned relative to the tooltip */
+.speech_bubble::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: #192733;
+    padding: 6px;
+    z-index: 1;
+    top: 25%;
+    right: -4%;
+}
+
+
+#generic-dialog,
+#win-dialog,
+#lose-dialog,
+#instructions {
+    box-sizing: border-box;
+    display: none;
+    visibility: hidden;
+    text-align: left;
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    padding: 1rem;
+    color: white;
+    background-color: green;
+    z-index: -1;
+    /* opacity: 0.95; */
+    opacity: 0.0;
+    transition: all 1s ease-in-out;
+}
+
+#close-generic-dialog,
+#close_losing,
+#close_winning,
+#close_instructions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+
+.fas,
+.fab,
+.far {
+    padding: 15px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    border-radius: 50%;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+.hide_me {
+    display: none;
+    visibility: hidden;
+}
+
+#kb_container{
+    position: relative;
+    bottom: 1rem;
+    padding-top: 10vh;
+    visibility: hidden;
+    display: none;    
+    font-family: 'Poppins', 'Amazon Ember Light', 'Bookerly', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.kb_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.kb_key {
+    position: relative;
+    width: 8vw;
+    height: 8vw;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: goldenrod;
+    color: black;
+}
+
+.kb_key:hover {
+    background-color: black;
+    color: goldenrod;
+    cursor: pointer;
+}
+
+.key_face {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /*background-color: green;*/
+}
+
+.key_letter {                  
+    display: inline-block;   
+    /*background-color: blue;*/
+}
+
+#how-to-type {
+    max-width: 15%;
+    border: 2px solid red;
+}
+
+
+#footer {
+    background-color: var(--body-background-color);
+    min-height: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: flex-end;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    gap: 1em;
+    border: 1px solid black;
+}
+
+#footer div {
+    flex: 0 0 100%;
+}
+
+
+.socials_wrapper {
+    flex: 0 0 100%;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    
+}
+
+
+#footer .fas,
+#footer .fab,
+#footer .far {
+    padding: 15px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    border-radius: 50px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+}
+
+#footer .fas:hover,
+#footer .fab:hover,
+#footer .far:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #header {
+        height: 100px;
+        max-height: 5vh;
+    }
+
+    #mission-control-center {    
+        left: 0;
+        width: 100%;
+        height: 90vh;
+        background-image: url('../images/mission_control_background_mobile2.png');
+        background-position: center;
+        overflow: visible;
+    }
+
+    #mobile-monitor {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        visibility: visible;     
+        max-width: 360px;
+        max-height: 200px;   
+        width: 90vw;
+        height: calc( ( 360.0 / 200.0 ) * 90vw);
+        
+        left: calc(50vw - 180px);
+        border: 3px solid gray;
+        border-radius: 5px;
+        background-image: url('../images/stage0.gif');
+        background-repeat:no-repeat;
+        background-size:cover;
+        margin-bottom: 1rem;
+    }
+    
+
+    #defcon-level {
+        top: 0%;
+        font-size: 20rem;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 10;
+        transition: opacity 1s;
+        opacity: 0;
+    }
+
+    #dCodeWord,
+    #monitor-2,
+    #monitor-1 {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+    }
+
+    #dCodeWord {        
+        width: 90%;
+        top: 0%;
+        left: 5%;
+        font-size: 1.6rem;
+    }
+
+    #dMobileResetFlex{
+        position: relative;
+        left: 5%;
+        width: 90%;
+        display: flex;
+        justify-content: right;
+
+    }
+
+    #btnMobileReset {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        position: relative;  
+        right: 1rem; 
+        background-color: goldenrod;   
+        color: black;
+        border-radius: 30px;  
+    }
+    
+
+    #monitor-1 {
+        background-size: 0px 0px;
+        border: 0px;
+        height: auto;
+    }
+
+    #monitor-2,
+    #monitor-1 {
+        box-sizing: border-box;
+        width: 90%;
+        top: 0%;
+        left: 5%;
+    }
+
+    #monitor-2 {
+        font-weight: bolder;
+        opacity: 0.8;
+        color: greenyellow;
+    }
+
+    #monitor-2,
+    #monitor-3 {
+        display: none;
+        visibility: hidden;
+    }
+
+    #sprite-scientist {
+        display: none;
+        visibility: hidden;
+    }
+
+    #generic-dialog,
+    #win-dialog,
+    #lose-dialog,
+    #instructions {
+        box-sizing: border-box;
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        padding: 1rem;
+        color: white;
+        background-color: green;
+        z-index: -1;
+        /* opacity: 0.95; */
+        opacity: 0.0;
+        transition: all 1s ease-in-out;        
+    }
+
+    #kb_container{
+        display: flex;
+        visibility: visible;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+
+
+
+@media screen and (min-width: 900px) {
+
+    #dMobileResetFlex {
+        visibility: hidden;
+        display: none;
+    }
+
+    #dCodeWord {
+        width: 60%;
+        left: 20%;
+    }    
+
+    #kb_container{
+        visibility: hidden;
+        display: none;
+    }
+    
+
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 1.25rem
+    }
+}

@@ -1,0 +1,46 @@
+
+#dCodeWord {
+    display: block; /* start hidden */
+    position: absolute;
+    width: 90%;
+    /* height: 2.5rem; */
+    border: 2px dashed red;
+    background-color: white;
+    border-radius: 10px;
+    top: 45%;
+    left: 5%;
+    z-index: 2;
+    opacity: 0.9;
+    text-align: center;
+    font-size: 2.5rem;
+    /* font-family: 'Monaco', 'Lucinda Console', 'Courier New', Courier, 'MS Courier New', monospace; */
+    font-family: monospace;
+
+}
+
+#dCodeWord #dHint {
+    padding-left: 0.25rem;
+    padding-top: 0.25rem;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+    #dCodeWord {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        width: 90%;
+        top: 0%;
+        left: 5%;
+        font-size: 1.6rem;
+    }
+
+}
+
+@media screen and (min-width: 900px) {
+    #dCodeWord {
+        width: 60%;
+        left: 20%;
+    }  
+}
