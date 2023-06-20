@@ -23,6 +23,7 @@ const SP_ELIMINATED = document.getElementById("spEliminated");
 let onGenericDialogClose = null;
 
 const SHOW_HELP_TIMEOUT_MS = 10000;
+let helpDialogTimer = null;
 
 /* The dialog text should be externalized so that it can be localized, and changed outside of the code. */
 /* I could move this to another JSON data file to keep it inline with the course material. */
@@ -168,7 +169,7 @@ function hideInstructions() {
     add_to_animation_queue("TURN_FRONT_TO_LEFT");
     add_to_animation_queue("WALK_LEFT");
     add_to_animation_queue("PACE");
-    setTimeout(showHowToPlay, SHOW_HELP_TIMEOUT_MS);
+    helpDialogTimer = setTimeout(showHowToPlay, SHOW_HELP_TIMEOUT_MS);
 }
 
 function showInstructions() {
