@@ -1,12 +1,14 @@
-@use '../utils/_variables.scss';
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
 
 #monitor-1{
+    @include mixins.position(absolute, 17%, null, null, 5px, null);
     box-sizing: border-box;
-    position: absolute;
+    //position: absolute;
     width: 32%;
     height: 37%;
-    left: 5px;
-    top: 17%;
+    //left: 5px;
+    //top: 17%;
     background-color: black;
     border: 5px solid grey;
     text-align: center;
@@ -31,15 +33,16 @@
 
 @media screen and (max-width: variables.$max-mobile-width) {
     #monitor-1 {
+        @include mixins.position(relative, 0%, null, null, 5%, null);
         box-sizing: border-box;
-        position: relative;
+        //position: relative;
         display: block;
         background-size: 0px 0px;
         border: 0px;
         height: auto;
         box-sizing: border-box;
         width: 90%;
-        top: 0%;
-        left: 5%;
+        //top: 0%;
+        //left: 5%;
     }
 }

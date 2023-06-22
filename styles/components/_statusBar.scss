@@ -1,9 +1,13 @@
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
+
 #status-bar{
-    position: absolute;
+    @include mixins.position(absolute, null, null, 0, 1%, null);
+    //position: absolute;
     height: 1.5rem;
-    left: 1%;
+    //left: 1%;
     width: 98%;
-    bottom: 0;
+    //bottom: 0;
 
     color: red;
 }

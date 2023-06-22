@@ -1,5 +1,4 @@
-
-
+@use '../utils/_variables.scss';
 
 
 @mixin mobile-monitors {
@@ -10,15 +9,14 @@
 
 
 
-@mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-    @content;
-  }
+@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
 }
 
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
-    @content;
-  }
-}
+// Usage:  @include position(absolute, 60px, 0, 0, 0, z('modal'));
 

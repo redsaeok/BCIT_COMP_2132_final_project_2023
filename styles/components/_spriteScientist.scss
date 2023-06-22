@@ -1,6 +1,8 @@
-@use '../utils/_variables.scss';
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
 
 #sprite-scientist {
+    @include mixins.position(absolute, null, null, null, null, 3);
     position: absolute;
     /* border: 2px solid red; */
     display: block;

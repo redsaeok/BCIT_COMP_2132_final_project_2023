@@ -1,12 +1,17 @@
-@use '../utils/_variables.scss';
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
 
 @media screen and (max-width: variables.$max-mobile-width) {
     #dMobileResetFlex{
-        position: relative;
-        left: 5%;
+        @include mixins.position(relative, null, null, null, 5%, initial);
+        //position: relative;
+        //left: 5%;
+        
         width: 90%;
         display: flex;
         justify-content: right;
+        
+        
 
     }
 

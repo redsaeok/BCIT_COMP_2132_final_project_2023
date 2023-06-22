@@ -1,12 +1,14 @@
 @use '../utils/_variables.scss';
+@use '../utils/_mixins.scss';
 
 #spinner-container{
-    position: absolute;
+    @include mixins.position(absolute, null, null, null, null, 15);
+    //position: absolute;
     display: none;
     visibility: hidden;
     width: 100%;
     height: 100%;
-    z-index: 15;
+    //z-index: 15;
     justify-items: center;
     justify-content: center;
     align-items: center;
@@ -20,6 +22,7 @@
 .ldio-zsbx54d9tfp div { box-sizing: border-box!important }
 
 .ldio-zsbx54d9tfp > div {
+  @include mixins.position(absolute, 28px, null, null, 28px, null);
   position: absolute;
   width: 144px;
   height: 144px;
@@ -32,10 +35,11 @@
 }
 
 .ldio-zsbx54d9tfp > div:nth-child(2), .ldio-zsbx54d9tfp > div:nth-child(4) {
+  @include mixins.position(null, 46px, null, null, 46px, null);
   width: 108px;
   height: 108px;
-  top: 46px;
-  left: 46px;
+  //top: 46px;
+  //left: 46px;
   animation: ldio-zsbx54d9tfp 1s linear infinite reverse;
 }
 
@@ -54,20 +58,22 @@
 
 .ldio-zsbx54d9tfp > div:nth-child(3) div:before, .ldio-zsbx54d9tfp > div:nth-child(3) div:after { 
   content: "";
+  @include mixins.position(absolute, -16px, null, null, 48px, null);
   display: block;
-  position: absolute;
+  //position: absolute;
   width: 16px;
   height: 16px;
-  top: -16px;
-  left: 48px;
+  //top: -16px;
+  //left: 48px;
   background: #e15b64;
   border-radius: 50%;
   box-shadow: 0 128px 0 0 #e15b64;
 }
 
 .ldio-zsbx54d9tfp > div:nth-child(3) div:after {
-  left: -16px;
-  top: 48px;
+  @include mixins.position(null, 48px, null, -null, -16px, null);
+  //left: -16px;
+  //top: 48px;
   box-shadow: 128px 0 0 0 #e15b64;
 }
 
@@ -82,20 +88,22 @@
 
 .ldio-zsbx54d9tfp > div:nth-child(4) div:before, .ldio-zsbx54d9tfp > div:nth-child(4) div:after {
   content: "";
+  @include mixins.position(absolute, -16px, null, null, 30px, null);
   display: block;
-  position: absolute;
+  //position: absolute;
   width: 16px;
   height: 16px;
-  top: -16px;
-  left: 30px;
+  //top: -16px;
+  //left: 30px;
   background: #f8b26a;
   border-radius: 50%;
   box-shadow: 0 92px 0 0 #f8b26a;
 }
 
 .ldio-zsbx54d9tfp > div:nth-child(4) div:after {
-  left: -16px;
-  top: 30px;
+  @include mixins.position(null, 30px, null, null, -16px, null);
+  //left: -16px;
+  //top: 30px;
   box-shadow: 92px 0 0 0 #f8b26a;
 }
 

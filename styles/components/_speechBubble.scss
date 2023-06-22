@@ -1,4 +1,9 @@
 @use '../utils/_variables.scss';
+@use '../utils/_mixins.scss';
+
+// I don't think this is actually being used
+// I was going to have the Scientist speak, but it was difficult to get the dialog to fit a vareity 
+// of displays so I never used this.
 
 /* The container must have relative positioning */
 .speech-bubble {

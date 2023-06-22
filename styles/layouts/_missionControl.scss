@@ -1,9 +1,11 @@
-@use '../utils/_variables.scss';
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
 
 #mission-control-center{
-    position: relative;
+    @include mixins.position(relative, 0%, null, null, 10vw, null);
+    //position: relative;
     overflow: hidden;
-    left: 10vw;
+    //left: 10vw;
     width: 80vw;
     height: 40vw;
     background-color: #031534;
