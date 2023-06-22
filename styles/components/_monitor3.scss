@@ -11,22 +11,24 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: 5px solid grey;        
+    border: 5px solid grey;      
+    
+    .world {
+        margin-left: 20%;
+        display: inline-block;
+        width: variables.$world-sprite-width;
+        height: variables.$world-sprite-height;
+        background: variables.$world-spritesheet-src left center;
+        animation: 
+            spin_world 
+            variables.$world-spritesheet-rotation-time 
+            steps(variables.$world-spritesheet-frames) 
+            infinite;    
+        transform-origin: top left;                
+    }
 }
 
-.world {
-    margin-left: 20%;
-    display: inline-block;
-    width: variables.$world-sprite-width;
-    height: variables.$world-sprite-height;
-    background: variables.$world-spritesheet-src left center;
-    animation: 
-        spin_world 
-        variables.$world-spritesheet-rotation-time 
-        steps(variables.$world-spritesheet-frames) 
-        infinite;    
-    transform-origin: top left;                
-}
+
 
 @keyframes spin_world {
     100% {
