@@ -3,7 +3,7 @@
 
 @media screen and (max-width: variables.$max-mobile-width) {
     #dMobileResetFlex{
-        @include mixins.position(relative, null, null, null, 5%, initial);
+        @include mixins.position(relative, null, null, null, 5%, null);
         //position: relative;
         //left: 5%;
         

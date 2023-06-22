@@ -23,11 +23,11 @@
 
 .ldio-zsbx54d9tfp > div {
   @include mixins.position(absolute, 28px, null, null, 28px, null);
-  position: absolute;
+  //position: absolute;
   width: 144px;
   height: 144px;
-  top: 28px;
-  left: 28px;
+  //top: 28px;
+  //left: 28px;
   border-radius: 50%;
   border: 16px solid #000;
   border-color: #e15b64 transparent #e15b64 transparent;
@@ -71,7 +71,7 @@
 }
 
 .ldio-zsbx54d9tfp > div:nth-child(3) div:after {
-  @include mixins.position(null, 48px, null, -null, -16px, null);
+  @include mixins.position(null, 48px, null, null, -16px, null);
   //left: -16px;
   //top: 48px;
   box-shadow: 128px 0 0 0 #e15b64;

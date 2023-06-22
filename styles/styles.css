@@ -507,11 +507,8 @@ header h1,
   position: absolute;
   top: 28px;
   left: 28px;
-  position: absolute;
   width: 144px;
   height: 144px;
-  top: 28px;
-  left: 28px;
   border-radius: 50%;
   border: 16px solid #000;
   border-color: #e15b64 transparent #e15b64 transparent;
@@ -556,7 +553,6 @@ header h1,
 
 .ldio-zsbx54d9tfp > div:nth-child(3) div:after {
   top: 48px;
-  bottom: -null;
   left: -16px;
   box-shadow: 128px 0 0 0 #e15b64;
 }
@@ -850,10 +846,8 @@ header h1,
 #sprite-scientist {
   position: absolute;
   z-index: 3;
-  position: absolute;
   /* border: 2px solid red; */
   display: block;
-  z-index: 3;
 }
 
 @media screen and (max-width: 900px) {
@@ -955,7 +949,6 @@ header h1,
   #dMobileResetFlex {
     position: relative;
     left: 5%;
-    z-index: initial;
     width: 90%;
     display: flex;
     justify-content: right;
@@ -996,7 +989,7 @@ header h1,
 }
 #kb_container {
   position: relative;
-  left: 1rem;
+  bottom: 1rem;
   padding-top: 10vh;
   visibility: hidden;
   display: none;
@@ -1011,7 +1004,6 @@ header h1,
 }
 #kb_container .kb_row .kb_key {
   position: relative;
-  position: relative;
   width: 8vw;
   height: 8vw;
   display: inline-block;
@@ -1024,12 +1016,9 @@ header h1,
   position: absolute;
   top: 0px;
   left: 0px;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0px;
-  left: 0px;
   width: 100%;
   height: 100%;
   text-align: center;

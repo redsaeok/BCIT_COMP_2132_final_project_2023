@@ -3,10 +3,10 @@
 
 #sprite-scientist {
     @include mixins.position(absolute, null, null, null, null, 3);
-    position: absolute;
+    //position: absolute;
     /* border: 2px solid red; */
     display: block;
-    z-index: 3;
+    //z-index: 3;
 }
 
 @media screen and (max-width: variables.$max-mobile-width) {
