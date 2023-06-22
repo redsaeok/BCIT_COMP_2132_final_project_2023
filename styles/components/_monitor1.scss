@@ -5,8 +5,10 @@
     @include mixins.position(absolute, 17%, null, null, 5px, null);
     box-sizing: border-box;
     //position: absolute;
-    width: 32%;
-    height: 37%;
+    //@include mixins.boxDimension(32%, 37%);
+    @include mixins.monitorBoxDimension;
+    // width: 32%;
+    // height: 37%;
     //left: 5px;
     //top: 17%;
     background-color: black;
@@ -39,9 +41,10 @@
         display: block;
         background-size: 0px 0px;
         border: 0px;
-        height: auto;
-        box-sizing: border-box;
-        width: 90%;
+        @include mixins.boxDimension(90%, auto);
+        //height: auto;
+        //box-sizing: border-box;
+        //width: 90%;
         //top: 0%;
         //left: 5%;
     }

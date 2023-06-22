@@ -2,7 +2,7 @@
 @use '../utils/mixins.scss';
 
 #mission-control-center{
-    @include mixins.position(relative, 0%, null, null, 10vw, null);
+    @include mixins.position(relative, null, null, null, 10vw, null);
     //position: relative;
     overflow: hidden;
     //left: 10vw;

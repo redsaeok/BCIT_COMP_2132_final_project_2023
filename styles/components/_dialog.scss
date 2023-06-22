@@ -14,8 +14,9 @@
     //position: absolute;
     //top: 5%;
     //left: 5%;
-    width: 90%;
-    height: 90%;
+    @include mixins.boxDimension(90%, 90%);
+    //width: 90%;
+    //height: 90%;
     padding: 1rem;
     color: white;
     background-color: green;
@@ -42,6 +43,7 @@
 }
 
 
+/*
 @media screen and (max-width: variables.$max-mobile-width) {
     #generic-dialog,
     #win-dialog,
@@ -50,14 +52,15 @@
         box-sizing: border-box;
         //top: 5%;
         //left: 5%;
-        width: 90%;
-        height: 90%;
-        padding: 1rem;
+        //width: 90%;
+        //height: 90%;
+        //padding: 1rem;
         color: white;
         background-color: green;
         //z-index: -1;
-        /* opacity: 0.95; */
+        //opacity: 0.95; 
         opacity: 0.0;
         transition: all 1s ease-in-out;        
     }
 }
+*/

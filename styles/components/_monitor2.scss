@@ -7,8 +7,10 @@
     padding-top: 1rem;
     padding-left: 0.25rem;
     //position: absolute;
-    width: 33%;
-    height: 37%;
+    //@include mixins.monitorBoxDimension;
+    @include mixins.boxDimension(33%, 37%); // 1% different from the other two monitors
+    //width: 33%;
+    //height: 37%;
     //top: 17%;
     //left: 33.5%;
     background-color: black;

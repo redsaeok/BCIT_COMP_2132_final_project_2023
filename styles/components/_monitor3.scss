@@ -4,9 +4,11 @@
 #monitor-3{
     @include mixins.position(absolute, 17%, 5px, null, null, null);
     box-sizing: border-box;
-    //position: absolute;                    
-    width: 32%;
-    height: 37%;
+    //position: absolute;          
+    @include mixins.monitorBoxDimension;
+    //@include mixins.boxDimension(32%, 37%);          
+    //width: 32%;
+    //height: 37%;
     //right: 5px;
     //top: 17%;
     background-color: black;
@@ -18,8 +20,9 @@
     .world {
         margin-left: 20%;
         display: inline-block;
-        width: variables.$world-sprite-width;
-        height: variables.$world-sprite-height;
+        @include mixins.boxDimension(variables.$world-sprite-width, variables.$world-sprite-height);
+        //width: variables.$world-sprite-width;
+        //height: variables.$world-sprite-height;
         background: variables.$world-spritesheet-src left center;
         animation: 
             spin_world 

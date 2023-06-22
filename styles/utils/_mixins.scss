@@ -7,7 +7,15 @@
   display: block;
 }
 
+@mixin monitorBoxDimension {
+  width: 32%;
+  height: 37%;
+}
 
+@mixin boxDimension($width, $height) {
+  width: $width;
+  height: $height;
+}
 
 @mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
   position: $position;

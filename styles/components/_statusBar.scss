@@ -3,10 +3,11 @@
 
 #status-bar{
     @include mixins.position(absolute, null, null, 0, 1%, null);
+    @include mixins.boxDimension(98%, 1.5rem);
     //position: absolute;
-    height: 1.5rem;
+    //height: 1.5rem;
     //left: 1%;
-    width: 98%;
+    //width: 98%;
     //bottom: 0;
 
     color: red;

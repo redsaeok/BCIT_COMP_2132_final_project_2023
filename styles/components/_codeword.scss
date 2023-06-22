@@ -1,5 +1,5 @@
-@use '../utils/_variables.scss';
-@use '../utils/_mixins.scss';
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
 
 #dCodeWord {
     @include mixins.position(absolute, 45%, null, null, 5%, 2);;
