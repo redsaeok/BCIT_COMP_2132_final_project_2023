@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 #header {
     position: relative;
     width: 100%;
@@ -33,7 +35,7 @@ header h1,
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
 
     #header {
         height: 100px;
@@ -43,11 +45,3 @@ header h1,
 }
 
 
-@media screen and (max-width: 900px) {
-
-    #header {
-        height: 100px;
-        max-height: 5vh;
-    }
-
-}

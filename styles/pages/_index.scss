@@ -1,3 +1,4 @@
+@use '../utils/_variables.scss';
 
 body {
     position: relative;
@@ -8,7 +9,7 @@ body {
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #header {
         height: 100px;
         max-height: 5vh;
@@ -16,7 +17,7 @@ body {
 }
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: variables.$extended-desktop-width) {
     body {
         font-size: 1.25rem
     }

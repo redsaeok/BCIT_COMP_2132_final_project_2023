@@ -1,3 +1,4 @@
+@use '../utils/_variables.scss';
 
 #monitor-2{
     box-sizing: border-box;
@@ -22,7 +23,7 @@
 
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #monitor-2 {
         box-sizing: border-box;
         position: relative;

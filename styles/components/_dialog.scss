@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 
 #generic-dialog,
 #win-dialog,
@@ -36,7 +38,7 @@
     border: 2px solid red;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #generic-dialog,
     #win-dialog,
     #lose-dialog,

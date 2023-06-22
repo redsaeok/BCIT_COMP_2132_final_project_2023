@@ -448,12 +448,6 @@ header h1,
     max-height: 5vh;
   }
 }
-@media screen and (max-width: 900px) {
-  #header {
-    height: 100px;
-    max-height: 5vh;
-  }
-}
 .div-warning-js {
   width: 60%;
   margin-left: auto;
@@ -829,7 +823,7 @@ header h1,
   width: 82px;
   height: 82px;
   background: url("../../images/world_sprite_sheet2.gif") left center;
-  animation: spin_world 4s steps(48) infinite;
+  animation: spin_world 24s steps(48) infinite;
   transform-origin: top left;
 }
 

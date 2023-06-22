@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 #mission-control-center{
     position: relative;
     overflow: hidden;
@@ -11,7 +13,7 @@
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
 
     #mission-control-center {    
         left: 0;

@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 
 #kb_container{
     position: relative;
@@ -53,7 +55,7 @@
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #kb_container{
         display: flex;
         visibility: visible;
@@ -62,7 +64,7 @@
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: variables.$max-mobile-width) {
     #kb_container{
         visibility: hidden;
         display: none;

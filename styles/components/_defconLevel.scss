@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 #defcon-level {
     position: absolute;
     display: flex;
@@ -20,7 +22,7 @@
     
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #defcon-level {
         top: 0%;
         font-size: 20rem;

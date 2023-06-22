@@ -1,9 +1,11 @@
+@use '../utils/_variables.scss';
+
 #mobile-monitor {
     display: none;
     visibility: hidden;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #mobile-monitor {
         box-sizing: border-box;
         position: relative;

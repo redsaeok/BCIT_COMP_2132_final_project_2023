@@ -1,3 +1,5 @@
+@use '../utils/_variables.scss';
+
 #sprite-scientist {
     position: absolute;
     /* border: 2px solid red; */
@@ -5,7 +7,7 @@
     z-index: 3;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: variables.$max-mobile-width) {
     #sprite-scientist {
         display: none;
         visibility: hidden;

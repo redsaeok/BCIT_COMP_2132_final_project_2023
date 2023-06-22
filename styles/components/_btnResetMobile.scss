@@ -1,4 +1,6 @@
-@media screen and (max-width: 900px) {
+@use '../utils/_variables.scss';
+
+@media screen and (max-width: variables.$max-mobile-width) {
     #dMobileResetFlex{
         position: relative;
         left: 5%;
@@ -19,7 +21,7 @@
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: variables.$max-mobile-width) {
     #dMobileResetFlex {
         visibility: hidden;
         display: none;
