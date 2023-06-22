@@ -1,0 +1,33 @@
+.div-warning-js {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+
+
+.danger {
+    background-color: rgba(236, 77, 43, 0.2);
+    border: 2px solid #ef9400;
+    margin-top: 1em;
+    background-color: white;
+    color: black;
+}
+
+.danger .icon {
+    background-color: #ec4d2b;
+}
+
+.danger p,
+.danger h2 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.warning::before {
+    content: "⚠️ ";
+}
+

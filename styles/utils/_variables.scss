@@ -1,0 +1,30 @@
+/* Come back here and see what happens when we replace some of these with Sass
+variables.  In particular try the colors and sprite values. */
+
+/* Look at variables for my media queries */
+
+:root {
+    --placeholder: #ccc;
+
+    --body-background-color: goldenrod;
+    --main-background-color: #f2eae6;
+    --main-border-color: #301c22;
+
+    --header_background: url("../images/logo.svg");
+
+    --defcon-color: blue;
+    --inactive-key-color: grey;
+
+    /* fonts */
+    --heading-font-face:"leaguespartan-bold-webfont";
+    --block-text-font-face:"fira_sansregular";
+
+    --world-sprite-width: 82px;
+    --world-sprite-height: 82px;
+    --world-spritesheet-width: 3936px;
+    --world-spritesheet-height: 82px;
+    --world-spritesheet-src: url("../../images/world_sprite_sheet2.gif");
+    --world-spritesheet-frames: 48;
+    --world-element: world;
+    --world-container: monitor-3;
+}

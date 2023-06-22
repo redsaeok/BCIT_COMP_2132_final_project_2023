@@ -1,0 +1,242 @@
+@charset "utf-8";
+@use 'base/normalize.scss';
+@use 'base/fonts.scss';
+@use 'utils/variables.scss';
+@use 'pages/index.scss';
+@use 'layouts/header.scss';
+@use 'components/warning.scss';
+@use 'components/spinner.scss';
+@use 'layouts/missionControl.scss';
+@use 'components/defconLevel.scss';
+@use 'components/codeword.scss';
+@use 'components/mobileMonitor.scss';
+@use 'components/monitor1.scss';
+@use 'components/monitor2.scss';
+@use 'components/monitor3.scss';
+@use 'components/statusBar.scss';
+@use 'components/spriteScientist.scss';
+@use 'components/speechBubble.scss';
+@use 'components/dialog.scss';
+@use 'components/btnResetMobile.scss';
+@use 'utils/modifiers.scss';
+@use 'components/kb.scss';
+@use 'layouts/footer.scss';
+
+
+/*
+step 1
+declare some SASS Variables
+* /
+$primary_color: darkgreen;
+$secondary_color: yellow;
+$wrapper_color: darkgrey;
+
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+/* Responsive Images Reset * /
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #e0e0e0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, nav a {
+    font-family: 'Righteous', cursive;
+}
+/*
+step 2
+use Variables to assign CSS values
+instead of hard-coding the value
+* /
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: $wrapper_color;
+}
+header {
+    flex-wrap: wrap;
+    background-color: $primary_color;
+    color: $secondary_color;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    padding-left: 20px;
+}
+
+header a {
+    color: $secondary_color;
+    text-decoration: none;
+}
+
+header a:focus,
+header a:active,
+header a:hover {
+    color: $secondary_color;
+    text-decoration: none;
+}
+
+header h1 a:focus,
+header h1 a:active,
+header h1 a:hover {
+    text-decoration: underline;
+}
+
+header button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    line-height: 64px;
+    color: $secondary_color;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+
+header h1 {
+    margin: 0;
+    line-height: 64px;
+}
+
+header nav {
+    display: none;
+}
+
+.show header nav {
+    display: block;
+    width: 100%;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav a {
+    display: block;
+    line-height: 45px;
+    padding: 0 16px;
+    font-size: 1.3em;
+}
+
+header nav a:hover,
+header nav a:focus,
+header nav a:active {
+    background-color: rgba(255,255,255, 0.3);
+}
+
+.banner {
+    position: relative;
+}
+
+.banner h2 {
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    color: $secondary_color;
+    font-size: 14vw;
+}
+
+section {
+    padding: 30px;
+}
+
+section + section {
+    padding-top: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.one-col {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.one-col h1 {
+    font-size:2.2em;
+    text-align: center;
+}
+
+.three-col {
+    width: 100%;
+}
+
+.two-col {
+    width: 100%;
+}
+
+.three-col img {
+    margin-bottom: 1em;
+}
+
+footer {
+    padding: 30px;
+    border-top: 1px dotted black
+}
+
+@media (min-width: 690px){
+    header nav ul {
+        display: flex;
+    }
+
+    header nav {
+        display: block;
+    }
+
+    header nav a {
+        line-height: 64px;
+        padding: 0 16px;
+        font-size: 1.3em;
+    }
+
+    header button {
+        display: none;
+    }
+
+    .banner h2 {
+        font-size: 6rem;
+    }
+
+    .three-col {
+        width: 31%;
+    }
+
+    .two-col {
+        width: 48%;
+    }
+
+    .two-col:nth-child(2) {
+        text-align: right;
+    }
+
+}
+
+*/

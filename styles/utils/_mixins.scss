@@ -1,0 +1,25 @@
+
+$tablet-width: 900px;
+$desktop-width: 1200px;
+
+
+@mixin mobile-monitors {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+}
+
+
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+

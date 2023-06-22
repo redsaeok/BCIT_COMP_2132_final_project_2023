@@ -1,0 +1,40 @@
+
+#monitor-2{
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-left: 0.25rem;
+    position: absolute;
+    width: 33%;
+    height: 37%;
+    top: 17%;
+    left: 33.5%;
+    background-color: black;
+    border: 5px solid grey;
+    color: greenyellow;
+}
+
+#btnReset {
+    position: absolute;
+    background-color: red;
+    right: 0%;
+    top: 0%;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    #monitor-2 {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        width: 90%;
+        top: 0%;
+        left: 5%;
+        font-weight: bolder;
+        opacity: 0.8;
+        color: greenyellow;
+        display: none;
+        visibility: hidden;
+    }
+}
