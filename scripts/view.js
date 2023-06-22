@@ -297,46 +297,53 @@ function flashDefconLevel(defconLevel) {
 CLOSE_GENERIC_DIALOG_BOTTOM.addEventListener("click", hideGenericDialog);
 CLOSE_GENERIC_DIALOG_TOP.addEventListener("click", hideGenericDialog);
 
-
-// Safari is sensitive to how and when audio is loaded and played.
-// Doing this during the first interaction seems to work.
-
-document.body.addEventListener(
-    "touchstart",
-    function () {
-        if (audiosWeWantToUnlock) {
-            for (let audio of audiosWeWantToUnlock) {
-                audio.load();
-                //audio.pause();
-                //audio.play();
-                //audio.pause();
-                audio.currentTime = 0;
-            }
-            audiosWeWantToUnlock = null;
-        }
-    },
-    false
-);
-
-document.body.addEventListener(
-    "click",
-    function () {
-        if (audiosWeWantToUnlock) {
-            for (let audio of audiosWeWantToUnlock) {
-                audio.load();
-                //audio.play();
-                //audio.pause();
-                audio.currentTime = 0;
-            }
-            audiosWeWantToUnlock = null;
-        }
-    },
-    false
-);
-
 // Queue up the audio to be unlocked when the user interacts with the page.
 var audiosWeWantToUnlock = [];
 audiosWeWantToUnlock.push(new Audio("audio/error.mp3"));
 audiosWeWantToUnlock.push(new Audio("audio/click.mp3"));
 audiosWeWantToUnlock.push(new Audio("audio/kaboom.wav"));
 audiosWeWantToUnlock.push(new Audio("audio/disarmed.mp3"));
+
+// Safari is sensitive to how and when audio is loaded and played.
+// Doing this during the first interaction seems to work.
+
+function unlockAudio() {
+    console.log("unlockAudio");
+
+    let audioCtx = null;
+    if( undefined == window.AudioContext ) {
+        audioCtx = new webkitAudioContext();
+    } else {
+        audioCtx = new window.AudioContext();
+    }
+
+    if (audioCtx.state == 'suspended')
+    {
+        const b = document.body;
+        const events = ['touchstart','touchend', 'mousedown','keydown'];
+        events.forEach(e => b.addEventListener(e, unlock, false));
+        function unlock() { audioCtx.resume().then(clean); }
+        function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
+    }
+
+    console.log("iterate audiosWeWantToUnlock");
+
+    if (audiosWeWantToUnlock) {
+        for (let audio of audiosWeWantToUnlock) {
+            console.dir(audio);
+            audio.load();
+            //audio.pause();
+            //audio.play();
+            //audio.pause();
+            audio.currentTime = 0;
+        }
+        audiosWeWantToUnlock = null;
+    }
+
+    document.body.removeEventListener( "touchstart", unlockAudio );
+    document.body.removeEventListener( "click", unlockAudio );
+}
+
+document.body.addEventListener( "touchstart", unlockAudio );
+document.body.addEventListener( "click", unlockAudio );
+
