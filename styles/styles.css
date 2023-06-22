@@ -363,6 +363,15 @@ template {
 /* Come back here and see what happens when we replace some of these with Sass
 variables.  In particular try the colors and sprite values. */
 /* Look at variables for my media queries */
+/*
+Using Sass variables has a huge advantage in that they become hardcoded values.  I noticed
+that when I relied on CSS variables, often it introduced a delay into the rendering of the
+animations on some operating systems/browsers.  This is because the CSS variables are
+calculated at runtime.  Sass variables are calculated at compile time.  This means that
+the browser doesn't have to do any calculations.  
+
+The disadvantage is that you can't change the values at runtime.  
+*/
 :root {
   --placeholder: #ccc;
   --body-background-color: goldenrod;

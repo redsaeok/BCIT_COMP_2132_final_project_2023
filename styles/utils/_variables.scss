@@ -3,6 +3,30 @@ variables.  In particular try the colors and sprite values. */
 
 /* Look at variables for my media queries */
 
+$primaryBackgroundColor: goldenrod;
+$inactiveKeyColor: grey;
+
+/*
+Using Sass variables has a huge advantage in that they become hardcoded values.  I noticed
+that when I relied on CSS variables, often it introduced a delay into the rendering of the
+animations on some operating systems/browsers.  This is because the CSS variables are
+calculated at runtime.  Sass variables are calculated at compile time.  This means that
+the browser doesn't have to do any calculations.  
+
+The disadvantage is that you can't change the values at runtime.  
+*/
+
+$world-sprite-width: 82px;
+$world-sprite-height: 82px;
+$world-spritesheet-width: 3936px;
+$world-spritesheet-height: 8px;
+$world-spritesheet-src: url("../../images/world_sprite_sheet2.gif");
+$world-spritesheet-frames: 48;
+$world-spritesheet-rotation-time: 8s;
+$world-element: world;
+$world-container: monitor-3;
+
+
 :root {
     --placeholder: #ccc;
 
@@ -19,6 +43,7 @@ variables.  In particular try the colors and sprite values. */
     --heading-font-face:"leaguespartan-bold-webfont";
     --block-text-font-face:"fira_sansregular";
 
+    
     --world-sprite-width: 82px;
     --world-sprite-height: 82px;
     --world-spritesheet-width: 3936px;

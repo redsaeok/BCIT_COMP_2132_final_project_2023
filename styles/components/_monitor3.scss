@@ -1,3 +1,4 @@
+@use '../utils/_variables.scss';
 
 #monitor-3{
     box-sizing: border-box;
@@ -16,10 +17,14 @@
 .world {
     margin-left: 20%;
     display: inline-block;
-    width: 82px;
-    height: 82px;
-    background: url("../../images/world_sprite_sheet2.gif") left center;
-    animation: spin_world 8s steps(48) infinite;    
+    width: variables.$world-sprite-width;
+    height: variables.$world-sprite-height;
+    background: variables.$world-spritesheet-src left center;
+    animation: 
+        spin_world 
+        variables.$world-spritesheet-rotation-time 
+        steps(variables.$world-spritesheet-frames) 
+        infinite;    
     transform-origin: top left;                
 }
 
