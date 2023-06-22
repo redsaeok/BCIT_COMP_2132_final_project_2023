@@ -360,8 +360,6 @@ template {
   /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); */
 }
 
-/* Come back here and see what happens when we replace some of these with Sass
-variables.  In particular try the colors and sprite values. */
 /* Look at variables for my media queries */
 /*
 Using Sass variables has a huge advantage in that they become hardcoded values.  I noticed
@@ -840,7 +838,7 @@ header h1,
     background-position: 3936px;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width <= 900px) {
   #monitor-3 {
     display: none;
     visibility: hidden;

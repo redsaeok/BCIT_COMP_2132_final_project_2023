@@ -32,11 +32,11 @@
 
 @keyframes spin_world {
     100% {
-        background-position: 3936px;
+        background-position: variables.$world-spritesheet-width;
      }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width <= variables.$max-mobile-width) {
     #monitor-3 {
         display: none;
         visibility: hidden;
