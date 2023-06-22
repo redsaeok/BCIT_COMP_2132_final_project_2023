@@ -13,6 +13,7 @@
     rest of the animations were done using different methods.
 */
 
+const root = document.documentElement;
 const VW_MONITOR_1 = document.getElementById("monitor-1");
 const MONITOR_1_IMAGE_COUNT = 16;
 const MONITOR_1_BACKGROUND_PREFIX = "../";

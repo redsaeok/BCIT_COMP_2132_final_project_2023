@@ -1,6 +1,4 @@
-const root = document.documentElement;
 const pGameState = document.getElementById("pGameState");
-const pError = document.getElementById("pError");
 const txtGuess = document.getElementById("txtGuess");
 const btnGuess = document.getElementById("btnGuess");
 const btnReset = document.getElementById("btnReset");
@@ -13,10 +11,10 @@ const kbContainer = document.getElementById("kb_container");
 const KB_LETTERS = "QWERTYUIOPASDFGHJKLZXCVBNM";
 
 // This is letter A
-MIN_ALLOWED_CHAR_CODE = 65;
+const MIN_ALLOWED_CHAR_CODE = 65;
 
 // This is letter Z
-MAX_ALLOWED_CHAR_CODE = 90;
+const MAX_ALLOWED_CHAR_CODE = 90;
 
 
 /* 
@@ -29,7 +27,7 @@ MAX_ALLOWED_CHAR_CODE = 90;
 function start()
 {
     updateError("");
-    newWord = WORD_DICTIONARY.getWord();
+    let newWord = WORD_DICTIONARY.getWord();
     gameState.setWord( newWord.getWord(), newWord.getHint() );
 
     initializeSprite();
@@ -71,7 +69,7 @@ function reset()
     gameState.selectedLetters.forEach(letter => {
         let element = document.getElementById(`key_${letter}`);
         element.style.backgroundColor="";   
-    })
+    });
 
     // Reset the word display
     deanimateWordDisplay();
@@ -125,9 +123,9 @@ function guessLetter()
 
     if( false == isGoodGuess ){
         flashDefconLevel(MAX_NUMBER_OF_BAD_GUESSES-gameState.numberOfBadGuesses);
-        (new Audio("audio/error.mp3")).play()
+        (new Audio("audio/error.mp3")).play();
     } else {
-        (new Audio("audio/click.mp3")).play()
+        (new Audio("audio/click.mp3")).play();
     }
 
     updateMobileMonitor();
@@ -203,7 +201,7 @@ btnMobileReset.addEventListener("click", reset);
 // Virtual keyboard buttons
 KB_LETTERS.split("").forEach(letter => {
     let element = document.getElementById(`key_${letter}`);
-    element.addEventListener('click', submitVirtualKBPress )   
+    element.addEventListener('click', submitVirtualKBPress );
 });
 
 // Physical keyboard

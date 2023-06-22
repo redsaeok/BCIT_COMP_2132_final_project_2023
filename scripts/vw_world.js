@@ -18,7 +18,7 @@ function worldResponsiveResize()
 {
     // I don't see a way to solve this in CSS
     // So I'm copying what I did for the scientist
-    console.log("Resize World sprite now.")
+    console.log("Resize World sprite now.");
     
     const ROOT = document.documentElement;
     const WORLD_ELEMENT_NAME = getComputedStyle(ROOT).getPropertyValue("--world-element");

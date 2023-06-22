@@ -12,8 +12,12 @@
     works great on Linux with Firefox, but it still flickers in Safari on Mac OS X
     sometimes.
 
+    Update 6/22 - Switched from CSS to Sass variables and flicker is gone.  Also
+    just commented out everything here since it's been fully replaced by CSS.
+
 */
 
+/*
 const VW_MONITOR_3 = document.getElementById("monitor-3");
 const MONITOR_3_PHASE_1_ROWS = 4;
 const MONITOR_3_PHASE_1_COLUMNS = 12;
@@ -26,7 +30,7 @@ const MONITOR_3_UPDATE_INTERVAL_MS = 200;
 
 let monitor3TimeoutHandler = null;
 let monitor3AnimationHandler = null;
-
+*/
 
 
 /*

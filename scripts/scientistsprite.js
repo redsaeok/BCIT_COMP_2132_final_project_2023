@@ -275,8 +275,8 @@ function showInstructions() {
     I'll do this when I create a generic sprite object.
 */
 function initializeSprite() {
-    SCIENTIST["element"] = SCIENTIST_ELEMENT;
-    SCIENTIST["container"] = document.getElementById("mission-control-center");
+    SCIENTIST.element = SCIENTIST_ELEMENT;
+    SCIENTIST.container = document.getElementById("mission-control-center");
 
     /* This needs to be cleaned up.  I'm still not clear on how to best 
     manage position and movement such that it changes as the viewport size 
@@ -288,21 +288,21 @@ function initializeSprite() {
     probably be easier with individual images, or using a canvas to handle the 
     caching and abstracting scaling further */
 
-    SCIENTIST_ELEMENT.style.width = `${SCIENTIST["width"]}px`;
-    SCIENTIST_ELEMENT.style.height = `${SCIENTIST["height"]}px`;
+    SCIENTIST_ELEMENT.style.width = `${SCIENTIST.width}px`;
+    SCIENTIST_ELEMENT.style.height = `${SCIENTIST.height}px`;
     SCIENTIST.element.style.transformOrigin = "top left";
-    SCIENTIST_ELEMENT.style.top = SCIENTIST["top"];
+    SCIENTIST_ELEMENT.style.top = SCIENTIST.top;
     //SCIENTIST_ELEMENT.style.right = SCIENTIST["right"];
     //SCIENTIST_ELEMENT.style.bottom = SCIENTIST["bottom"];
-    SCIENTIST_ELEMENT.style.left = SCIENTIST["left"];
+    SCIENTIST_ELEMENT.style.left = SCIENTIST.left;
 
-    SCIENTIST_ELEMENT.style.backgroundImage = `url('${SCIENTIST["file"]}')`;
-    SCIENTIST_ELEMENT.style.backgroundImage = SCIENTIST["file"];
+    SCIENTIST_ELEMENT.style.backgroundImage = `url('${SCIENTIST.file}')`;
+    SCIENTIST_ELEMENT.style.backgroundImage = SCIENTIST.file;
     SCIENTIST_ELEMENT.style.backgroundPositionX = `-${
-        SCIENTIST["start_frame_column"] * SCIENTIST["width"]
+        SCIENTIST.start_frame_column * SCIENTIST.width
     }px`;
     SCIENTIST_ELEMENT.style.backgroundPositionY = `-${
-        SCIENTIST["start_frame_row"] * SCIENTIST["height"]
+        SCIENTIST.start_frame_row * SCIENTIST.height
     }px`;
 
     responsiveResize();
@@ -361,11 +361,11 @@ function animateSprite(animation) {
             SCIENTIST.animations[SCIENTIST.current_animation].dy_per_frame *
             SCIENTIST.scale;
 
-        dxPct =
+        let dxPct =
             (SCIENTIST.current_dx /
                 parseFloat(getComputedStyle(SCIENTIST.container).width)) *
             100.0;
-        dyPct =
+        let dyPct =
             (SCIENTIST.current_dy /
                 parseFloat(getComputedStyle(SCIENTIST.container).height)) *
             100.0;
@@ -385,10 +385,10 @@ function animateSprite(animation) {
         SCIENTIST.element.style.top = `${topPct}%`;
         SCIENTIST.element.style.left = `${leftPct}%`;
         SCIENTIST_ELEMENT.style.backgroundPositionX = `-${
-            SCIENTIST["current_frame"] * SCIENTIST["width"]
+            SCIENTIST.current_frame * SCIENTIST.width
         }px`;
         SCIENTIST_ELEMENT.style.backgroundPositionY = `-${
-            SCIENTIST["current_spritesheet_row"] * SCIENTIST["height"]
+            SCIENTIST.current_spritesheet_row * SCIENTIST.height
         }px`;
 
         // No need to key up the next frame if we're on the last one
@@ -450,7 +450,7 @@ function hide() {
 function responsiveResize() {
     console.log("Resize sprite now.");
 
-    const viewportWidth = window.innerWidth;
+    // const viewportWidth = window.innerWidth;
     let transform = `scale(1)`;
 
     // transform so the scale is relative in pixel sizes
@@ -459,7 +459,7 @@ function responsiveResize() {
     // ideally we want to be 20vw
     // and 11.4vw
 
-    newHeight = 0.2 * window.innerWidth;
+    let newHeight = 0.2 * window.innerWidth;
     SCIENTIST.scale = newHeight / SCIENTIST.height;
 
     transform = `scale(${SCIENTIST.scale})`;
@@ -484,7 +484,7 @@ function responsiveResize() {
 */
 function manage_animation_queue() {
     if (!SCIENTIST.is_animating_now && 0 != SCIENTIST.animation_queue.length) {
-        animation = SCIENTIST.animation_queue.shift();
+        let animation = SCIENTIST.animation_queue.shift();
         animateSprite(animation);
     }
 

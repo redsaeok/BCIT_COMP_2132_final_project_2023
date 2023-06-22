@@ -4,6 +4,8 @@ const CLOSE_LOSING = document.getElementById("close_losing");
 const WIN_DIALOG = document.getElementById("win-dialog");
 const LOSE_DIALOG = document.getElementById("lose-dialog");
 
+const pError = document.getElementById("pError");
+
 const MOBILE_MONITOR = document.getElementById("mobile-monitor");
 
 const GENERIC_DIALOG = document.getElementById("generic-dialog");
@@ -127,7 +129,7 @@ function updateEliminated() {
  */
 function updateState() {
     return;
-    pGameState.innerHTML = gameState.state;
+    //pGameState.innerHTML = gameState.state;
 }
 
 /*

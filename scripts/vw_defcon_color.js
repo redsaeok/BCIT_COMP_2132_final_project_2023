@@ -1,4 +1,4 @@
-DEFCON_COLOR = {
+const DEFCON_COLOR = {
     "6": "blue", 
     "5": "blue",
     "4": "green",
@@ -6,4 +6,4 @@ DEFCON_COLOR = {
     "2": "red",
     "1": "white",
     "0": "white"
-}
+};

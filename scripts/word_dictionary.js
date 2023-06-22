@@ -407,7 +407,7 @@ class WordDictionary{
                 
                 for( let i = 0; i < data.length; i++ ){
                     WORD_DICTIONARY.addWord( data[i].word.toUpperCase(), data[i].hint );
-                };
+                }
             })
             .catch(function(error){
                 console.log(error);
@@ -421,7 +421,7 @@ class WordDictionary{
         // maybe there's a better way
         for( let i = 0; i < WORD_LIST_OBJECT.length; i++ ){
             this.addWord( WORD_LIST_OBJECT[i].word, WORD_LIST_OBJECT[i].hint );
-        };
+        }
 
     }
 }

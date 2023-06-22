@@ -64,7 +64,7 @@ const gameState = {
 
         // do we have any guesses left?
         if( this.numberOfBadGuesses >= MAX_NUMBER_OF_BAD_GUESSES ) {
-            throw( "You have no more guesses left")
+            throw( "You have no more guesses left");
         }
 
         if( letter.length != 1 ){
@@ -104,6 +104,6 @@ const gameState = {
         return isGoodGuess;
 
     }
-}
+};
 
 

@@ -51,8 +51,8 @@ function updateWordDisplay()
 */
 function animateWordDisplay()
 {
-    const REPLACEMENT_LIST = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*)[]-+;:?<>'
-    letterArray = gameState.knownLetters.split("");
+    const REPLACEMENT_LIST = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*)[]-+;:?<>';
+    let letterArray = gameState.knownLetters.split("");
 
     for( let i = 0; i < letterArray.length; i++ )
     {
