@@ -829,7 +829,7 @@ header h1,
   width: 82px;
   height: 82px;
   background: url("../../images/world_sprite_sheet2.gif") left center;
-  animation: spin_world 8s steps(48) infinite;
+  animation: spin_world 4s steps(48) infinite;
   transform-origin: top left;
 }
 
@@ -838,7 +838,7 @@ header h1,
     background-position: 3936px;
   }
 }
-@media screen and (max-width <= 900px) {
+@media screen and (max-width: 900px) {
   #monitor-3 {
     display: none;
     visibility: hidden;
